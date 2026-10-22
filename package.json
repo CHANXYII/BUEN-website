@@ -1,0 +1,9 @@
+{
+  "name": "buen-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node app/build.mjs",
+    "preview": "node app/build.mjs && npx --yes serve deploy/site"
+  }
+}

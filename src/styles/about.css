@@ -1,0 +1,8 @@
+.values{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.values li{background:var(--glass);border-left:4px solid var(--gold);border-radius:var(--r);padding:16px 20px}
+.values h3,.values p{margin:0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;list-style:none;padding:0;margin:48px 0 0}
+.stats li{padding:18px 22px;border:1px solid var(--line);border-radius:var(--r);background:var(--glass);transition:transform .3s,border-color .3s}
+.stats li:hover{transform:translateY(-4px);border-color:var(--gold)}
+.stats b{display:block;font-size:2.4rem;line-height:1.1;color:var(--gold)}
+.stats span{color:var(--muted)}

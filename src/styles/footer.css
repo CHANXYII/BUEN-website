@@ -1,0 +1,3 @@
+.site-footer{background:rgb(179 18 46/.12);border-top:1px solid var(--stroke);color:#fff;padding:24px 0}
+.site-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.site-footer p{margin:0}.site-footer a{color:var(--gold)}

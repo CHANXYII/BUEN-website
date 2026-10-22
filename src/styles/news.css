@@ -1,0 +1,4 @@
+.list{list-style:none;padding:0;margin:24px 0 0}
+.list li{padding:16px 0;border-bottom:1px solid var(--line)}
+.list time{color:var(--muted);font-size:.9rem}
+.list h3{margin:.2em 0 0}

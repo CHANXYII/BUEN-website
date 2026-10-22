@@ -1,0 +1,60 @@
+.intro{max-width:64ch;color:#e6dfd8}
+.perks{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin:24px 0 0}
+.block{margin-bottom:72px}
+.group{margin:0 0 24px;padding-left:14px;border-left:4px solid var(--gold);font-size:1.5rem}
+
+/* presidents slideshow */
+.slider{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:var(--r);background:var(--glass);backdrop-filter:blur(8px)}
+.track{display:flex;transition:transform .7s cubic-bezier(.65,0,.35,1)}
+.slide{flex:0 0 100%;display:grid;grid-template-columns:190px 1fr;gap:40px;align-items:center;padding:44px 72px 56px}
+.slide .avatar{width:180px;height:180px}
+.slide .avatar svg{width:92px;height:92px}
+.slide h4{margin:10px 0 4px;font-size:1.9rem}
+.meta{margin:0 0 14px;color:var(--muted)}
+.badge{display:inline-block;padding:2px 14px;border:1px solid var(--gold);border-radius:999px;color:var(--gold);font-weight:700;font-size:.85em}
+.badge.now{background:var(--gold-a2);color:#fff}
+.quote{max-width:52ch;margin:0;padding-left:16px;border-left:3px solid var(--crimson);color:#e6dfd8;font-style:italic}
+.prev,.next{position:absolute;top:50%;translate:0 -50%;display:grid;place-items:center;width:46px;height:46px;border:1px solid #fff4;border-radius:50%;background:#000a;color:#fff;font-size:1.6rem;line-height:1;cursor:pointer;transition:background .25s,color .25s}
+.prev{left:14px}.next{right:14px}
+.prev:hover,.next:hover{background:var(--gold-a2);color:#fff}
+.dots{position:absolute;left:0;right:0;bottom:16px;display:flex;justify-content:center;gap:10px}
+.dots button{width:12px;height:12px;padding:0;border:1px solid var(--gold);border-radius:50%;background:none;cursor:pointer;transition:width .3s,background .3s}
+.dots button[aria-current="true"]{width:32px;border-radius:8px;background:rgb(212 175 55/.75)}
+
+/* generation tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.tabs button{min-height:44px;padding:6px 18px;border:1px solid var(--line);border-radius:999px;background:transparent;color:inherit;font:inherit;cursor:pointer;transition:border-color .2s}
+.tabs button:hover{border-color:var(--gold)}
+.tabs button.on{background:var(--crimson-a);border-color:var(--gold);color:#fff}
+.gen-panel[hidden]{display:none}
+.gen-panel{animation:rise .5s}
+.people{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.person{padding:24px 20px;text-align:center;border-radius:var(--r)}
+.person h4{margin:14px 0 2px;font-size:1.1rem}
+.person p{margin:0;color:var(--muted)}
+.person small{color:var(--gold);font-weight:700}
+.avatar{display:grid;place-items:center;width:84px;height:84px;margin:0 auto;border-radius:50%;background:var(--crimson-a);border:2px solid var(--gold);transition:transform .4s}
+.person:hover .avatar{transform:scale(1.05)}
+.avatar svg{width:44px;height:44px;fill:none;stroke:var(--gold);stroke-width:1.5;stroke-linecap:round}
+
+/* top events */
+.events{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));counter-reset:e}
+.event{padding:26px 22px;border-radius:var(--r)}
+.event::after{counter-increment:e;content:"0" counter(e);position:absolute;top:10px;right:18px;font-size:2.8rem;font-weight:700;color:#ffffff14}
+.event h4{margin:8px 0 6px;font-size:1.25rem}
+.event p{margin:0;color:var(--muted)}
+.event .tag{color:var(--gold);font-weight:700}
+
+/* promo video: 16:9 */
+.video{position:relative;display:grid;place-items:center;align-content:center;gap:12px;width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:var(--r);background:radial-gradient(circle at 30% 30%,rgb(179 18 46/.4),rgb(255 255 255/.03) 70%);color:#fff;font:inherit;cursor:pointer;overflow:hidden}
+iframe.video{border:0}
+.play{display:grid;place-items:center;width:84px;height:84px;border:2px solid var(--gold);border-radius:50%;background:#000a;color:var(--gold);font-size:2rem;padding-left:6px;transition:transform .3s,background .3s}
+.video:hover .play{transform:scale(1.08);background:var(--gold-a2);color:#fff}
+.video:not([data-yt=""]) .soon{display:none}
+
+@media (max-width:760px){
+  .slide{grid-template-columns:1fr;justify-items:center;text-align:center;gap:16px;padding:32px 20px 56px}
+  .slide .avatar{width:130px;height:130px}
+  .quote{border-left:0;padding:0}
+  .prev,.next{top:90px}
+}

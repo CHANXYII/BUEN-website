@@ -1,0 +1,5 @@
+.github
+state
+
+deploy/site/
+node_modules/
