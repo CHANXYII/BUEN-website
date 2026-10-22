@@ -1,7 +1,0 @@
-.filters{display:flex;gap:8px;margin:16px 0 24px}
-.filters button{border:1px solid var(--line);background:transparent;color:inherit;border-radius:999px;padding:6px 16px;font:inherit;cursor:pointer}
-.filters button.on{background:var(--crimson-a);color:#fff;border-color:var(--gold)}
-.cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
-.card{border-radius:var(--r);padding:20px}
-.card[hidden]{display:none}
-.tag{font-size:.8rem;font-weight:700;color:var(--gold)}

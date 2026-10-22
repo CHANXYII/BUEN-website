@@ -8,14 +8,6 @@ const io = 'IntersectionObserver' in window && new IntersectionObserver(es => es
 const reveal = sel => {
   const el = $(sel);
   if (!el) return;
-  $$('.card,.areas li,.values li,.steps li,.person,.event,.list li', el).forEach((c, i) => { c.classList.add('item'); c.style.setProperty('--i', i); });
+  $$('.values li,.person,.event,.list li', el).forEach((c, i) => { c.classList.add('item'); c.style.setProperty('--i', i); });
   io ? io.observe(el) : el.classList.add('in');
 };
-// Cursor spotlight on cards: feeds --mx/--my to the CSS glow.
-document.addEventListener('pointermove', e => {
-  const c = e.target.closest && e.target.closest('.card,.areas li,.values li,.steps li,.person,.event');
-  if (!c) return;
-  const r = c.getBoundingClientRect();
-  c.style.setProperty('--mx', e.clientX - r.left + 'px');
-  c.style.setProperty('--my', e.clientY - r.top + 'px');
-});

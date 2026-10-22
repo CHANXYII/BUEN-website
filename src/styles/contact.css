@@ -1,4 +1,7 @@
-.contact form{display:grid;gap:12px}
-.contact label{display:grid;gap:4px;font-weight:600}
-.contact input,.contact textarea{font:inherit;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--glass);color:inherit}
-.contact a{color:inherit}
+.contact p{color:var(--muted)}
+.contact a{color:#fff}
+.contact form{display:grid;gap:28px}
+.contact label{display:grid;gap:8px;color:var(--muted);font-size:.85rem;letter-spacing:.14em;text-transform:uppercase}
+.contact input,.contact textarea{padding:10px 0;border:0;border-bottom:1px solid var(--stroke);border-radius:0;background:none;color:#fff;font:inherit;letter-spacing:0;text-transform:none;transition:border-color .25s}
+.contact input:focus,.contact textarea:focus{outline:0;border-bottom-color:var(--gold)}
+.contact .btn{justify-self:start}

@@ -8,8 +8,6 @@ Structure: every section has the same three files:
 |---|---|---|---|---|
 | Header | `src/sections/header.html` | `src/styles/header.css` | `app/sections/header.js` | [header.md](header.md) |
 | Hero | `src/sections/hero.html` | `src/styles/hero.css` | `app/sections/hero.js` | [hero.md](hero.md) |
-| About | `src/sections/about.html` | `src/styles/about.css` | `app/sections/about.js` | [about.md](about.md) |
-| Programs | `src/sections/programs.html` | `src/styles/programs.css` | `app/sections/programs.js` | [programs.md](programs.md) |
 | Ambassador | `src/sections/ambassador.html` | `src/styles/ambassador.css` | `app/sections/ambassador.js` | [ambassador.md](ambassador.md) |
 | Committee | `src/sections/committee.html` | `src/styles/committee.css` | `app/sections/committee.js` | [committee.md](committee.md) |
 | News | `src/sections/news.html` | `src/styles/news.css` | `app/sections/news.js` | [news.md](news.md) |
@@ -24,4 +22,4 @@ Structure: every section has the same three files:
 
 **Add a section:** create the three files, add the name to the list in `app/build.mjs`, add a nav link in `header.html`.
 
-**Content status:** programs, stats, ambassadors, committee, news, email and address are **placeholders** (marked `TODO`). Replace with official info before launch.
+**Content status:** ambassadors, committee, news, email and address are **placeholders** (marked `TODO`). Replace with official info before launch.

@@ -4,7 +4,7 @@ Website of the **School of Engineering, Bangkok University**.
 A single-page static site: plain HTML, CSS and JavaScript, no framework and no dependencies. Node.js is only used to assemble the files.
 
 - **Theme:** black background with crimson, white and gold.
-- **Font:** DB Adman X (add the font files, see [Font](#font)).
+- **Font:** Google Sans (Google Fonts) with Noto Sans Thai for Thai.
 - **Hosting:** GitHub Pages now, custom domain later.
 
 ## Run on localhost
@@ -36,7 +36,7 @@ BUEN-website/
 │   ├── index.html       Page shell
 │   ├── sections/        One HTML file per section
 │   ├── styles/          base.css + one CSS file per section
-│   └── assets/          Images and fonts (assets/fonts/)
+│   └── assets/          Images (hero.png, news/)
 ├── app/                 Build and behaviour
 │   ├── build.mjs        Joins src/ and app/ into deploy/site/
 │   ├── lib.js           Shared helpers ($, $$, reveal)
@@ -52,7 +52,7 @@ BUEN-website/
 
 ## Sections
 
-Header, Hero, About, Programs, BUEN Ambassador, Student Committee, News, Contact, Footer.
+Header, Hero (featured BU news), BUEN Ambassador, Student Committee, News, Contact, Footer.
 Each section has the same three files (`src/sections/<name>.html`, `src/styles/<name>.css`, `app/sections/<name>.js`) and a guide in `docs/<name>.md`. See [docs/README.md](docs/README.md).
 
 **Add a section:** create the three files, add its name to the list in `app/build.mjs`, and add a link in `src/sections/header.html`.
@@ -66,8 +66,8 @@ Details: [deploy/github-pages.md](deploy/github-pages.md). When we have a domain
 
 ## Font
 
-DB Adman X is a licensed font and is not in the repo. Put `DBAdmanX.woff2` and `DBAdmanX-Bold.woff2` in `src/assets/fonts/` (check the license allows web use). Without them the site falls back to the system font.
+Google Sans and Noto Sans Thai are loaded from Google Fonts in `src/index.html` (needs an internet connection). Font stack: `src/styles/base.css`. Thai, Chinese, Japanese and Korean fall back to Noto Sans Thai / system fonts.
 
 ## Content status
 
-Programs, about-page stats, ambassadors, committee, news, email, address and the Apply now link are **placeholders** marked `TODO`. Replace them with official information before launch.
+Hero news, ambassadors, committee, news, email, address and the Apply now link are **placeholders** marked `TODO`. Replace them with official information before launch.
