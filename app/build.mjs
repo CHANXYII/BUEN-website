@@ -1,27 +1,31 @@
-// Static build: src/ + app/ -> deploy/site/. No dependencies. Run: node app/build.mjs
-import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, existsSync } from 'node:fs';
+// Static build: leaderboard/ + src/styles/base.css + app/ -> deploy/site/. No dependencies. Run: node app/build.mjs
+import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, existsSync, readdirSync } from 'node:fs';
 
 const root = new URL('../', import.meta.url);
 const out = new URL('deploy/site/', root);
 const read = p => readFileSync(new URL(p, root), 'utf8');
 const write = (p, s) => writeFileSync(new URL(p, out), s);
 
-// Page order. Add a section: add its name here and create the matching files in src/ and app/sections/.
-const header = 'header', footer = 'footer';
-const main = ['hero', 'ambassador', 'committee', 'news', 'contact'];
-const all = [header, ...main, footer];
-
 rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
+cpSync(new URL('leaderboard/index.html', root), new URL('index.html', out));
+write('styles.css', ['src/styles/base.css', 'leaderboard/leaderboard.css'].map(read).join('\n'));
 
-write('index.html', read('src/index.html')
-  .replace('{{header}}', () => read(`src/sections/${header}.html`))
-  .replace('{{main}}', () => main.map(s => read(`src/sections/${s}.html`)).join('\n'))
-  .replace('{{footer}}', () => read(`src/sections/${footer}.html`)));
-write('styles.css', ['base', ...all].map(s => read(`src/styles/${s}.css`)).join('\n'));
-write('app.js', `(() => {\n${['lib', 'i18n', 'i18n/th', 'i18n/zh', 'i18n/ja', 'i18n/ko', 'i18n/fr', 'i18n/es', 'i18n/id', 'i18n/fil', 'i18n/vi', 'i18n/my', 'i18n/lo', ...all.map(s => `sections/${s}`), 'init'].map(f => read(`app/${f}.js`)).join('\n')}\n})();\n`);
+// data.json = leaderboard/data.json (title, workshops) + one file per participant in docs/participants/BUENxx.json
+const participants = readdirSync(new URL('docs/participants/', root)).filter(f => f.endsWith('.json')).sort().map(f => {
+  const p = JSON.parse(read(`docs/participants/${f}`));
+  if (p.id !== f.slice(0, -5)) throw new Error(`${f}: id "${p.id}" must match the file name`);
+  const ext = ['jpg', 'jpeg', 'png', 'webp'].find(e => existsSync(new URL(`docs/participants/photos/${p.id}.${e}`, root)));
+  if (ext) p.photo = `photos/${p.id}.${ext}`; // photo = docs/participants/photos/BUENxx.(jpg|png|webp), optional
+  return p;
+});
+if (existsSync(new URL('docs/participants/photos', root))) cpSync(new URL('docs/participants/photos', root), new URL('photos', out), { recursive: true });
+write('data.json', JSON.stringify({ ...JSON.parse(read('leaderboard/data.json')), participants }));
 
-if (existsSync(new URL('src/assets', root))) cpSync(new URL('src/assets', root), new URL('assets', out), { recursive: true });
+// app.js: helpers, translations (app/i18n/*.js, hardcoded dictionaries), page, then init (applies saved language)
+const langs = ['th', 'zh', 'ja', 'ko', 'fr', 'es', 'id', 'fil', 'vi', 'my', 'lo'];
+write('app.js', `(() => {\n${[read('app/lib.js'), read('app/i18n.js'), ...langs.map(l => read(`app/i18n/${l}.js`)), read('leaderboard/leaderboard.js'), read('app/init.js')].join('\n')}\n})();\n`);
+
 if (existsSync(new URL('deploy/CNAME', root))) cpSync(new URL('deploy/CNAME', root), new URL('CNAME', out)); // custom domain, later
 write('.nojekyll', '');
 console.log('built deploy/site');

@@ -1,0 +1,23 @@
+{
+  "kicker": "Competition",
+  "title": "Leaderboard",
+  "updated": "",
+  "workshops": [
+    {
+      "id": "w1",
+      "name": "Workshop 1"
+    },
+    {
+      "id": "w2",
+      "name": "Workshop 2"
+    },
+    {
+      "id": "w3",
+      "name": "Workshop 3"
+    },
+    {
+      "id": "w4",
+      "name": "Workshop 4"
+    }
+  ]
+}

@@ -1,73 +1,37 @@
-# BUEN-website
+# BUEN Leaderboard
 
-Website of the **School of Engineering, Bangkok University**.
-A single-page static site: plain HTML, CSS and JavaScript, no framework and no dependencies. Node.js is only used to assemble the files.
+Competition leaderboard of the **School of Engineering, Bangkok University**. One static page: plain HTML, CSS and JavaScript, no framework, no dependencies. Node.js is only used to assemble the files.
 
-- **Theme:** black background with crimson, white and gold.
-- **Font:** Google Sans (Google Fonts) with Noto Sans Thai for Thai.
-- **Hosting:** GitHub Pages now, custom domain later.
+- **Theme:** black background with crimson, white and gold. Font: Google Sans (Noto Sans Thai for Thai).
+- **Languages:** 12, from hardcoded dictionaries in `app/i18n/` (English text is the key; add a line to each file to translate a new word).
+- **Hosting:** GitHub Pages, own domain/site separate from the main website.
+
+## Update the results
+
+Edit the participant files in `docs/participants/` (`BUEN01.json` ... `BUEN25.json`) and push to `main`. Format and rules: [docs/participants.md](docs/participants.md).
 
 ## Run on localhost
 
-Requires [Node.js](https://nodejs.org) 18 or newer.
+Needs [Node.js](https://nodejs.org) 18+.
 
 ```bash
-npm run preview
+npm run preview   # build, then serve deploy/site
+npm run build     # build only
 ```
 
-This builds the site and serves it at **http://localhost:3500** (the exact address is printed in the terminal). The first run downloads the `serve` helper through `npx`.
+No live reload: rebuild after editing.
 
-There is no live reload. After editing a file in `src/` or `app/`, stop the server (Ctrl+C) and run `npm run preview` again.
-
-Other commands:
-
-| Command | What it does |
-|---|---|
-| `npm run build` | Builds the site into `deploy/site/` |
-| `npm run preview` | Builds, then serves `deploy/site/` on localhost |
-
-If you don't want `npx`, run `npm run build` and then `python -m http.server 8000 -d deploy/site`, and open http://localhost:8000.
-
-## Project structure
+## Structure
 
 ```
-BUEN-website/
-├── src/                 Content and design
-│   ├── index.html       Page shell
-│   ├── sections/        One HTML file per section
-│   ├── styles/          base.css + one CSS file per section
-│   └── assets/          Images (hero.png, news/)
-├── app/                 Build and behaviour
-│   ├── build.mjs        Joins src/ and app/ into deploy/site/
-│   ├── lib.js           Shared helpers ($, $$, reveal)
-│   └── sections/        One JS file per section
-├── deploy/              Hosting
-│   ├── site/            Build output (git-ignored)
-│   ├── github-pages.md  Current hosting steps
-│   ├── custom-domain.md Moving to our own domain
-│   └── CNAME.example    Copy to CNAME when the domain is ready
-├── docs/                Guide for each section
-└── .github/workflows/pages.yml   Auto-deploy to GitHub Pages
+leaderboard/   index.html, leaderboard.css, leaderboard.js, data.json
+src/styles/base.css   shared colours and typography
+app/build.mjs  builds into deploy/site/
+deploy/        hosting notes (github-pages.md, custom-domain.md)
+docs/          participant data guide + participants/BUENxx.json
+.github/workflows/pages.yml   auto-deploy on push to main
 ```
-
-## Sections
-
-Header, Hero (featured BU news), BUEN Ambassador, Student Committee, News, Contact, Footer.
-Each section has the same three files (`src/sections/<name>.html`, `src/styles/<name>.css`, `app/sections/<name>.js`) and a guide in `docs/<name>.md`. See [docs/README.md](docs/README.md).
-
-**Add a section:** create the three files, add its name to the list in `app/build.mjs`, and add a link in `src/sections/header.html`.
 
 ## Deploy
 
-Pushing to `main` builds and publishes to GitHub Pages automatically.
-One-time setup: repo **Settings → Pages → Source: GitHub Actions**.
-The site is then at `https://<user-or-org>.github.io/BUEN-website/`.
-Details: [deploy/github-pages.md](deploy/github-pages.md). When we have a domain: [deploy/custom-domain.md](deploy/custom-domain.md).
-
-## Font
-
-Google Sans and Noto Sans Thai are loaded from Google Fonts in `src/index.html` (needs an internet connection). Font stack: `src/styles/base.css`. Thai, Chinese, Japanese and Korean fall back to Noto Sans Thai / system fonts.
-
-## Content status
-
-Hero news, ambassadors, committee, news, email, address and the Apply now link are **placeholders** marked `TODO`. Replace them with official information before launch.
+Pushing to `main` publishes to GitHub Pages. One-time setup: repo **Settings → Pages → Source: GitHub Actions**. Custom domain: [deploy/custom-domain.md](deploy/custom-domain.md).
