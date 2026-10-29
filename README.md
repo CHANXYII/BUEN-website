@@ -21,6 +21,10 @@ npm run build     # build only
 
 No live reload: rebuild after editing.
 
+## Judge scoring portal
+
+The Supabase-ready judge portal is built at `/judge/`. Run the SQL in `supabase/schema.sql`, create judge users in Supabase Auth, assign them to a workshop, and add the project's public URL and anon key to `judge/judge.js`. Judges can then submit workshop scores for admin approval. The public leaderboard integration and admin approval screen are the next layer after the Supabase project is configured.
+
 ## Structure
 
 ```

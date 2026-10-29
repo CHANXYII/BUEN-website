@@ -9,6 +9,11 @@ const write = (p, s) => writeFileSync(new URL(p, out), s);
 rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
 cpSync(new URL('leaderboard/index.html', root), new URL('index.html', out));
+mkdirSync(new URL('judge/', out), { recursive: true });
+cpSync(new URL('judge/index.html', root), new URL('judge/index.html', out));
+cpSync(new URL('judge/score.html', root), new URL('judge/score.html', out));
+cpSync(new URL('judge/judge.js', root), new URL('judge/judge.js', out));
+cpSync(new URL('judge/judge.css', root), new URL('judge/judge.css', out));
 write('styles.css', ['src/styles/base.css', 'leaderboard/leaderboard.css'].map(read).join('\n'));
 
 // data.json = leaderboard/data.json (title, workshops) + one file per participant in docs/participants/BUENxx.json
