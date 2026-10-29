@@ -9,12 +9,16 @@ if (DEMO) status('Demo mode: scores are saved only in this browser.');
 const db = !DEMO && SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 const load = async () => {
   if (DEMO) {
-    if ($('#login')) $('#login').hidden = true; if ($('#scoring')) $('#scoring').hidden = false; $('#workshopName').textContent = 'Workshop 1 · Demo scoring';
+    if ($('#login')) $('#login').hidden = true; if ($('#scoring')) $('#scoring').hidden = false;
     const response = await fetch('../data.json');
     if (!response.ok) throw new Error('Could not load participant data.');
     const d = await response.json();
     const saved = JSON.parse(localStorage.demoScores || '{}');
-    $('#scores').innerHTML = d.participants.map(p => `<div class="score-row"><span class="participant"><span class="avatar"><img src="${p.photo ? `../${p.photo}` : `../photos/${p.id}.jpg`}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span class="avatar-fallback">${p.id.replace(/\D/g, '')}</span></span><span><strong>${p.id} — ${p.name}</strong><small>${p.major || ''}</small></span></span><input required min="0" type="number" step="0.01" data-id="${p.id}" value="${saved[p.id]?.points ?? p.points?.w1 ?? ''}" placeholder="Score"><textarea data-comment="${p.id}" placeholder="Comment for this participant">${saved[p.id]?.comment ?? ''}</textarea></div>`).join('');
+    const select = $('#workshopSelect');
+    select.innerHTML = d.workshops.map(w => `<option value="${w.id}">${w.name}</option>`).join('');
+    const render = () => { const w = select.value; $('#scores').innerHTML = d.participants.map(p => `<div class="score-row"><span class="participant"><span class="avatar"><img src="${p.photo ? `../${p.photo}` : `../photos/${p.id}.jpg`}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span class="avatar-fallback">${p.id.replace(/\D/g, '')}</span></span><span><strong>${p.id} — ${p.name}</strong><small>${p.major || ''}</small></span></span><input required min="0" type="number" step="0.01" data-id="${p.id}" value="${saved[p.id]?.[w]?.points ?? p.points?.[w] ?? ''}" placeholder="Score"><textarea data-comment="${p.id}" placeholder="Comment for this participant">${saved[p.id]?.[w]?.comment ?? ''}</textarea></div>`).join(''); };
+    select.onchange = render;
+    render();
     return;
   }
   const { data: { user } } = await db.auth.getUser();
@@ -29,7 +33,8 @@ if ($('#loginBtn')) $('#loginBtn').onclick = () => { if (!$('#email').value.trim
 if ($('#signout')) $('#signout').onclick = async () => { if (db && !DEMO) await db.auth.signOut(); location.href = './'; };
 const saveScores = async () => {
   if (DEMO) {
-    const saved = Object.fromEntries([...document.querySelectorAll('[data-id]')].map(i => [i.dataset.id, { points: Number(i.value), comment: document.querySelector(`[data-comment="${i.dataset.id}"]`).value }]));
+    const saved = JSON.parse(localStorage.demoScores || '{}'); const workshop = document.querySelector('#workshopSelect').value;
+    [...document.querySelectorAll('[data-id]')].forEach(i => { saved[i.dataset.id] ||= {}; saved[i.dataset.id][workshop] = { points: Number(i.value), comment: document.querySelector(`[data-comment="${i.dataset.id}"]`).value }; });
     localStorage.demoScores = JSON.stringify(saved);
     status('Scores submitted successfully. Redirecting to login…');
     location.href = './';
