@@ -6,7 +6,7 @@
 
 Placed first after the hero. Five blocks, each reveals on scroll:
 
-1. **What is BUEN Ambassador?** intro text and three perks.
+1. **What is BUEN Ambassador ?** intro text and three perks.
 2. **Our presidents**: looping slideshow (autoplay 5 s, pauses on hover, arrows, dots, swipe). One `<article class="slide">` per president. Now: Generation 1 (current) and a "Coming soon, opening in 2027" slide for Generation 2. When Generation 2 opens, replace that slide (remove `upcoming`, add the real president) and make Generation 1 a former president.
 3. **Ambassadors by generation**: one tab button (`data-gen`) and one `.gen-panel` (same `data-gen`) per generation. Generation 1 is shown by default. Generation 2 shows a "coming soon" note until it opens in 2027 (replace the `.soon-panel` with a `.people` grid of members).
 4. **Our work by generation**: photo gallery per generation tab. Put photos in `src/assets/gallery/` and replace a placeholder `<figure class="shot">` (see the comment in the HTML). The first photo shows large.

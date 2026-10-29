@@ -12,7 +12,7 @@
       <div class="about">
         <p class="intro">The School of Engineering at Bangkok University prepares world-builders for the engineering profession, balancing theory, practice and real-world projects in fully equipped labs. Our students learn both hardware and software, along with related technologies such as IoT, AI &amp; Machine Learning, and keep up with the new data era through Big Data, covering Programmer, IT, Smart System, Robotics &amp; Automation. Our distinctive curricula build skills that set you apart from typical engineering programs, skills you can really use. Through partnerships with international universities, including faculty/student exchanges and joint research projects, students work alongside international researchers and gain a global outlook. With 5 majors to choose your own path, we are an institution that produces engineers ready to meet the technology needs of today and tomorrow!</p>
       </div>
-      <h3 class="group">Our 5 majors</h3>
+      <h3 class="group">Bachelor’s Degree</h3>
       <ul class="values majors">
         <li><h3>Computer and Robotics Engineering</h3><p>Programming, IoT, AI and robotics, with hands-on hardware and software.</p></li>
         <li><h3>Artificial Intelligence Engineering and Data Science</h3><p>Build and deploy AI systems, from data to real business solutions.</p></li>
@@ -28,29 +28,42 @@
       <h2>Student activities</h2>
     </div>
 
+    <!-- what is it: heading + one-line answer left, a quote right, then an endless scrolling row of the roles ambassadors take on.
+         Add a role: copy one <li class="role">; the loop is automatic. -->
     <div class="block reveal" id="amb-what">
-      <h2>What is BUEN Ambassador?</h2>
-      <p class="sub">Sample content. TODO: replace with the real ambassador team.</p>
-      <p class="intro">BUEN Ambassador is the School of Engineering student ambassador team: the faces and voices of the faculty at open houses, school visits and online.</p>
-      <p class="intro">Student ambassadors share real campus life, guide visitors and inspire the next generation of engineers.</p>
-      <ul class="values perks">
-        <li><h3>Leadership skills</h3><p>Lead events and represent the School.</p></li>
-        <li><h3>Network</h3><p>Meet alumni, industry guests and peers.</p></li>
-        <li><h3>Certificate</h3><p>Earn recognition for your activities.</p></li>
-      </ul>
+      <div class="what-head">
+        <h2>What is BUEN Ambassador ?</h2>
+        <p class="lead">Ambassador of the School of Engineering</p>
+      </div>
+      <figure class="what-quote">
+        <blockquote><p>The faces and voices of the School of Engineering: sharing real campus life and inspiring the next generation of engineers.</p></blockquote>
+        <figcaption>BUEN Ambassador</figcaption>
+      </figure>
+      <div class="roles-show">
+        <h3 class="group">What you’ll do</h3>
+        <ul class="roles-track">
+          <li class="role">MC</li>
+          <li class="role">Moderator</li>
+          <li class="role">Representative</li>
+          <li class="role">Campus tour guide</li>
+          <li class="role">Open house presenter</li>
+          <li class="role">School visit speaker</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="block reveal" id="amb-advisor">
-      <h3 class="group">Our advisor</h3>
-      <!-- swap the avatar <svg> for <img src="assets/..." alt=""> when a photo exists -->
-      <article class="slide"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><div><span class="badge">BUEN Ambassador Advisor</span><h4>Dr. Tantikorn Pichpibul</h4><p class="meta">Instructor of Artificial Intelligence Engineering and Data Science Department</p><ul class="quote roles"><li>BU Innovative Teaching Awards 2026</li><li>Micro-Credential Certifications</li></ul></div></article>
+    <!-- advisor: same animated banner as the presidents, in gold. Photo: cut-out PNG (transparent background, 3:4) -->
+    <div class="block reveal banner" id="amb-advisor">
+      <div class="banner-marquee" aria-hidden="true"><span>Advisor ✦ Advisor ✦ Advisor ✦ Advisor ✦ </span><span>Advisor ✦ Advisor ✦ Advisor ✦ Advisor ✦ </span></div>
+      <article class="slide"><div class="avatar"><img src="assets/ambassador/president/advisor.png" alt="Dr. Tantikorn Pichpibul" loading="lazy"></div><div><span class="badge">BUEN Ambassador Advisor</span><h4>Dr. Tantikorn Pichpibul</h4><p class="meta">Instructor of Artificial Intelligence Engineering and Data Science Department</p><ul class="quote roles"><li>BU Innovative Teaching Awards 2026</li><li>Micro-Credential Certifications</li></ul></div></article>
     </div>
 
-    <div class="block reveal" id="amb-presidents">
-      <h3 class="group">Our presidents</h3>
+    <!-- presidents: full-width animated banner, so it stands apart from the other blocks -->
+    <div class="block reveal banner" id="amb-presidents">
+      <div class="banner-marquee" aria-hidden="true"><span>President ✦ President ✦ President ✦ </span><span>President ✦ President ✦ President ✦ </span></div>
       <div class="slider" aria-roledescription="carousel" aria-label="Presidents">
         <div class="track">
-        <article class="slide"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><div><span class="badge">President of BUEN Ambassador 1 (2025 - 2026)</span><h4>Chanunya Sutti</h4><p class="meta">Artificial Intelligence Engineering and Data Science</p><ul class="quote roles"><li>BUEN AMBASSADOR: The 1st Generation</li><li>ASEAN Digital GrandPals Thailand</li><li>Google Student Ambassador Thailand (Batch 1)</li></ul></div></article>
+        <article class="slide"><div class="avatar"><img src="assets/ambassador/president/01.png" alt="Chanunya Sutti" loading="lazy"></div><div><span class="badge">President of BUEN Ambassador 1 (2025 - 2026)</span><h4>Chanunya Sutti</h4><p class="meta">Artificial Intelligence Engineering and Data Science</p><ul class="quote roles"><li>BUEN AMBASSADOR: The 1st Generation</li><li>ASEAN Digital GrandPals Thailand</li><li>Google Student Ambassador Thailand (Batch 1)</li></ul></div></article>
         </div>
         <button class="prev" aria-label="Previous">&#8249;</button>
         <button class="next" aria-label="Next">&#8250;</button>
@@ -61,23 +74,22 @@
     <div class="block reveal" id="amb-generations">
       <div class="tabs" role="tablist"><button role="tab" data-gen="2">Generation 2</button><button role="tab" data-gen="1">Generation 1</button></div>
       <div class="gen-panel people" role="tabpanel" data-gen="2">
-        <article class="person"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Joannes Pualus M.Ople</h4><p>Artificial Intelligence Engineering and Data Science</p><small>3rd year</small></article>
-        <article class="person"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Thanakrit Archawabool</h4><p>Artificial Intelligence Engineering and Data Science</p><small>3rd year</small></article>
-        <article class="person"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Oangkhana Juti</h4><p>Artificial Intelligence Engineering and Data Science</p><small>3rd year</small></article>
-        <article class="person"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Naruechaya Yimsatan</h4><p>Computer and Robotics Engineering</p><small>3rd year</small></article>
-        <article class="person"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Surayut Khongchuai</h4><p>Intelligent Systems and Digital Innovation Engineering</p><small>2nd year</small></article>
+        <article class="person" tabindex="0"><div class="avatar"><img src="assets/ambassador/gen2/01_jaypee.jpg" alt="Joannes Pau
+          lus M.Ople" loading="lazy"></div><h4>Joannes Paulus M.Ople</h4><p>Artificial Intelligence Engineering and Data Science</p><small>3rd year</small></article>
+        <article class="person" tabindex="0"><div class="avatar"><img src="assets/ambassador/gen2/02_phum.jpg" alt="Thanakrit Archawabool" loading="lazy"></div><h4>Thanakrit Archawabool</h4><p>Artificial Intelligence Engineering and Data Science</p><small>3rd year</small></article>
+        <article class="person" tabindex="0"><div class="avatar"><img src="assets/ambassador/gen2/03_ang.jpg" alt="Oangkhana Juti" loading="lazy"></div><h4>Oangkhana Juti</h4><p>Artificial Intelligence Engineering and Data Science</p><small>3rd year</small></article>
+        <article class="person" tabindex="0"><div class="avatar"><img src="assets/ambassador/gen2/04_tarpriew.jpg" alt="Naruechaya Yimsatan" loading="lazy"></div><h4>Naruechaya Yimsatan</h4><p>Computer and Robotics Engineering</p><small>3rd year</small></article>
+        <article class="person" tabindex="0"><div class="avatar"><img src="assets/ambassador/gen2/05_fluer.jpg" alt="Surayut Khongchuai" loading="lazy"></div><h4>Surayut Khongchuai</h4><p>Intelligent Systems and Digital Innovation Engineering</p><small>2nd year</small></article>
       </div>
       <div class="gen-panel people" role="tabpanel" data-gen="1">
-        <article class="person"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Chanunya Sutti</h4><p>Artificial Intelligence Engineering and Data Science</p><small>4th year</small></article>
+        <article class="person" tabindex="0"><div class="avatar"><img src="assets/ambassador/gen1/01_gyoza.JPG" alt="Chanunya Sutti" loading="lazy"></div><h4>Chanunya Sutti</h4><p>Artificial Intelligence Engineering and Data Science</p><small>4th year</small></article>
       </div>
     </div>
 
     <div class="block reveal" id="amb-work">
-      <h3 class="group">Our work by generation</h3>
       <!-- Photos: put files in src/assets/gallery/ and replace a placeholder with
            <figure class="shot"><img src="assets/gallery/gen2-1.jpg" alt="What is in the photo" loading="lazy"><figcaption>Event name</figcaption></figure>
-           The first photo of each generation shows large. -->
-      <div class="tabs" role="tablist"><button role="tab" data-gen="2">Generation 2</button><button role="tab" data-gen="1">Generation 1</button></div>
+           The first photo of each generation shows large. The generation tabs above the profiles switch this gallery too. -->
       <div class="gen-panel gallery" role="tabpanel" data-gen="2">
         <figure class="shot"><figcaption>Photo coming soon</figcaption></figure>
         <figure class="shot"><figcaption>Photo coming soon</figcaption></figure>
@@ -93,6 +105,6 @@
       </div>
     </div>
 
-    <a class="btn primary" href="#contact">Become an ambassador</a>
+    <a class="btn primary ig" href="https://www.instagram.com/buen_ambassador" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>Instagram</span></a>
   </div>
 </section>

@@ -1,12 +1,12 @@
 .site-header{position:sticky;top:0;z-index:30;background:rgb(0 0 0/.7);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:background .3s}
 .site-header.scrolled{background:rgb(0 0 0/.92)}
 .progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--crimson);transform:scaleX(0);transform-origin:left}
-.bar{--edge:max(24px,calc((100vw - 1400px) / 2));display:flex;align-items:center;gap:32px;min-height:76px;padding:0 var(--edge);transition:min-height .3s}
-.scrolled .bar{min-height:60px}
-.brand{display:flex;align-items:center;gap:14px;margin-right:auto;color:#fff;text-decoration:none}
-.logo{display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--gold);color:var(--gold);font-weight:700;letter-spacing:.04em}
-.brand-text{display:flex;flex-direction:column;line-height:1.2}
-.brand-text small{color:var(--muted)}
+/* --edge matches .wrap (base.css), so the logo and the Apply button line up with the page content */
+.bar{--edge:calc(max(0px,(100vw - 1200px) / 2) + clamp(24px,6vw,96px));display:flex;align-items:center;gap:32px;min-height:64px;padding:0 var(--edge)}
+/* logo on a white panel that runs from the left edge of the screen, full header height (the image already says School of Engineering, Bangkok University) */
+.brand{display:flex;align-items:center;align-self:stretch;margin:0 auto 0 calc(-1 * var(--edge));padding:0 48px 0 var(--edge);background:#fff;text-decoration:none}
+.logo{display:block}
+.logo img{display:block;width:auto;height:44px}
 
 .site-header nav{display:flex;gap:30px;align-items:center}
 .site-header nav a{position:relative;padding:8px 0;color:var(--muted);text-decoration:none;transition:color .2s}
@@ -43,7 +43,7 @@
 }
 
 @media (max-width:1100px){
-  .bar{gap:12px;padding:0 16px}
+  .bar{--edge:16px;gap:12px}
   .lang{padding-left:12px}
   .menu-btn{display:block}
   .site-header nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;padding:8px 16px 16px;background:rgb(0 0 0/.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}

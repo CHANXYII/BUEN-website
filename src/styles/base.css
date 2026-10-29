@@ -1,16 +1,16 @@
 :root{--crimson:#b3122e;--gold:#d4af37;--ink:#fff;--muted:rgb(255 255 255/.62);--bg:#000;--line:rgb(255 255 255/.14);--stroke:rgb(255 255 255/.28);--glass:rgb(255 255 255/.04);--glass-2:rgb(255 255 255/.08);--crimson-a:rgb(179 18 46/.3);--gold-a:rgb(212 175 55/.14);--gold-a2:rgb(212 175 55/.3);--r:4px}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
 body{margin:0;font:16px/1.65 'Google Sans','Noto Sans Thai','Noto Sans Myanmar','Noto Sans Lao','Noto Sans SC','Microsoft YaHei','PingFang SC','Yu Gothic','Meiryo','Malgun Gothic',system-ui,sans-serif;font-optical-sizing:auto;color:var(--ink);background:var(--bg)}
 ::selection{background:var(--gold-a2);color:#fff}
-.wrap{max-width:1400px;margin:0 auto;padding:0 24px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(24px,6vw,96px)}
 h1,h2,h3,h4{margin:0;line-height:1.1}
 h2{margin-bottom:.4em;font-size:clamp(1.7rem,3vw,2.4rem);letter-spacing:-.02em}
 :lang(th) *,:lang(my) *,:lang(lo) *{letter-spacing:0!important}
 .sub{color:var(--muted)}
 
 /* sections are numbered by CSS: 01, 02, ... (the hero is not counted) */
-main{counter-reset:sec}
+main{counter-reset:sec;overflow-x:clip} /* full-width banners use 100vw; clip keeps the page from scrolling sideways */
 main>section:not(.hero){counter-increment:sec;padding:88px 0;border-top:1px solid var(--line)}
 main>section h2::before{content:"0" counter(sec);display:block;margin-bottom:14px;color:var(--gold);font-size:.8rem;font-weight:700;letter-spacing:.2em}
 .two{display:grid;gap:64px}
@@ -23,6 +23,8 @@ main>section h2::before{content:"0" counter(sec);display:block;margin-bottom:14p
 .btn:hover::after{transform:translateX(4px)}
 .btn.primary{background:rgb(179 18 46/.5);border-color:rgb(179 18 46/.9)}
 .btn.primary:hover{background:rgb(179 18 46/.75)}
+.btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8}
+.btn.ig::after{content:'\2197'} /* opens Instagram in a new tab */
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
 /* scroll reveal: fade up, list items one after another */

@@ -26,16 +26,31 @@
   go(0); play();
 }
 
-// Generation tabs (ambassadors, work gallery): each block shows one generation at a time, first tab first.
-$$('.tabs').forEach(bar => {
-  const tabs = $$('button', bar), panels = $$('.gen-panel', bar.parentElement);
+// "What you'll do" roles: endless loop. Wraps the row in a clipping box and appends a hidden
+// copy of the cards so the CSS animation (slide left by one set) repeats without a jump. Speed: ~4s per name.
+{
+  const track = $('.roles-track'), cards = $$('.role', track);
+  const loop = document.createElement('div');
+  loop.className = 'roles-loop';
+  track.before(loop);
+  loop.append(track);
+  if (!matchMedia('(prefers-reduced-motion:reduce)').matches) {
+    cards.forEach(c => { const d = c.cloneNode(true); d.setAttribute('aria-hidden', 'true'); track.append(d); });
+    track.style.setProperty('--dur', cards.length * 4 + 's');
+  }
+}
+
+// Generation tabs above the profiles: one generation shows at a time, first tab first. They also switch the
+// work gallery below, which has no tabs of its own.
+{
+  const tabs = $$('#ambassador .tabs button'), panels = $$('#ambassador .gen-panel');
   const show = g => {
     tabs.forEach(b => { const on = b.dataset.gen === g; b.classList.toggle('on', on); b.setAttribute('aria-selected', on); });
     panels.forEach(p => p.hidden = p.dataset.gen !== g);
   };
   tabs.forEach(b => b.addEventListener('click', () => show(b.dataset.gen)));
-  show(tabs[0].dataset.gen);
-});
+  if (tabs.length) show(tabs[0].dataset.gen);
+}
 
 // Videos: the IDs in .vids data-yt play as a looping playlist. Starts muted 2s after scrolling into view
 // (browsers block autoplay with sound), or with sound on click; arrows and video end jump to the next one

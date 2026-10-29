@@ -8,13 +8,38 @@
 #amb-break .eyebrow::after{content:'';width:40px;height:1px;background:var(--gold)}
 #amb-break h2{margin:0;font-size:clamp(2rem,4.5vw,3.2rem)}
 
-/* what is it: big title left, text right (Committee uses the same layout) */
-#amb-what,#com-what{display:grid;grid-template-columns:1fr 1fr;column-gap:96px}
-#amb-what>h2,#com-what>h2{grid-column:1;grid-row:1 / span 3}
-#amb-what>.sub,#com-what>.sub{grid-column:2;grid-row:1;margin:0 0 20px}
-#amb-what>.intro,#com-what>.intro{grid-column:2;margin:0 0 16px}
-#amb-what>.perks,#com-what>.perks{grid-column:1 / -1}
+/* Committee "what is it": big title left, text right */
+#com-what{display:grid;grid-template-columns:1fr 1fr;column-gap:96px}
+#com-what>h2{grid-column:1;grid-row:1 / span 3}
+#com-what>.sub{grid-column:2;grid-row:1;margin:0 0 20px}
+#com-what>.intro{grid-column:2;margin:0 0 16px}
+#com-what>.perks{grid-column:1 / -1}
 .intro{max-width:60ch;color:var(--muted);font-size:1rem}
+
+/* Ambassador "what is it": heading + gold-barred answer left, a quote right, then an endless row of role names */
+#amb-what{display:grid;grid-template-columns:5fr 6fr;gap:0 96px;align-items:center}
+#amb-what h2{font-size:clamp(2.2rem,4.5vw,3.4rem)}
+#amb-what h2::before{display:none} /* the section number already shows on "Student activities" */
+#amb-what .lead{margin:24px 0 0;padding-left:18px;border-left:3px solid var(--gold);color:#fff;font-size:1.3rem;font-weight:700;line-height:1.4}
+.what-quote{position:relative;margin:0;padding:8px 0 0 48px;border-left:1px solid var(--line)}
+.what-quote::before{content:'\201C';position:absolute;top:-36px;left:36px;color:var(--gold);font-size:7rem;line-height:1;opacity:.35;pointer-events:none}
+.what-quote blockquote{margin:0}
+.what-quote p{margin:0;color:#fff;font-size:clamp(1.25rem,2vw,1.6rem);font-weight:500;line-height:1.45;letter-spacing:-.01em}
+.what-quote figcaption{display:flex;align-items:center;gap:12px;margin-top:24px;color:var(--gold);font-size:.8rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.what-quote figcaption::before{content:'';width:32px;height:1px;background:var(--gold)}
+
+.roles-show{grid-column:1 / -1;margin-top:72px}
+.roles-show .group{margin-bottom:28px}
+/* endless loop: the script appends a copy of the cards, the row slides left by exactly one set and repeats.
+   Pauses on hover; edges fade out. Without motion it is a plain swipeable row. */
+.roles-loop{overflow:hidden;--m:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask:var(--m);mask:var(--m)}
+.roles-track{display:flex;gap:16px;width:max-content;margin:0;padding:0;list-style:none;animation:roles-loop var(--dur,40s) linear infinite}
+.roles-loop:hover .roles-track{animation-play-state:paused}
+@keyframes roles-loop{to{transform:translateX(calc(-50% - 8px))}} /* half the row = one set (+ half a gap) */
+.role{flex:none;position:relative;overflow:hidden;padding:22px 36px;border:1px solid var(--line);border-radius:var(--r);background:linear-gradient(160deg,rgb(179 18 46/.14),rgb(255 255 255/.02) 60%);font-size:clamp(1.1rem,1.6vw,1.4rem);font-weight:700;white-space:nowrap}
+.role::after{content:'';position:absolute;inset:0;border:1px solid var(--gold);border-radius:inherit;background:radial-gradient(circle at 0 0,var(--gold-a),transparent 60%);box-shadow:inset 0 0 30px var(--gold-a);opacity:0;transition:opacity .35s;pointer-events:none}
+.role:hover::after{opacity:1}
+@media (prefers-reduced-motion:reduce){.roles-loop{overflow-x:auto}}
 
 /* perks (shared with Committee): three columns split by hairlines, auto-numbered */
 .values{display:grid;grid-template-columns:repeat(3,1fr);margin:56px 0 0;padding:0;list-style:none;border-top:1px solid var(--line);counter-reset:p}
@@ -29,12 +54,11 @@
 .group::after{content:'';flex:1;height:1px;background:var(--line)}
 
 /* portrait placeholder (swap the svg for an img when photos exist) */
-.avatar{display:grid;place-items:center;width:100%;aspect-ratio:4/5;background:linear-gradient(160deg,var(--crimson-a),rgb(255 255 255/.03));border:1px solid var(--line);transition:border-color .3s}
+.avatar{position:relative;overflow:hidden;display:grid;place-items:center;width:100%;aspect-ratio:3/4;background:linear-gradient(160deg,var(--crimson-a),rgb(255 255 255/.03));border:1px solid var(--line);transition:border-color .3s}
 .avatar svg{width:34%;fill:none;stroke:#fff;stroke-width:1;stroke-linecap:round;opacity:.3}
-.avatar img{width:100%;height:100%;object-fit:cover}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
 
-/* presidents slideshow (the advisor card reuses .slide, without slider controls) */
-#amb-advisor .slide{padding-bottom:0}
+/* presidents slideshow (the advisor banner reuses .slide, without slider controls) */
 .slider{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
 .track{display:flex;transition:transform .8s cubic-bezier(.65,0,.35,1)}
 .slide{flex:0 0 100%;display:grid;grid-template-columns:minmax(220px,340px) 1fr;gap:96px;align-items:end;padding:0 0 96px}
@@ -51,6 +75,49 @@
 .dots button[aria-current="true"]{background:var(--gold)}
 .slider [hidden]{display:none}
 
+/* feature banner (advisor, presidents): breaks out of .wrap to full width; slow drifting glow, scrolling outlined word,
+   photo with a slow zoom and a light sweep, gold shimmer on the name. All motion stops under reduced motion (base.css). */
+.banner{--b-bg:#0a0203;--b-glow:rgb(179 18 46/.6);--b-acc:212 175 55;--photo:min(560px,48%);position:relative;isolation:isolate;overflow:hidden;margin-inline:calc(50% - 50vw);padding:64px calc(50vw - 50%) 0;background:var(--b-bg)}
+/* advisor: same banner in deep gold and pale gold, so it reads apart from the presidents */
+#amb-advisor{--b-bg:#120b02;--b-glow:rgb(200 145 30/.55);--b-acc:245 205 120;margin-bottom:0}
+/* advisor: name and department each on one line on wide screens; the text column starts where the president's does
+   and these lines may run past it into the side margin */
+#amb-advisor .slide h4{font-size:clamp(2rem,3.4vw,3rem);white-space:nowrap}
+#amb-advisor .meta{font-size:.9rem;white-space:nowrap}
+/* the glow drifts by moving its gradients inside a layer that stays put */
+.banner::before{content:'';position:absolute;inset:0;z-index:-2;background:radial-gradient(circle at 25% 40%,var(--b-glow),transparent 45%),radial-gradient(circle at 70% 60%,rgb(var(--b-acc)/.16),transparent 40%);background-size:160% 160%;background-position:0 30%;animation:pres-glow 18s ease-in-out infinite alternate}
+/* edges: each banner keeps its own colour; the outer edges fade from/to the page black and the shared edge
+   fades both banners into one solid colour (--seam), so the join can never show a line */
+.banner{--seam:#1c0709}
+.banner::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none}
+#amb-advisor::after{background:linear-gradient(var(--bg),transparent 180px,transparent calc(100% - 220px),var(--seam))}
+#amb-presidents::after{background:linear-gradient(var(--seam),transparent 220px,transparent calc(100% - 180px),var(--bg))}
+@keyframes pres-glow{to{background-position:60% 70%}}
+.banner-marquee{position:absolute;left:0;top:50%;z-index:-1;display:flex;translate:0 -50%;white-space:nowrap;font-size:clamp(6rem,16vw,14rem);font-weight:700;line-height:1;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px rgb(var(--b-acc)/.16);animation:pres-scroll 60s linear infinite;pointer-events:none}
+.banner-marquee span{padding-right:.3em}
+@keyframes pres-scroll{to{transform:translateX(-50%)}}
+.banner .slider{border-bottom:0}
+.banner .slider:has(.dots[hidden]) .slide,#amb-advisor .slide{padding-bottom:0}
+/* the photo stands on the banner's bottom edge; the title stays on one line on wide screens */
+.banner .slide{grid-template-columns:var(--photo) 1fr;gap:64px;align-items:center}
+.banner .slide>.avatar{align-self:end}
+.banner .badge{color:rgb(var(--b-acc));font-size:.8rem;letter-spacing:.12em;white-space:nowrap}
+/* cut-out portrait (transparent PNG): no frame, it floats over the banner with a soft glow behind the figure */
+.banner .avatar{overflow:visible;background:none;border:0}
+.banner .avatar::before{content:'';position:absolute;inset:8% 0 10%;background:radial-gradient(closest-side,rgb(var(--b-acc)/.22),var(--b-glow) 55%,transparent);animation:pres-pulse 5s ease-in-out infinite alternate} /* round glow, fades out before the edges of the slider (which clips) */
+@keyframes pres-pulse{to{opacity:.55;transform:scale(.92)}}
+.banner .avatar img{object-fit:contain;object-position:center bottom;filter:drop-shadow(0 0 10px rgb(var(--b-acc)/.3));animation:pres-float 6s ease-in-out infinite alternate}
+@keyframes pres-float{to{transform:translateY(-12px)}}
+.banner .slide h4{font-size:clamp(2.2rem,5vw,3.6rem);background:linear-gradient(90deg,#fff 30%,rgb(var(--b-acc)) 50%,#fff 70%) 0 0/250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:pres-shine 5s linear infinite}
+@keyframes pres-shine{to{background-position:-250% 0}}
+/* entrance: photo wipes up, then the text rises line by line */
+.banner.in .avatar{animation:pres-wipe 1.1s cubic-bezier(.65,0,.35,1) both}
+@keyframes pres-wipe{from{clip-path:inset(100% -30% -30%)}to{clip-path:inset(-30%)}} /* ends past the edges so the glow and float are not cut off */
+.banner.in .slide>div:last-child>*{animation:rise .8s both}
+.banner.in .slide h4{animation:rise .8s .15s both,pres-shine 5s linear infinite}
+.banner.in .slide>div:last-child>:nth-child(3){animation-delay:.3s}
+.banner.in .slide>div:last-child>:nth-child(4){animation-delay:.45s}
+
 /* generations: text tabs */
 .tabs{display:flex;flex-wrap:wrap;gap:36px;margin-bottom:40px;border-bottom:1px solid var(--line)}
 .tabs button{min-height:48px;padding:0;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;background:none;color:var(--muted);font:inherit;cursor:pointer;transition:color .2s,border-color .2s}
@@ -60,11 +127,28 @@
 .gen-panel{animation:rise .5s}
 .people{display:grid;gap:32px 24px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
 .person h4{margin:16px 0 2px;font-size:1.25rem}
-.person p{margin:0;color:var(--muted)}
+.person p{margin:0;color:var(--muted);font-size:.875rem;line-height:1.5}
 .person small{color:var(--gold);font-size:.8rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
-.person:hover .avatar{border-color:var(--gold)}
+/* profile card highlight on hover, keyboard focus or tap (cards are focusable): the photo lifts with a crimson/gold
+   glow, zooms a little and a light sweep crosses it; the name turns gold */
+.person{outline:0;cursor:default}
+.person .avatar{transition:border-color .3s,box-shadow .4s,transform .4s}
+.person .avatar img{transition:transform .6s}
+.person .avatar::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgb(255 255 255/.25) 50%,transparent 65%);transform:translateX(-120%);transition:transform .8s;pointer-events:none}
+.person h4{transition:color .3s}
+.person:is(:hover,:focus-within) .avatar{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 0 0 1px var(--gold-a2),0 0 36px var(--gold-a),0 22px 50px rgb(179 18 46/.45)}
+.person:is(:hover,:focus-within) .avatar img{transform:scale(1.05)}
+.person:is(:hover,:focus-within) .avatar::after{transform:translateX(120%)}
+.person:is(:hover,:focus-within) h4{color:var(--gold)}
+
+/* soft crimson/gold glow drifting behind the generation profiles, full width, fading out at top and bottom */
+#amb-generations{position:relative;isolation:isolate}
+#amb-generations::before{content:'';position:absolute;z-index:-1;inset:-120px calc(50% - 50vw);background:radial-gradient(40% 50% at 25% 40%,rgb(179 18 46/.38),transparent 70%),radial-gradient(35% 45% at 75% 60%,rgb(212 175 55/.2),transparent 70%);background-size:140% 140%;background-position:0 0;--m:linear-gradient(transparent,#000 20%,#000 80%,transparent);-webkit-mask:var(--m);mask:var(--m);animation:gen-drift 20s ease-in-out infinite alternate;pointer-events:none}
+@keyframes gen-drift{to{background-position:100% 100%}}
 
 /* work gallery: photo grid per generation, first photo large */
+/* the gallery follows the profile tabs, so it sits close under the profiles as one unit */
+#amb-generations{margin-bottom:48px}
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));grid-auto-flow:dense;gap:16px}
 .shot{position:relative;display:grid;place-items:center;margin:0;aspect-ratio:4/3;overflow:hidden;border:1px dashed var(--stroke);border-radius:var(--r);color:var(--muted)}
 .shot:first-child{grid-column:span 2;grid-row:span 2}
@@ -97,10 +181,21 @@ iframe.video{border:0}
   .gallery{grid-template-columns:1fr 1fr}
   .vids .prev,.vids .next{width:48px;height:48px;font-size:1.6rem}
   #amb-what,#com-what{display:block}
+  .what-quote{margin-top:40px;padding-left:28px}
+  .what-quote::before{left:16px}
+  .roles-show{margin-top:56px}
   .values{grid-template-columns:1fr}
   .values li,.values li:first-child{padding:24px 0 8px;border-left:0;border-top:1px solid var(--line)}
   .values li:first-child{border-top:0}
   .slide{grid-template-columns:1fr;gap:28px;padding-bottom:96px}
   .slide .avatar{max-width:240px}
   .block{margin-bottom:80px}
+  .banner{padding-block:64px}
+  .banner .badge{white-space:normal}
+  .banner .slide{grid-template-columns:1fr;gap:28px}
+  .banner .slide>.avatar{align-self:auto}
+  .banner .avatar{max-width:360px}
 }
+
+/* below ~1150px the side margin is too narrow for the overrun, so let them wrap */
+@media (max-width:1150px){#amb-advisor .slide h4,#amb-advisor .meta{white-space:normal}}
