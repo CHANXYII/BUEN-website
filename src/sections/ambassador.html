@@ -1,6 +1,33 @@
 <section class="ambassador" id="ambassador">
   <div class="wrap">
 
+    <div class="block reveal" id="amb-video">
+      <h3 class="group">About Us</h3>
+      <!-- YouTube video IDs, space-separated. Arrows switch between them. Autoplays muted 2s after scrolling into view. -->
+      <div class="vids" data-yt="CRQzBIwkU4Q dlwSUSa6UAY">
+        <button class="video" data-yt="" aria-label="Play video"><span class="play">&#9654;</span><span class="soon">Video coming soon</span></button>
+        <button class="prev" aria-label="Previous video">&#8249;</button>
+        <button class="next" aria-label="Next video">&#8250;</button>
+      </div>
+      <div class="about">
+        <p class="intro">The School of Engineering at Bangkok University prepares world-builders for the engineering profession, balancing theory, practice and real-world projects in fully equipped labs. Our students learn both hardware and software, along with related technologies such as IoT, AI &amp; Machine Learning, and keep up with the new data era through Big Data, covering Programmer, IT, Smart System, Robotics &amp; Automation. Our distinctive curricula build skills that set you apart from typical engineering programs, skills you can really use. Through partnerships with international universities, including faculty/student exchanges and joint research projects, students work alongside international researchers and gain a global outlook. With 5 majors to choose your own path, we are an institution that produces engineers ready to meet the technology needs of today and tomorrow!</p>
+      </div>
+      <h3 class="group">Our 5 majors</h3>
+      <ul class="values majors">
+        <li><h3>Computer and Robotics Engineering</h3><p>Programming, IoT, AI and robotics, with hands-on hardware and software.</p></li>
+        <li><h3>Artificial Intelligence Engineering and Data Science</h3><p>Build and deploy AI systems, from data to real business solutions.</p></li>
+        <li><h3>Unmanned Aircraft System and Technology Engineering</h3><p>Drone hardware, software, autonomous navigation and mapping, with a drone pilot certificate.</p></li>
+        <li><h3>Electrical Engineering</h3><p>Power systems, machine control and automation, with AutoCAD, PLC and renewable energy skills.</p></li>
+        <li><h3>Intelligent Systems and Digital Innovation Engineering</h3><p>Hardware, software and AI combined into smart systems, AIoT and digital twins, plus creative media.</p></li>
+      </ul>
+    </div>
+
+    <!-- divider: faculty details above, student activities below -->
+    <div class="block reveal" id="amb-break">
+      <p class="eyebrow">Beyond the classroom</p>
+      <h2>Student activities</h2>
+    </div>
+
     <div class="block reveal" id="amb-what">
       <h2>What is BUEN Ambassador?</h2>
       <p class="sub">Sample content. TODO: replace with the real ambassador team.</p>
@@ -13,48 +40,57 @@
       </ul>
     </div>
 
+    <div class="block reveal" id="amb-advisor">
+      <h3 class="group">Our advisor</h3>
+      <!-- swap the avatar <svg> for <img src="assets/..." alt=""> when a photo exists -->
+      <article class="slide"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><div><span class="badge">BUEN Ambassador Advisor</span><h4>Dr. Tantikorn Pichpibul</h4><p class="meta">Instructor of Artificial Intelligence Engineering and Data Science Department</p><ul class="quote roles"><li>BU Innovative Teaching Awards 2026</li><li>Micro-Credential Certifications</li></ul></div></article>
+    </div>
+
     <div class="block reveal" id="amb-presidents">
       <h3 class="group">Our presidents</h3>
       <div class="slider" aria-roledescription="carousel" aria-label="Presidents">
         <div class="track">
-        <article class="slide"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><div><span class="badge now">Current President</span><h4>Student Name</h4><p class="meta"><span>Generation 1</span> · <span>2026</span></p><p class="quote">Sample quote. TODO: replace with the president message.</p></div></article>
-        <article class="slide upcoming"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><div><span class="badge">Coming soon</span><h4>Opening in 2027</h4><p class="meta"><span>Generation 2</span></p><p class="quote">The second generation of BUEN Ambassador opens in 2027. Stay tuned!</p></div></article>
+        <article class="slide"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><div><span class="badge">President of BUEN Ambassador 1 (2025 - 2026)</span><h4>Chanunya Sutti</h4><p class="meta">Artificial Intelligence Engineering and Data Science</p><ul class="quote roles"><li>BUEN AMBASSADOR: The 1st Generation</li><li>ASEAN Digital GrandPals Thailand</li><li>Google Student Ambassador Thailand (Batch 1)</li></ul></div></article>
         </div>
         <button class="prev" aria-label="Previous">&#8249;</button>
         <button class="next" aria-label="Next">&#8250;</button>
-        <div class="dots"><button aria-label="Generation 1"></button><button aria-label="Generation 2"></button></div>
+        <div class="dots"><button aria-label="Generation 1"></button></div>
       </div>
     </div>
 
     <div class="block reveal" id="amb-generations">
-      <h3 class="group">Ambassadors by generation</h3>
-      <div class="tabs" role="tablist"><button role="tab" data-gen="1">Generation 1</button><button role="tab" data-gen="2">Generation 2</button></div>
+      <div class="tabs" role="tablist"><button role="tab" data-gen="2">Generation 2</button><button role="tab" data-gen="1">Generation 1</button></div>
+      <div class="gen-panel people" role="tabpanel" data-gen="2">
+        <article class="person"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Joannes Pualus M.Ople</h4><p>Artificial Intelligence Engineering and Data Science</p><small>3rd year</small></article>
+        <article class="person"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Thanakrit Archawabool</h4><p>Artificial Intelligence Engineering and Data Science</p><small>3rd year</small></article>
+        <article class="person"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Oangkhana Juti</h4><p>Artificial Intelligence Engineering and Data Science</p><small>3rd year</small></article>
+        <article class="person"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Naruechaya Yimsatan</h4><p>Computer and Robotics Engineering</p><small>3rd year</small></article>
+        <article class="person"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Surayut Khongchuai</h4><p>Intelligent Systems and Digital Innovation Engineering</p><small>2nd year</small></article>
+      </div>
       <div class="gen-panel people" role="tabpanel" data-gen="1">
-        <article class="person"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Student Name</h4><p>Computer Engineering</p><small>Ambassador</small></article>
-        <article class="person"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Student Name</h4><p>Electrical Engineering</p><small>Ambassador</small></article>
-        <article class="person"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Student Name</h4><p>Industrial Engineering</p><small>Ambassador</small></article>
-        <article class="person"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Student Name</h4><p>Computer Engineering</p><small>Ambassador</small></article>
-      </div>
-      <div class="gen-panel soon-panel" role="tabpanel" data-gen="2">
-        <span class="badge">Coming soon</span>
-        <p>The second generation of BUEN Ambassador opens in 2027. Stay tuned!</p>
+        <article class="person"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Chanunya Sutti</h4><p>Artificial Intelligence Engineering and Data Science</p><small>4th year</small></article>
       </div>
     </div>
 
-    <div class="block reveal" id="amb-events">
-      <h3 class="group">Top events</h3>
-      <div class="events">
-      <article class="event"><small class="tag">Yearly event</small><h4>Open House</h4><p>Campus tour, lab demos and a meet-up with current students.</p></article>
-      <article class="event"><small class="tag">Yearly event</small><h4>Engineering Camp</h4><p>A hands-on weekend for high school students.</p></article>
-      <article class="event"><small class="tag">Yearly event</small><h4>Tech Talk Series</h4><p>Guest speakers from industry and alumni.</p></article>
-      <article class="event"><small class="tag">Yearly event</small><h4>Welcome Freshmen</h4><p>Orientation day led by ambassadors and seniors.</p></article>
+    <div class="block reveal" id="amb-work">
+      <h3 class="group">Our work by generation</h3>
+      <!-- Photos: put files in src/assets/gallery/ and replace a placeholder with
+           <figure class="shot"><img src="assets/gallery/gen2-1.jpg" alt="What is in the photo" loading="lazy"><figcaption>Event name</figcaption></figure>
+           The first photo of each generation shows large. -->
+      <div class="tabs" role="tablist"><button role="tab" data-gen="2">Generation 2</button><button role="tab" data-gen="1">Generation 1</button></div>
+      <div class="gen-panel gallery" role="tabpanel" data-gen="2">
+        <figure class="shot"><figcaption>Photo coming soon</figcaption></figure>
+        <figure class="shot"><figcaption>Photo coming soon</figcaption></figure>
+        <figure class="shot"><figcaption>Photo coming soon</figcaption></figure>
+        <figure class="shot"><figcaption>Photo coming soon</figcaption></figure>
+        <figure class="shot"><figcaption>Photo coming soon</figcaption></figure>
+        <figure class="shot"><figcaption>Photo coming soon</figcaption></figure>
       </div>
-    </div>
-
-    <div class="block reveal" id="amb-video">
-      <h3 class="group">Faculty promo video</h3>
-      <!-- TODO: put the YouTube video ID in data-yt -->
-      <button class="video" data-yt="" aria-label="Play video"><span class="play">&#9654;</span><span class="soon">Video coming soon</span></button>
+      <div class="gen-panel gallery" role="tabpanel" data-gen="1">
+        <figure class="shot"><figcaption>Photo coming soon</figcaption></figure>
+        <figure class="shot"><figcaption>Photo coming soon</figcaption></figure>
+        <figure class="shot"><figcaption>Photo coming soon</figcaption></figure>
+      </div>
     </div>
 
     <a class="btn primary" href="#contact">Become an ambassador</a>

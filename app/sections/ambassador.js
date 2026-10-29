@@ -1,4 +1,4 @@
-['#amb-what', '#amb-presidents', '#amb-generations', '#amb-events', '#amb-video'].forEach(reveal);
+['#amb-break', '#amb-what', '#amb-advisor', '#amb-presidents', '#amb-generations', '#amb-work', '#amb-video'].forEach(reveal);
 
 // Presidents slideshow: loops, autoplays, pauses on hover/focus, buttons + dots + swipe.
 {
@@ -22,25 +22,57 @@
   box.addEventListener('focusout', play);
   box.addEventListener('pointerdown', e => x0 = e.clientX);
   box.addEventListener('pointerup', e => { if (x0 != null && Math.abs(e.clientX - x0) > 50) go(i + (e.clientX < x0 ? 1 : -1)); x0 = null; });
+  if (slides.length < 2) $$('.prev,.next,.dots', box).forEach(e => e.hidden = true); // one president: nothing to slide
   go(0); play();
 }
 
-// Generation tabs: show one generation at a time (newest first).
-{
-  const tabs = $$('.tabs button'), panels = $$('.gen-panel');
+// Generation tabs (ambassadors, work gallery): each block shows one generation at a time, first tab first.
+$$('.tabs').forEach(bar => {
+  const tabs = $$('button', bar), panels = $$('.gen-panel', bar.parentElement);
   const show = g => {
     tabs.forEach(b => { const on = b.dataset.gen === g; b.classList.toggle('on', on); b.setAttribute('aria-selected', on); });
     panels.forEach(p => p.hidden = p.dataset.gen !== g);
   };
   tabs.forEach(b => b.addEventListener('click', () => show(b.dataset.gen)));
   show(tabs[0].dataset.gen);
-}
+});
 
-// Promo video: loads the YouTube player only on click (no ID yet = placeholder).
+// Videos: the IDs in .vids data-yt play as a looping playlist. Starts muted 2s after scrolling into view
+// (browsers block autoplay with sound), or with sound on click; arrows and video end jump to the next one
+// and play it right away. No IDs = placeholder.
 {
-  const v = $('.video');
-  v.addEventListener('click', () => {
-    if (!v.dataset.yt) return;
-    v.outerHTML = `<iframe class="video" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.dataset.yt)}?autoplay=1" title="BUEN Ambassador promo" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+  const box = $('.vids'), v = $('.video', box), ids = box.dataset.yt.split(' ').filter(Boolean);
+  let i = 0, t, muted = true;
+  const show = n => {
+    $('iframe', box)?.remove(); // switching stops the playing video
+    v.hidden = false;
+    i = (n + ids.length) % ids.length || 0;
+    const yt = v.dataset.yt = encodeURIComponent(ids[i] || '');
+    // YouTube cover: maxres when the video has one, hq underneath as fallback.
+    v.style.background = yt ? `center/cover url(https://i.ytimg.com/vi/${yt}/maxresdefault.jpg), center/cover url(https://i.ytimg.com/vi/${yt}/hqdefault.jpg)` : '';
+  };
+  const play = () => {
+    if (!v.dataset.yt || v.hidden) return;
+    v.hidden = true;
+    // enablejsapi: the player posts its state to us, so we know when the video ends.
+    v.insertAdjacentHTML('afterend', `<iframe class="video" src="https://www.youtube-nocookie.com/embed/${v.dataset.yt}?autoplay=1&playsinline=1&enablejsapi=1${muted ? '&mute=1' : ''}" title="BUEN video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`);
+    const f = v.nextElementSibling;
+    f.onload = () => f.contentWindow.postMessage('{"event":"listening"}', '*');
+  };
+  const go = n => { show(n); play(); };
+  addEventListener('message', e => {
+    if (e.origin !== 'https://www.youtube-nocookie.com' || e.source !== $('iframe', box)?.contentWindow) return;
+    let d; try { d = JSON.parse(e.data); } catch { return; }
+    if ((d.event === 'onStateChange' ? d.info : d.info?.playerState) === 0) go(i + 1); // 0 = ended
   });
+  v.addEventListener('click', () => { muted = false; play(); });
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches)
+    new IntersectionObserver(([e], o) => {
+      clearTimeout(t); // scrolled away before 2s: wait again next time
+      if (e.isIntersecting) t = setTimeout(() => { o.disconnect(); play(); }, 2000);
+    }, { threshold: 0.6 }).observe(box);
+  $('.prev', box).addEventListener('click', () => go(i - 1));
+  $('.next', box).addEventListener('click', () => go(i + 1));
+  if (ids.length < 2) $$('.prev,.next', box).forEach(b => b.hidden = true);
+  show(0);
 }

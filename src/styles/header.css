@@ -35,6 +35,13 @@
 
 .menu-btn{display:none;min-height:44px;background:none;border:1px solid var(--stroke);border-radius:var(--r);color:#fff;padding:6px 16px;font:inherit;cursor:pointer}
 
+/* desktop: nav links join the bar so the order reads links | language | Apply now */
+@media (min-width:1101px){
+  .site-header nav{display:contents}
+  .lang{order:1}
+  .nav-cta{order:2}
+}
+
 @media (max-width:1100px){
   .bar{gap:12px;padding:0 16px}
   .lang{padding-left:12px}

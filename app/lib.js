@@ -8,6 +8,6 @@ const io = 'IntersectionObserver' in window && new IntersectionObserver(es => es
 const reveal = sel => {
   const el = $(sel);
   if (!el) return;
-  $$('.values li,.person,.event,.list li', el).forEach((c, i) => { c.classList.add('item'); c.style.setProperty('--i', i); });
+  $$('.values li,.person,.shot,.list li', el).forEach((c, i) => { c.classList.add('item'); c.style.setProperty('--i', i); });
   io ? io.observe(el) : el.classList.add('in');
 };
