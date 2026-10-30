@@ -8,19 +8,13 @@
 #amb-break .eyebrow::after{content:'';width:40px;height:1px;background:var(--gold)}
 #amb-break h2{margin:0;font-size:clamp(2rem,4.5vw,3.2rem)}
 
-/* Committee "what is it": big title left, text right */
-#com-what{display:grid;grid-template-columns:1fr 1fr;column-gap:96px}
-#com-what>h2{grid-column:1;grid-row:1 / span 3}
-#com-what>.sub{grid-column:2;grid-row:1;margin:0 0 20px}
-#com-what>.intro{grid-column:2;margin:0 0 16px}
-#com-what>.perks{grid-column:1 / -1}
 .intro{max-width:60ch;color:var(--muted);font-size:1rem}
 
-/* Ambassador "what is it": heading + gold-barred answer left, a quote right, then an endless row of role names */
-#amb-what{display:grid;grid-template-columns:5fr 6fr;gap:0 96px;align-items:center}
-#amb-what h2{font-size:clamp(2.2rem,4.5vw,3.4rem)}
+/* "what is it" (Ambassador, Committee): heading + gold-barred answer left, a quote right, then an endless row of role names */
+#amb-what,#com-what{display:grid;grid-template-columns:5fr 6fr;gap:0 96px;align-items:center}
+#amb-what h2,#com-what h2{font-size:clamp(2.2rem,4.5vw,3.4rem)}
 #amb-what h2::before{display:none} /* the section number already shows on "Student activities" */
-#amb-what .lead{margin:24px 0 0;padding-left:18px;border-left:3px solid var(--gold);color:#fff;font-size:1.3rem;font-weight:700;line-height:1.4}
+#amb-what .lead,#com-what .lead{margin:24px 0 0;padding-left:18px;border-left:3px solid var(--gold);color:#fff;font-size:1.3rem;font-weight:700;line-height:1.4}
 .what-quote{position:relative;margin:0;padding:8px 0 0 48px;border-left:1px solid var(--line)}
 .what-quote::before{content:'\201C';position:absolute;top:-36px;left:36px;color:var(--gold);font-size:7rem;line-height:1;opacity:.35;pointer-events:none}
 .what-quote blockquote{margin:0}
@@ -142,8 +136,8 @@
 .person:is(:hover,:focus-within) h4{color:var(--gold)}
 
 /* soft crimson/gold glow drifting behind the generation profiles, full width, fading out at top and bottom */
-#amb-generations{position:relative;isolation:isolate}
-#amb-generations::before{content:'';position:absolute;z-index:-1;inset:-120px calc(50% - 50vw);background:radial-gradient(40% 50% at 25% 40%,rgb(179 18 46/.38),transparent 70%),radial-gradient(35% 45% at 75% 60%,rgb(212 175 55/.2),transparent 70%);background-size:140% 140%;background-position:0 0;--m:linear-gradient(transparent,#000 20%,#000 80%,transparent);-webkit-mask:var(--m);mask:var(--m);animation:gen-drift 20s ease-in-out infinite alternate;pointer-events:none}
+#amb-generations,#com-members{position:relative;isolation:isolate}
+#amb-generations::before,#com-members::before{content:'';position:absolute;z-index:-1;inset:-120px calc(50% - 50vw);background:radial-gradient(40% 50% at 25% 40%,rgb(179 18 46/.38),transparent 70%),radial-gradient(35% 45% at 75% 60%,rgb(212 175 55/.2),transparent 70%);background-size:140% 140%;background-position:0 0;--m:linear-gradient(transparent,#000 20%,#000 80%,transparent);-webkit-mask:var(--m);mask:var(--m);animation:gen-drift 20s ease-in-out infinite alternate;pointer-events:none}
 @keyframes gen-drift{to{background-position:100% 100%}}
 
 /* work gallery: photo grid per generation, first photo large */

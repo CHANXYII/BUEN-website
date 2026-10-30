@@ -26,10 +26,10 @@
   go(0); play();
 }
 
-// "What you'll do" roles: endless loop. Wraps the row in a clipping box and appends a hidden
+// "What you'll do" roles (Ambassador, Committee): endless loop. Wraps the row in a clipping box and appends a hidden
 // copy of the cards so the CSS animation (slide left by one set) repeats without a jump. Speed: ~4s per name.
-{
-  const track = $('.roles-track'), cards = $$('.role', track);
+$$('.roles-track').forEach(track => {
+  const cards = $$('.role', track);
   const loop = document.createElement('div');
   loop.className = 'roles-loop';
   track.before(loop);
@@ -38,7 +38,7 @@
     cards.forEach(c => { const d = c.cloneNode(true); d.setAttribute('aria-hidden', 'true'); track.append(d); });
     track.style.setProperty('--dur', cards.length * 4 + 's');
   }
-}
+});
 
 // Generation tabs above the profiles: one generation shows at a time, first tab first. They also switch the
 // work gallery below, which has no tabs of its own.
