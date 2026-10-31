@@ -4,17 +4,16 @@
     <!-- what is it: same layout as the ambassador block. Add a role: copy one <li class="role">; the loop is automatic. -->
     <div class="block reveal" id="com-what">
       <div class="what-head">
-        <h2>What is the Student Committee ?</h2>
-        <p class="lead">The student voice of the School of Engineering</p>
+        <h2>What is STAFFBUEN ?</h2>
       </div>
       <figure class="what-quote">
         <blockquote><p>The student voice of the School: organising activities, supporting classmates and connecting students with the faculty.</p></blockquote>
         <figcaption>Engineering Student Committee</figcaption>
       </figure>
       <div class="roles-show">
-        <h3 class="group">What you’ll do</h3>
+        <h3 class="group">What we do ?</h3>
         <ul class="roles-track">
-          <li class="role">Student activities</li>
+          <li class="role">Student Activities</li>
           <li class="role">Orientation</li>
           <li class="role">Sports day</li>
           <li class="role">Technical events</li>
@@ -24,22 +23,62 @@
       </div>
     </div>
 
-    <!-- president: same animated banner as the ambassador one, one person so no slider. Photo: cut-out PNG (transparent background, 3:4) -->
-    <div class="block reveal banner" id="com-president">
-      <div class="banner-marquee" aria-hidden="true"><span>STAFFBUEN ✦ STAFFBUEN ✦ STAFFBUEN ✦</span><span>STAFFBUEN ✦ STAFFBUEN ✦ STAFFBUEN ✦</span></div>
-      <article class="slide"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><div><span class="badge">President of the Engineering Student Committee</span><h4>Student Name</h4><p class="meta">Year 4</p></div></article>
-    </div>
+    <!-- one .year-panel per academic year, newest first. A new year: add its button first in .year-tabs, copy the whole panel above this one. The year buttons stay hidden until there are two years. -->
+    <div class="tabs year-tabs" role="tablist"><button role="tab" data-gen="2026">2026</button></div>
+    <div class="year-panel" role="tabpanel" id="year-2026" data-gen="2026">
+      <!-- president: same animated banner as the ambassador one, one person so no slider. Photo: cut-out PNG (transparent background, 3:4) -->
+      <div class="block reveal banner com-president">
+        <div class="banner-marquee" aria-hidden="true"><span>STAFFBUEN ✦ STAFFBUEN ✦ STAFFBUEN ✦</span><span>STAFFBUEN ✦ STAFFBUEN ✦ STAFFBUEN ✦</span></div>
+        <article class="slide"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><div><span class="badge">President of Engineering Student Committee (2026)</span><h4>Siriwan Ruamthong</h4><p class="meta">Computer and Robotics Engineering, Year 2</p></div></article>
+      </div>
 
-    <div class="block reveal" id="com-members">
-      <h3 class="group">Our committee</h3>
-      <p class="sub">Sample content. TODO: replace with the real committee.</p>
-      <div class="people">
-        <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Student Name</h4><p class="position">Vice President</p><small>Year 3</small></article>
-        <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Student Name</h4><p class="position">Secretary</p><small>Year 3</small></article>
-        <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Student Name</h4><p class="position">Activities Head</p><small>Year 2</small></article>
+      <div class="block reveal com-members">
+        <div class="tabs" role="tablist"><button role="tab" data-gen="committee">Committee</button><button role="tab" data-gen="cheer">Cheerleader &amp; Katakorn</button></div>
+        <div class="gen-panel people" role="tabpanel" data-gen="committee">
+          <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Nawat Tanunchai</h4><p class="position">Vice President</p><p>Electrical Engineering</p><small>Year 2</small></article>
+          <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Monchanok Thepmanothaisakul</h4><p class="position">Student Welfare</p><p>Computer and Robotics Engineering</p><small>Year 2</small></article>
+          <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Jiraphat Phanphuet</h4><p class="position">Public Relations Administrator</p><p>Computer and Robotics Engineering</p><small>Year 2</small></article>
+          <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Kiattisak Kaewin</h4><p class="position">Head of Staff</p><p>Electrical Engineering</p><small>Year 2</small></article>
+          <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Natthawut Ngaowlaem</h4><p class="position">Head of Sport Activities</p><p>Electrical Engineering</p><small>Year 2</small></article>
+        </div>
+        <div class="gen-panel people" role="tabpanel" data-gen="cheer">
+          <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Jiraphat Phanphuet</h4><p>Computer and Robotics Engineering</p><small>Year 2</small></article>
+          <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Monchanok Thepmanothaisakul</h4><p>Computer and Robotics Engineering</p><small>Year 2</small></article>
+          <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Voranun Savirod</h4><p>Major</p><small>Year 1</small></article>
+          <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Praewa Manmuenpom</h4><p>Electrical Engineering</p><small>Year 1</small></article>
+          <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Nattaporn Buathongkham</h4><p>Major</p><small>Year 1</small></article>
+          <!-- 6 Katakorn placeholders: replace with the real name, major and year -->
+          <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Lorem Ipsum</h4><p>Lorem ipsum dolor sit amet</p><small>Year 0</small></article>
+          <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Lorem Ipsum</h4><p>Lorem ipsum dolor sit amet</p><small>Year 0</small></article>
+          <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Lorem Ipsum</h4><p>Lorem ipsum dolor sit amet</p><small>Year 0</small></article>
+          <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Lorem Ipsum</h4><p>Lorem ipsum dolor sit amet</p><small>Year 0</small></article>
+          <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Lorem Ipsum</h4><p>Lorem ipsum dolor sit amet</p><small>Year 0</small></article>
+          <article class="person" tabindex="0"><div class="avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div><h4>Lorem Ipsum</h4><p>Lorem ipsum dolor sit amet</p><small>Year 0</small></article>
+        </div>
+      </div>
+
+      <div class="gen-panel block reveal com-work" role="tabpanel" data-gen="committee">
+        <!-- Photos: put files in src/assets/gallery/ and replace a placeholder with
+             <figure class="shot"><img src="assets/gallery/committee-2026-1.jpg" alt="What is in the photo" loading="lazy"><figcaption>Event name</figcaption></figure>
+             The first photo shows large. Committee tab only. -->
+        <div class="gallery">
+          <figure class="shot"><figcaption>Photo coming soon</figcaption></figure>
+          <figure class="shot"><figcaption>Photo coming soon</figcaption></figure>
+          <figure class="shot"><figcaption>Photo coming soon</figcaption></figure>
+          <figure class="shot"><figcaption>Photo coming soon</figcaption></figure>
+          <figure class="shot"><figcaption>Photo coming soon</figcaption></figure>
+          <figure class="shot"><figcaption>Photo coming soon</figcaption></figure>
+        </div>
+      </div>
+
+      <!-- social links switch with the tabs above -->
+      <div class="gen-panel" role="tabpanel" data-gen="committee">
+        <a class="btn primary ig" href="https://www.instagram.com/staffbuen" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>@staffbuen</span></a>
+        <a class="btn primary ig" href="https://www.facebook.com/profile.php?id=100051820306023" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8H14a2.5 2.5 0 0 0-2.5 2.5V21M9 13.5h5.5"/></svg><span>Facebook</span></a>
+      </div>
+      <div class="gen-panel" role="tabpanel" data-gen="cheer">
+        <a class="btn primary ig" href="https://www.instagram.com/encl.official/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>@encl.official</span></a>
       </div>
     </div>
-
-    <a class="btn primary ig" href="https://www.instagram.com/staffbuen" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>Instagram</span></a>
   </div>
 </section>

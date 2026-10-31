@@ -1,7 +1,10 @@
+/* Thai letters only (unicode-range): Latin text and other languages keep Google Sans. size-adjust matches its small glyphs to Google Sans. */
+@font-face{font-family:'DB Adman X';src:url(font-th/DB-Adman-X.ttf) format('truetype');font-weight:400;font-display:swap;unicode-range:U+0E00-0E7F;size-adjust:125%;ascent-override:80%;descent-override:30%;line-gap-override:0%}
+@font-face{font-family:'DB Adman X';src:url(font-th/DB-Adman-X-Bd.ttf) format('truetype');font-weight:700;font-display:swap;unicode-range:U+0E00-0E7F;size-adjust:125%;ascent-override:80%;descent-override:30%;line-gap-override:0%}
 :root{--crimson:#b3122e;--gold:#d4af37;--ink:#fff;--muted:rgb(255 255 255/.62);--bg:#000;--line:rgb(255 255 255/.14);--stroke:rgb(255 255 255/.28);--glass:rgb(255 255 255/.04);--glass-2:rgb(255 255 255/.08);--crimson-a:rgb(179 18 46/.3);--gold-a:rgb(212 175 55/.14);--gold-a2:rgb(212 175 55/.3);--r:4px}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:64px}
-body{margin:0;font:16px/1.65 'Google Sans','Noto Sans Thai','Noto Sans Myanmar','Noto Sans Lao','Noto Sans SC','Microsoft YaHei','PingFang SC','Yu Gothic','Meiryo','Malgun Gothic',system-ui,sans-serif;font-optical-sizing:auto;color:var(--ink);background:var(--bg)}
+body{margin:0;font:16px/1.65 'DB Adman X','Google Sans','Noto Sans Thai','Noto Sans Myanmar','Noto Sans Lao','Noto Sans SC','Microsoft YaHei','PingFang SC','Yu Gothic','Meiryo','Malgun Gothic',system-ui,sans-serif;font-optical-sizing:auto;color:var(--ink);background:var(--bg)}
 ::selection{background:var(--gold-a2);color:#fff}
 .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(24px,6vw,96px)}
 h1,h2,h3,h4{margin:0;line-height:1.1}
@@ -24,7 +27,8 @@ main>section h2::before{content:"0" counter(sec);display:block;margin-bottom:14p
 .btn.primary{background:rgb(179 18 46/.5);border-color:rgb(179 18 46/.9)}
 .btn.primary:hover{background:rgb(179 18 46/.75)}
 .btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8}
-.btn.ig::after{content:'\2197'} /* opens Instagram in a new tab */
+.btn.ig::after{content:'\2197'} /* social link: opens in a new tab */
+.btn.ig+.btn.ig{margin-left:12px}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
 /* scroll reveal: fade up, list items one after another */

@@ -10,11 +10,11 @@
 
 .intro{max-width:60ch;color:var(--muted);font-size:1rem}
 
-/* "what is it" (Ambassador, Committee): heading + gold-barred answer left, a quote right, then an endless row of role names */
+/* "what is it" (Ambassador, Committee): heading left, a quote right, then an endless row of role names */
 #amb-what,#com-what{display:grid;grid-template-columns:5fr 6fr;gap:0 96px;align-items:center}
 #amb-what h2,#com-what h2{font-size:clamp(2.2rem,4.5vw,3.4rem)}
-#amb-what h2::before{display:none} /* the section number already shows on "Student activities" */
-#amb-what .lead,#com-what .lead{margin:24px 0 0;padding-left:18px;border-left:3px solid var(--gold);color:#fff;font-size:1.3rem;font-weight:700;line-height:1.4}
+#ambassador,#committee{counter-increment:none} /* unnumbered, so numbering starts at News */
+#ambassador h2::before,#committee h2::before{display:none}
 .what-quote{position:relative;margin:0;padding:8px 0 0 48px;border-left:1px solid var(--line)}
 .what-quote::before{content:'\201C';position:absolute;top:-36px;left:36px;color:var(--gold);font-size:7rem;line-height:1;opacity:.35;pointer-events:none}
 .what-quote blockquote{margin:0}
@@ -36,12 +36,6 @@
 @media (prefers-reduced-motion:reduce){.roles-loop{overflow-x:auto}}
 
 /* perks (shared with Committee): three columns split by hairlines, auto-numbered */
-.values{display:grid;grid-template-columns:repeat(3,1fr);margin:56px 0 0;padding:0;list-style:none;border-top:1px solid var(--line);counter-reset:p}
-.values li{padding:28px 32px 8px;border-left:1px solid var(--line);counter-increment:p}
-.values li:first-child{padding-left:0;border-left:0}
-.values li::before{content:"0" counter(p);display:block;margin-bottom:28px;color:var(--gold);font-weight:700;letter-spacing:.2em}
-.values h3{margin:0 0 8px;font-size:1.2rem}
-.values p{margin:0;color:var(--muted)}
 
 /* sub heading: small caps label + hairline */
 .group{display:flex;align-items:center;gap:20px;margin:0 0 36px;color:var(--gold);font-size:.8rem;letter-spacing:.2em;text-transform:uppercase}
@@ -102,7 +96,8 @@
 @keyframes pres-pulse{to{opacity:.55;transform:scale(.92)}}
 .banner .avatar img{object-fit:contain;object-position:center bottom;filter:drop-shadow(0 0 10px rgb(var(--b-acc)/.3));animation:pres-float 6s ease-in-out infinite alternate}
 @keyframes pres-float{to{transform:translateY(-12px)}}
-.banner .slide h4{font-size:clamp(2.2rem,5vw,3.6rem);background:linear-gradient(90deg,#fff 30%,rgb(var(--b-acc)) 50%,#fff 70%) 0 0/250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:pres-shine 5s linear infinite}
+/* padding (cancelled by the margin) grows the clipped background so Thai/Lao/Burmese marks outside the line box stay visible */
+.banner .slide h4{margin:calc(20px - .2em) 0 calc(6px - .35em);padding:.2em 0 .35em;font-size:clamp(2.2rem,5vw,3.6rem);background:linear-gradient(90deg,#fff 30%,rgb(var(--b-acc)) 50%,#fff 70%) 0 0/250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:pres-shine 5s linear infinite}
 @keyframes pres-shine{to{background-position:-250% 0}}
 /* entrance: photo wipes up, then the text rises line by line */
 .banner.in .avatar{animation:pres-wipe 1.1s cubic-bezier(.65,0,.35,1) both}
@@ -136,7 +131,7 @@
 .person:is(:hover,:focus-within) h4{color:var(--gold)}
 
 /* soft crimson/gold glow drifting behind the generation profiles, full width, fading out at top and bottom */
-#amb-generations,#com-members{position:relative;isolation:isolate}
+#amb-generations,.com-members{position:relative;isolation:isolate}
 #amb-generations::before,#com-members::before{content:'';position:absolute;z-index:-1;inset:-120px calc(50% - 50vw);background:radial-gradient(40% 50% at 25% 40%,rgb(179 18 46/.38),transparent 70%),radial-gradient(35% 45% at 75% 60%,rgb(212 175 55/.2),transparent 70%);background-size:140% 140%;background-position:0 0;--m:linear-gradient(transparent,#000 20%,#000 80%,transparent);-webkit-mask:var(--m);mask:var(--m);animation:gen-drift 20s ease-in-out infinite alternate;pointer-events:none}
 @keyframes gen-drift{to{background-position:100% 100%}}
 
@@ -164,12 +159,9 @@ iframe.video{border:0}
 .vids .prev,.vids .next{top:50%;bottom:auto;z-index:1;width:64px;height:64px;border-radius:50%;font-size:2rem;background:rgb(0 0 0/.6);backdrop-filter:blur(6px)}
 .vids .prev{left:0;right:auto;translate:-50% -50%}.vids .next{right:0;translate:50% -50%}
 
-/* about text under the video, then one card per major (numbered by .values) */
-.about{margin:48px 0 72px}
+/* about text under the video */
+.about{margin:48px 0 0}
 .about .intro{max-width:none;margin:0 0 16px;font-size:1.05rem;line-height:1.8}
-.majors.values{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:0;border-top:0}
-.majors.values li,.majors.values li:first-child{padding:28px;border:1px solid var(--line);border-radius:var(--r);background:var(--glass);transition:border-color .3s}
-.majors.values li:hover{border-color:var(--gold)}
 
 @media (max-width:900px){
   .gallery{grid-template-columns:1fr 1fr}
@@ -178,9 +170,6 @@ iframe.video{border:0}
   .what-quote{margin-top:40px;padding-left:28px}
   .what-quote::before{left:16px}
   .roles-show{margin-top:56px}
-  .values{grid-template-columns:1fr}
-  .values li,.values li:first-child{padding:24px 0 8px;border-left:0;border-top:1px solid var(--line)}
-  .values li:first-child{border-top:0}
   .slide{grid-template-columns:1fr;gap:28px;padding-bottom:96px}
   .slide .avatar{max-width:240px}
   .block{margin-bottom:80px}

@@ -22,6 +22,7 @@ write('styles.css', ['base', ...all].map(s => read(`src/styles/${s}.css`)).join(
 write('app.js', `(() => {\n${['lib', 'i18n', 'i18n/th', 'i18n/zh', 'i18n/ja', 'i18n/ko', 'i18n/fr', 'i18n/es', 'i18n/id', 'i18n/fil', 'i18n/vi', 'i18n/my', 'i18n/lo', ...all.map(s => `sections/${s}`), 'init'].map(f => read(`app/${f}.js`)).join('\n')}\n})();\n`);
 
 if (existsSync(new URL('src/assets', root))) cpSync(new URL('src/assets', root), new URL('assets', out), { recursive: true });
+cpSync(new URL('src/font-th', root), new URL('font-th', out), { recursive: true, filter: f => !f.endsWith('.DS_Store') });
 if (existsSync(new URL('deploy/CNAME', root))) cpSync(new URL('deploy/CNAME', root), new URL('CNAME', out)); // custom domain, later
 write('.nojekyll', '');
 console.log('built deploy/site');
