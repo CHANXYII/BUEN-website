@@ -5,7 +5,7 @@ A single-page static site: plain HTML, CSS and JavaScript, no framework and no d
 
 - **Theme:** black background with crimson, white and gold.
 - **Font:** Google Sans (Google Fonts) with Noto Sans Thai for Thai.
-- **Hosting:** GitHub Pages now, custom domain later.
+- **Hosting:** GitHub Pages (https://chanxyii.github.io) now, custom domain later.
 
 ## Run on localhost
 
@@ -61,7 +61,7 @@ Each section has the same three files (`src/sections/<name>.html`, `src/styles/<
 
 Pushing to `main` builds and publishes to GitHub Pages automatically.
 One-time setup: repo **Settings → Pages → Source: GitHub Actions**.
-The site is then at `https://<user-or-org>.github.io/BUEN-website/`.
+The site is at `https://chanxyii.github.io` (repo `CHANXYII/chanxyii.github.io`).
 Details: [deploy/github-pages.md](deploy/github-pages.md). When we have a domain: [deploy/custom-domain.md](deploy/custom-domain.md).
 
 ## Font

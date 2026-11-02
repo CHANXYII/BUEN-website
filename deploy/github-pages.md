@@ -1,12 +1,24 @@
-# Deploy on GitHub Pages (current)
+# Deploy on GitHub Pages: https://chanxyii.github.io
 
-One-time setup:
-1. Push this repo to GitHub.
-2. Repo **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+GitHub serves `https://<account>.github.io` from a **public** repo named exactly `<account>.github.io`.
+Our repo: `CHANXYII/chanxyii.github.io`.
 
-After that, every push to `main` builds and publishes automatically
-(see `.github/workflows/pages.yml`). Site URL: `https://<user-or-org>.github.io/BUEN-website/`.
+## One-time setup
 
-All asset links are relative, so the `/BUEN-website/` sub-path works without config.
+1. Rename the repo: **Settings → General → Repository name** → `chanxyii.github.io`.
+2. Make it public: **Settings → General → Danger Zone → Change visibility → Public**.
+3. Turn on Pages: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+4. Point your local clone at the new name:
+   ```bash
+   git remote set-url origin https://github.com/CHANXYII/chanxyii.github.io.git
+   ```
+5. Push to `main`. After ~1 minute the site is live at **https://chanxyii.github.io**.
+
+## After that
+
+Every push to `main` builds and publishes automatically ([../.github/workflows/pages.yml](../.github/workflows/pages.yml)).
+Progress and errors: the repo's **Actions** tab.
+
+Moving to an org later (e.g. `buen-ambassador.github.io`): transfer the repo to the org and rename it to `<org>.github.io`.
 
 Local check: `npm run preview` (builds, then serves `deploy/site`).

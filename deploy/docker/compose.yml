@@ -1,0 +1,11 @@
+# Run the POC locally:  docker compose -f deploy/docker/compose.yml up --build
+# Then open http://localhost:8080
+services:
+  buen-poc:
+    build:
+      context: ../..
+      dockerfile: deploy/docker/Dockerfile
+    image: buen-poc
+    ports:
+      - "8080:80"
+    restart: unless-stopped
