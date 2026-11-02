@@ -5,6 +5,7 @@
 .scrolled .bar{min-height:60px}
 .brand{display:flex;align-items:center;gap:14px;margin-right:auto;color:#fff;text-decoration:none}
 .logo{display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--gold);color:var(--gold);font-weight:700;letter-spacing:.04em}
+.brand img.logo{display:block;object-fit:contain;border:0}
 .brand-text{display:flex;flex-direction:column;line-height:1.2}
 .brand-text small{color:var(--muted)}
 

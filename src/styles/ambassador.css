@@ -70,6 +70,8 @@
 
 /* promo video: 16:9 */
 .video{position:relative;display:grid;place-items:center;align-content:center;gap:16px;width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:var(--r);background:linear-gradient(135deg,var(--crimson-a),rgb(255 255 255/.03));color:#fff;font:inherit;cursor:pointer;overflow:hidden}
+.video .poster{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover}
+.video .play{position:relative;z-index:1}
 iframe.video{border:0}
 .play{display:grid;place-items:center;width:88px;height:88px;border:1px solid #fff;border-radius:50%;font-size:1.6rem;padding-left:5px;transition:background .3s,border-color .3s,color .3s}
 .video:hover .play{background:var(--glass-2);border-color:var(--gold);color:var(--gold)}
