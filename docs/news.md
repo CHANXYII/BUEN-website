@@ -2,11 +2,12 @@
 
 - Markup: `src/sections/news.html`
 - Style: `src/styles/news.css`
-- Script: `app/sections/news.js`
+- Script and featured story data: `app/sections/news.js`
 
-Two parts:
+**Featured News** is a one-card-at-a-time carousel. Edit the `featuredStories` array in `app/sections/news.js`; each item has a title, description, ISO date, display date, image URL, and original BU article URL. Cards open the article in a new tab. If an image fails to load, the card displays a branded fallback instead. The carousel advances every five seconds, pauses while hovered, focused, or the page is hidden, and respects reduced-motion preferences.
 
-1. **Featured BU news** (`<article class="feature">`): the main BU story about the School of Engineering. Edit the title, text, date and the "Read on BU website" link (use the article URL). Photo: save as `src/assets/news/feature.jpg` (16:10 works best); until then a crimson tint shows.
-2. **More news**: one `<li>` per item, newest first (keep `datetime` in ISO format).
+Stories are curated manually from [BU Featured Stories](https://www.bu.ac.th/th/featured-stories); this static site does not scrape the page or request a live feed. Update the array when BU publishes new stories. Use BU's original article URL and image URL.
 
-Texts are **placeholders**. When you change an English text, change the same key in `app/i18n/th.js` and `zh.js` too.
+**More News** stays separate in `src/sections/news.html`: add one linked `<li>` per item, newest first, and keep each `<time datetime>` value in ISO format. Links open in a new tab.
+
+English story titles and descriptions fall back to English in locales without matching dictionary entries. Add translations to the locale dictionaries when translating new story content.
