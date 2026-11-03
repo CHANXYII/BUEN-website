@@ -71,6 +71,7 @@
 /* advisor: name and department each on one line on wide screens; the text column starts where the president's does
    and these lines may run past it into the side margin */
 #amb-advisor .slide h4{font-size:clamp(2rem,3.4vw,3rem);white-space:nowrap}
+.com-president .slide h4{white-space:nowrap}
 #amb-advisor .meta{font-size:.9rem;white-space:nowrap}
 /* the glow drifts by moving its gradients inside a layer that stays put */
 .banner::before{content:'';position:absolute;inset:0;z-index:-2;background:radial-gradient(circle at 25% 40%,var(--b-glow),transparent 45%),radial-gradient(circle at 70% 60%,rgb(var(--b-acc)/.16),transparent 40%);background-size:160% 160%;background-position:0 30%;animation:pres-glow 18s ease-in-out infinite alternate}
@@ -117,6 +118,7 @@
 .people{display:grid;gap:32px 24px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
 .person h4{margin:16px 0 2px;font-size:1.25rem}
 .person p{margin:0;color:var(--muted);font-size:.875rem;line-height:1.5}
+.ambassador .person .position{font-size:.75rem;white-space:nowrap}
 .person small{color:var(--gold);font-size:.8rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
 /* profile card highlight on hover, keyboard focus or tap (cards are focusable): the photo lifts with a crimson/gold
    glow, zooms a little and a light sweep crosses it; the name turns gold */
@@ -181,4 +183,4 @@ iframe.video{border:0}
 }
 
 /* below ~1150px the side margin is too narrow for the overrun, so let them wrap */
-@media (max-width:1150px){#amb-advisor .slide h4,#amb-advisor .meta{white-space:normal}}
+@media (max-width:1150px){#amb-advisor .slide h4,#amb-advisor .meta,.com-president .slide h4{white-space:normal}}
