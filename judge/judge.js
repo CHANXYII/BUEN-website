@@ -1,47 +1,11 @@
-/* Supabase setup: replace these two values with your project's public URL and anon key. */
-const SUPABASE_URL = window.SUPABASE_URL || '';
-const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || '';
-const $ = s => document.querySelector(s);
-const status = m => { $('#status').textContent = m; };
-// Preview mode is intentionally unlocked. Turn this off when Supabase auth is ready.
-const DEMO = true;
-if (DEMO) status('Demo mode: scores are saved only in this browser.');
-const db = !DEMO && SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
-const load = async () => {
-  if (DEMO) {
-    if ($('#login')) $('#login').hidden = true; if ($('#scoring')) $('#scoring').hidden = false;
-    const response = await fetch('../data.json');
-    if (!response.ok) throw new Error('Could not load participant data.');
-    const d = await response.json();
-    const saved = JSON.parse(localStorage.demoScores || '{}');
-    const select = $('#workshopSelect');
-    select.innerHTML = d.workshops.map(w => `<option value="${w.id}">${w.name}</option>`).join('');
-    const render = () => { const w = select.value; $('#scores').innerHTML = d.participants.map(p => `<div class="score-row"><span class="participant"><span class="avatar"><img src="${p.photo ? `../${p.photo}` : `../photos/${p.id}.jpg`}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span class="avatar-fallback">${p.id.replace(/\D/g, '')}</span></span><span><strong>${p.id} — ${p.name}</strong><small>${p.major || ''}</small></span></span><input required min="0" type="number" step="0.01" data-id="${p.id}" value="${saved[p.id]?.[w]?.points ?? p.points?.[w] ?? ''}" placeholder="Score"><textarea data-comment="${p.id}" placeholder="Comment for this participant">${saved[p.id]?.[w]?.comment ?? ''}</textarea></div>`).join(''); };
-    select.onchange = render;
-    render();
-    return;
-  }
-  const { data: { user } } = await db.auth.getUser();
-  if (!user) return;
-  const { data, error } = await db.from('judge_assignments').select('workshop_id, workshops(id,name), scores(participant_id,points)').eq('judge_id', user.id).eq('status','open').single();
-  if (error || !data) return status('No open workshop has been assigned to this judge.');
-  $('#login').hidden = true; $('#scoring').hidden = false; $('#workshopName').textContent = data.workshops.name;
-  const { data: people } = await db.from('participants').select('id,name,major').order('id');
-  $('#scores').innerHTML = (people || []).map(p => { const old = data.scores?.find(s => s.participant_id === p.id); return `<label class="score-row"><span><strong>${p.id} — ${p.name}</strong><small>${p.major || ''}</small></span><input required min="0" type="number" step="0.01" data-id="${p.id}" value="${old?.points ?? ''}"></label>`; }).join('');
-};
-if ($('#loginBtn')) $('#loginBtn').onclick = () => { if (!$('#email').value.trim() || !$('#password').value.trim()) return status('Enter any dummy email and password to continue.'); window.open('score.html', '_blank'); };
-if ($('#signout')) $('#signout').onclick = async () => { if (db && !DEMO) await db.auth.signOut(); location.href = './'; };
-const saveScores = async () => {
-  if (DEMO) {
-    const saved = JSON.parse(localStorage.demoScores || '{}'); const workshop = document.querySelector('#workshopSelect').value;
-    [...document.querySelectorAll('[data-id]')].forEach(i => { saved[i.dataset.id] ||= {}; saved[i.dataset.id][workshop] = { points: Number(i.value), comment: document.querySelector(`[data-comment="${i.dataset.id}"]`).value }; });
-    localStorage.demoScores = JSON.stringify(saved);
-    status('Scores submitted successfully. Redirecting to login…');
-    location.href = './';
-    return;
-  }
-};
-if ($('#submit')) $('#submit').onclick = () => { $('#confirmModal').hidden = false; };
-if ($('#cancelConfirm')) $('#cancelConfirm').onclick = () => { $('#confirmModal').hidden = true; };
-if ($('#confirmSubmit')) $('#confirmSubmit').onclick = () => { $('#confirmModal').hidden = true; saveScores(); };
-if ($('#scoring')) load().catch(error => { status(error.message); $('#scores').innerHTML = '<p class="error">Participant list could not be loaded. Restart the preview server and open /judge/score.html.</p>'; });
+const workshops=[{id:'w1',name:'Workshop 1'},{id:'w2',name:'Workshop 2'},{id:'w3',name:'Workshop 3'},{id:'w4',name:'Workshop 4'}];
+const participants=Array.from({length:25},(_,i)=>({id:`BUEN${String(i+1).padStart(2,'0')}`,name:`Participant ${String(i+1).padStart(2,'0')}`,major:'Engineering'}));
+const $=s=>document.querySelector(s), saved=JSON.parse(localStorage.judgeScores||'{}'); let selected;
+if($('#loginBtn')) $('#loginBtn').onclick=()=>{if(!$('#email').value.trim()||!$('#password').value.trim()){ $('#status').textContent='Enter an email and password to continue.'; return; } location.href='./score.html';};
+const render=()=>{$('#participants').innerHTML=participants.map(p=>{const reviewed=Object.values(saved[p.id]||{}).some(Boolean);return `<button class="participant-card" data-id="${p.id}"><span class="avatar"><img src="../photos/${p.id}.jpg" alt="${p.name}" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="avatar-fallback">${p.id.slice(-2)}</span></span><span><p class="participant-id">${p.id}</p><h2>${p.name}</h2><p class="participant-major">${p.major}</p><p class="${reviewed?'':'pending'}">${reviewed?'Reviewed':'Pending review'}</p></span></button>`}).join('');document.querySelectorAll('[data-id]').forEach(b=>b.onclick=()=>openScore(b.dataset.id));};
+const openScore=id=>{selected=participants.find(p=>p.id===id);$('#scoreTitle').textContent=selected.name;$('#scoreMeta').textContent=`ID: ${selected.id}`;$('#workshopSelect').innerHTML=workshops.map(w=>`<option value="${w.id}">${w.name}</option>`).join('');document.querySelectorAll('.category-score').forEach(input=>input.value='');$('#commentInput').value='';$('#totalScore').textContent='0';$('#scoreModal').hidden=false;};
+$('#participants')&&(render(),$('#status').textContent='Select a participant to enter a score.');
+$('#closeModal').onclick=()=>$('#scoreModal').hidden=true;
+document.querySelectorAll('.category-score').forEach(input=>input.oninput=()=>{$('#totalScore').textContent=[...document.querySelectorAll('.category-score')].reduce((sum,field)=>sum+(Number(field.value)||0),0);});
+$('#saveScore').onclick=()=>{const fields=[...document.querySelectorAll('.category-score')];const invalid=fields.find(field=>!field.value||Number(field.value)<0||Number(field.value)>25||Number(field.value)*2%1!==0);if(invalid)return invalid.focus();const w=$('#workshopSelect').value;const categories=Object.fromEntries(fields.map(field=>[field.dataset.category,Number(field.value)]));saved[selected.id]??={};saved[selected.id][w]={...categories,total:Object.values(categories).reduce((sum,score)=>sum+score,0),comment:$('#commentInput').value};localStorage.judgeScores=JSON.stringify(saved);$('#scoreModal').hidden=true;$('#status').textContent=`Score saved for ${selected.name}.`;render();};
+$('#signout').onclick=()=>location.href='./';
