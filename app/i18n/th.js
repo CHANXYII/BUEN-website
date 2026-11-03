@@ -119,7 +119,7 @@ DICT.th = {
   "Chalintakorn Phusinkorn": "ชลินทร์กร ภูสินกร",
   "Artificial Intelligence Engineering and Data Science, Year 4": "วิศวกรรมปัญญาประดิษฐ์และวิทยาการข้อมูล ชั้นปีที่ 4",
   "Computer and Robotics Engineering, Year 2": "วิศวกรรมคอมพิวเตอร์และหุ่นยนต์ ชั้นปีที่ 2",
-  "Engineering Cheerleader: The 17th Generation": "ผู้นำเชียร์วิศวกรรมศาสตร์ รุ่นที่ 17",
+  "Engineering Cheerleader: The 17th Generation": "ผู้นำเชียร์ แห่งคณะวิศวกรรมศาสตร์ รุ่นที่ 17",
   "Engineering Student Committee (2025)": "คณะกรรมการนักศึกษา คณะวิศวกรรมศาสตร์ (2025)",
   title: 'คณะวิศวกรรมศาสตร์ | มหาวิทยาลัยกรุงเทพ',
   'Menu': 'เมนู', 'News': 'ข่าวสาร', 'Contact': 'ติดต่อ',
