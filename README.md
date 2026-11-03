@@ -28,6 +28,16 @@ Other commands:
 
 If you don't want `npx`, run `npm run build` and then `python -m http.server 8000 -d deploy/site`, and open http://localhost:8000.
 
+## Run with Docker Compose
+
+Requires Docker Engine or Docker Desktop with Compose v2. From the repository root, run:
+
+```bash
+docker compose up --build
+```
+
+Open **http://localhost:8080**. Press Ctrl+C to stop the foreground service. To run it in the background, use `docker compose up --build -d`; stop and remove the container with `docker compose down`.
+
 ## Project structure
 
 ```
