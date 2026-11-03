@@ -8,7 +8,9 @@ const write = (p, s) => writeFileSync(new URL(p, out), s);
 
 rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
-cpSync(new URL('leaderboard/index.html', root), new URL('index.html', out));
+cpSync(new URL('app/landing.html', root), new URL('index.html', out));
+mkdirSync(new URL('leaderboard/', out), { recursive: true });
+cpSync(new URL('leaderboard/index.html', root), new URL('leaderboard/index.html', out));
 mkdirSync(new URL('judge/', out), { recursive: true });
 cpSync(new URL('judge/index.html', root), new URL('judge/index.html', out));
 cpSync(new URL('judge/score.html', root), new URL('judge/score.html', out));
@@ -30,6 +32,12 @@ write('data.json', JSON.stringify({ ...JSON.parse(read('leaderboard/data.json'))
 // app.js: helpers, translations (app/i18n/*.js, hardcoded dictionaries), page, then init (applies saved language)
 const langs = ['th', 'zh', 'ja', 'ko', 'fr', 'es', 'id', 'fil', 'vi', 'my', 'lo'];
 write('app.js', `(() => {\n${[read('app/lib.js'), read('app/i18n.js'), ...langs.map(l => read(`app/i18n/${l}.js`)), read('leaderboard/leaderboard.js'), read('app/init.js')].join('\n')}\n})();\n`);
+
+// The public leaderboard lives at /leaderboard/, so give it local copies of its assets.
+cpSync(new URL('styles.css', out), new URL('leaderboard/styles.css', out));
+cpSync(new URL('app.js', out), new URL('leaderboard/app.js', out));
+cpSync(new URL('data.json', out), new URL('leaderboard/data.json', out));
+if (existsSync(new URL('photos', out))) cpSync(new URL('photos', out), new URL('leaderboard/photos', out), { recursive: true });
 
 if (existsSync(new URL('deploy/CNAME', root))) cpSync(new URL('deploy/CNAME', root), new URL('CNAME', out)); // custom domain, later
 write('.nojekyll', '');
