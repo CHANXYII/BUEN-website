@@ -19,7 +19,7 @@ DICT.es = {
   "What is BUEN Ambassador ?": "¿Qué es BUEN Ambassador?",
   "BUEN Ambassador is the School of Engineering student ambassador team: the faces and voices of the faculty at open houses, school visits and online.": "BUEN Ambassador es el equipo de estudiantes embajadores de la Escuela de Ingeniería: el rostro y la voz de la facultad en jornadas de puertas abiertas, visitas a colegios y en línea.",
   "Our presidents": "Nuestros presidentes",
-  "Current President": "Presidente actual", "President of BUEN Ambassador 1' (2025 - 2026)": "Presidenta de BUEN Ambassador 1' (2025 - 2026)", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: 1.ª generación", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (promoción 1)",
+  "Current President": "Presidente actual", "President of BUEN Ambassador 1' (2025 - 2026)": "Presidenta de BUEN Ambassador 1' (2025 - 2026)", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: 1.ª generación", "BUEN Ambassador: The 2nd Generation": "BUEN Ambassador: 2.ª generación", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (promoción 1)", "Google Student Ambassador Thailand (Batch 2)": "Google Student Ambassador Thailand (promoción 2)",
   "Sample quote. TODO: replace with the president message.": "Cita de ejemplo (sustituir por el mensaje del presidente).",
   "Ambassadors by generation": "Embajadores por generación",
   "Top events": "Eventos destacados",
@@ -118,5 +118,5 @@ DICT.es = {
   "Email": "Correo electrónico",
   "Message": "Mensaje",
   "Send": "Enviar",
-  "Back to top": "Volver arriba"
+  "Back to top": "Volver arriba", "Show more": "Ver más", "Our work": "Nuestro trabajo", "Back": "Volver"
 };

@@ -19,7 +19,7 @@ DICT.ko = {
   "What is BUEN Ambassador ?": "BUEN Ambassador란?",
   "BUEN Ambassador is the School of Engineering student ambassador team: the faces and voices of the faculty at open houses, school visits and online.": "BUEN Ambassador는 공과대학 학생 앰배서더 팀으로, 오픈하우스와 학교 방문, 온라인에서 학부의 얼굴이자 목소리가 됩니다.",
   "Our presidents": "역대 회장",
-  "Current President": "현 회장", "President of BUEN Ambassador 1' (2025 - 2026)": "BUEN Ambassador 1' 회장 (2025 - 2026)", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: 1기", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (1기)",
+  "Current President": "현 회장", "President of BUEN Ambassador 1' (2025 - 2026)": "BUEN Ambassador 1' 회장 (2025 - 2026)", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: 1기", "BUEN Ambassador: The 2nd Generation": "BUEN Ambassador: 2기", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (1기)", "Google Student Ambassador Thailand (Batch 2)": "Google Student Ambassador Thailand (2기)",
   "Sample quote. TODO: replace with the president message.": "메시지 예시 (회장의 실제 메시지로 교체 예정)",
   "Ambassadors by generation": "기수별 앰배서더",
   "Top events": "주요 행사",
@@ -125,5 +125,5 @@ DICT.ko = {
   "Email": "이메일",
   "Message": "메시지",
   "Send": "보내기",
-  "Back to top": "맨 위로"
+  "Back to top": "맨 위로", "Show more": "더 보기", "Our work": "활동", "Back": "뒤로"
 };

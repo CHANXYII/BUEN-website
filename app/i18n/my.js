@@ -19,7 +19,7 @@ DICT.my = {
   "What is BUEN Ambassador ?": "BUEN Ambassador ဆိုတာ ဘာလဲ။",
   "BUEN Ambassador is the School of Engineering student ambassador team: the faces and voices of the faculty at open houses, school visits and online.": "BUEN Ambassador သည် အင်ဂျင်နီယာကျောင်း၏ ကျောင်းသားသံအမတ်အဖွဲ့ဖြစ်ပြီး ဖွင့်ပွဲများ၊ ကျောင်းလည်ပတ်မှုများနှင့် အွန်လိုင်းတွင် ကျောင်း၏ မျက်နှာနှင့် အသံဖြစ်သည်။",
   "Our presidents": "ကျွန်ုပ်တို့၏ ဥက္ကဋ္ဌများ",
-  "Current President": "လက်ရှိ ဥက္ကဋ္ဌ", "President of BUEN Ambassador 1' (2025 - 2026)": "BUEN Ambassador 1' ဥက္ကဋ္ဌ (2025 - 2026)", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: ပထမမျိုးဆက်", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (အသုတ် ၁)",
+  "Current President": "လက်ရှိ ဥက္ကဋ္ဌ", "President of BUEN Ambassador 1' (2025 - 2026)": "BUEN Ambassador 1' ဥက္ကဋ္ဌ (2025 - 2026)", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: ပထမမျိုးဆက်", "BUEN Ambassador: The 2nd Generation": "BUEN Ambassador: ဒုတိယမျိုးဆက်", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (အသုတ် ၁)", "Google Student Ambassador Thailand (Batch 2)": "Google Student Ambassador Thailand (အသုတ် ၂)",
   "Sample quote. TODO: replace with the president message.": "နမူနာ ကိုးကားချက် (ဥက္ကဋ္ဌ၏ စကားဖြင့် အစားထိုးရန်)။",
   "Ambassadors by generation": "မျိုးဆက်အလိုက် သံအမတ်များ",
   "Top events": "အဓိကပွဲများ",
@@ -125,5 +125,5 @@ DICT.my = {
   "Email": "အီးမေးလ်",
   "Message": "မက်ဆေ့ချ်",
   "Send": "ပို့ရန်",
-  "Back to top": "အပေါ်သို့ပြန်သွားရန်"
+  "Back to top": "အပေါ်သို့ပြန်သွားရန်", "Show more": "ပိုမိုကြည့်ရန်", "Our work": "ကျွန်ုပ်တို့၏လုပ်ဆောင်ချက်များ", "Back": "နောက်သို့"
 };

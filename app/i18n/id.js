@@ -19,7 +19,7 @@ DICT.id = {
   "What is BUEN Ambassador ?": "Apa itu BUEN Ambassador?",
   "BUEN Ambassador is the School of Engineering student ambassador team: the faces and voices of the faculty at open houses, school visits and online.": "BUEN Ambassador adalah tim duta mahasiswa Fakultas Teknik: wajah dan suara fakultas dalam open house, kunjungan sekolah, dan secara daring.",
   "Our presidents": "Presiden kami",
-  "Current President": "Presiden saat ini", "President of BUEN Ambassador 1' (2025 - 2026)": "Ketua BUEN Ambassador 1' (2025 - 2026)", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: Angkatan ke-1", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (Angkatan 1)",
+  "Current President": "Presiden saat ini", "President of BUEN Ambassador 1' (2025 - 2026)": "Ketua BUEN Ambassador 1' (2025 - 2026)", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: Angkatan ke-1", "BUEN Ambassador: The 2nd Generation": "BUEN Ambassador: Angkatan ke-2", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (Angkatan 1)", "Google Student Ambassador Thailand (Batch 2)": "Google Student Ambassador Thailand (Angkatan 2)",
   "Sample quote. TODO: replace with the president message.": "Contoh kutipan (ganti dengan pesan presiden).",
   "Ambassadors by generation": "Duta per angkatan",
   "Top events": "Acara unggulan",
@@ -118,5 +118,5 @@ DICT.id = {
   "Email": "Email",
   "Message": "Pesan",
   "Send": "Kirim",
-  "Back to top": "Kembali ke atas"
+  "Back to top": "Kembali ke atas", "Show more": "Lihat selengkapnya", "Our work": "Karya kami", "Back": "Kembali"
 };

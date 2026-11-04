@@ -19,7 +19,7 @@ DICT.fil = {
   "What is BUEN Ambassador ?": "Ano ang BUEN Ambassador?",
   "BUEN Ambassador is the School of Engineering student ambassador team: the faces and voices of the faculty at open houses, school visits and online.": "Ang BUEN Ambassador ay ang pangkat ng mga student ambassador ng School of Engineering: ang mukha at boses ng faculty sa mga open house, pagbisita sa mga paaralan, at online.",
   "Our presidents": "Ang aming mga presidente",
-  "Current President": "Kasalukuyang Presidente", "President of BUEN Ambassador 1' (2025 - 2026)": "Pangulo ng BUEN Ambassador 1' (2025 - 2026)", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: Unang Henerasyon", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (Batch 1)",
+  "Current President": "Kasalukuyang Presidente", "President of BUEN Ambassador 1' (2025 - 2026)": "Pangulo ng BUEN Ambassador 1' (2025 - 2026)", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: Unang Henerasyon", "BUEN Ambassador: The 2nd Generation": "BUEN Ambassador: Ikalawang Henerasyon", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (Batch 1)", "Google Student Ambassador Thailand (Batch 2)": "Google Student Ambassador Thailand (Batch 2)",
   "Sample quote. TODO: replace with the president message.": "Halimbawang sipi (palitan ng mensahe ng presidente).",
   "Ambassadors by generation": "Mga ambassador ayon sa henerasyon",
   "Top events": "Mga pangunahing kaganapan",
@@ -118,5 +118,5 @@ DICT.fil = {
   "Email": "Email",
   "Message": "Mensahe",
   "Send": "Ipadala",
-  "Back to top": "Bumalik sa itaas"
+  "Back to top": "Bumalik sa itaas", "Show more": "Tingnan pa", "Our work": "Aming mga gawa", "Back": "Bumalik"
 };

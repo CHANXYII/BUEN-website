@@ -19,7 +19,7 @@ DICT.th = {
   'What is BUEN Ambassador ?': 'BUEN Ambassador คืออะไร ?',
   'BUEN Ambassador is the School of Engineering student ambassador team: the faces and voices of the faculty at open houses, school visits and online.': 'BUEN Ambassador คือทีมทูตกิจกรรมแห่งคณะวิศวกรรมศาสตร์ ผู้เป็นใบหน้าและเสียงของคณะในงานเปิดบ้าน การเยี่ยมโรงเรียน และบนโลกออนไลน์',
   'Our presidents': 'ประธานทูตกิจกรรมของเรา',
-  'Current President': 'ประธานคนปัจจุบัน', "President of BUEN Ambassador 1' (2025 - 2026)": "ประธานโครงการ BUEN Ambassador 1' (2025 - 2026)", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: รุ่นที่ 1", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (รุ่นที่ 1)",
+  'Current President': 'ประธานคนปัจจุบัน', "President of BUEN Ambassador 1' (2025 - 2026)": "ประธานโครงการ BUEN Ambassador 1' (2025 - 2026)", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: รุ่นที่ 1", "BUEN Ambassador: The 2nd Generation": "BUEN Ambassador: รุ่นที่ 2", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (รุ่นที่ 1)", "Google Student Ambassador Thailand (Batch 2)": "Google Student Ambassador Thailand (รุ่นที่ 2)",
   'Sample quote. TODO: replace with the president message.': 'ตัวอย่างคำกล่าว (รอแทนที่ด้วยข้อความจากประธานจริง)',
   'Ambassadors by generation': 'ทูตกิจกรรมแต่ละรุ่น',
   'Top events': 'กิจกรรมเด่น',
@@ -131,5 +131,5 @@ DICT.th = {
   'Open house for prospective students': 'เปิดบ้านสำหรับผู้สนใจเข้าศึกษา', 'Student team wins national robotics contest': 'ทีมนักศึกษาคว้ารางวัลการแข่งขันหุ่นยนต์ระดับชาติ', 'New industry partnership announced': 'ประกาศความร่วมมือกับภาคอุตสาหกรรมใหม่',
   '1 Oct 2026': '1 ต.ค. 2569', '15 Sep 2026': '15 ก.ย. 2569', '20 Aug 2026': '20 ส.ค. 2569',
   'School of Engineering, Bangkok University': 'คณะวิศวกรรมศาสตร์ มหาวิทยาลัยกรุงเทพ', 'Thailand': 'ประเทศไทย',
-  'Name': 'ชื่อ', 'Email': 'อีเมล', 'Message': 'ข้อความ', 'Send': 'ส่ง', 'Back to top': 'กลับขึ้นด้านบน'
+  'Name': 'ชื่อ', 'Email': 'อีเมล', 'Message': 'ข้อความ', 'Send': 'ส่ง', 'Back to top': 'กลับขึ้นด้านบน', 'Show more': 'ดูเพิ่มเติม', 'Our work': 'ผลงาน', 'Back': 'ย้อนกลับ'
 };

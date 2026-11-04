@@ -2,3 +2,6 @@ state
 
 deploy/site/
 node_modules/
+
+.github
+.impeccable

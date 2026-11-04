@@ -9,6 +9,7 @@ Structure: every section has the same three files:
 | Header | `src/sections/header.html` | `src/styles/header.css` | `app/sections/header.js` | [header.md](header.md) |
 | Hero | `src/sections/hero.html` | `src/styles/hero.css` | `app/sections/hero.js` | [hero.md](hero.md) |
 | Ambassador | `src/sections/ambassador.html` | `src/styles/ambassador.css` | `app/sections/ambassador.js` | [ambassador.md](ambassador.md) |
+| Ambassador profile | `src/sections/ambassador-profile.html` | `src/styles/ambassador-profile.css` | `app/sections/ambassador-profile.js` | [ambassador-profile.md](ambassador-profile.md) |
 | Committee | `src/sections/committee.html` | `src/styles/committee.css` | `app/sections/committee.js` | [committee.md](committee.md) |
 | News | `src/sections/news.html` | `src/styles/news.css` | `app/sections/news.js` | [news.md](news.md) |
 | Contact | `src/sections/contact.html` | `src/styles/contact.css` | `app/sections/contact.js` | [contact.md](contact.md) |

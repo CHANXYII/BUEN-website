@@ -19,7 +19,7 @@ DICT.vi = {
   "What is BUEN Ambassador ?": "BUEN Ambassador là gì?",
   "BUEN Ambassador is the School of Engineering student ambassador team: the faces and voices of the faculty at open houses, school visits and online.": "BUEN Ambassador là đội sinh viên đại sứ của Khoa Kỹ thuật: gương mặt và tiếng nói của khoa trong các ngày hội mở, chuyến thăm trường và trực tuyến.",
   "Our presidents": "Các chủ tịch của chúng tôi",
-  "Current President": "Chủ tịch hiện tại", "President of BUEN Ambassador 1' (2025 - 2026)": "Chủ tịch BUEN Ambassador 1' (2025 - 2026)", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: Thế hệ thứ 1", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (Khóa 1)",
+  "Current President": "Chủ tịch hiện tại", "President of BUEN Ambassador 1' (2025 - 2026)": "Chủ tịch BUEN Ambassador 1' (2025 - 2026)", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: Thế hệ thứ 1", "BUEN Ambassador: The 2nd Generation": "BUEN Ambassador: Thế hệ thứ 2", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (Khóa 1)", "Google Student Ambassador Thailand (Batch 2)": "Google Student Ambassador Thailand (Khóa 2)",
   "Sample quote. TODO: replace with the president message.": "Trích dẫn mẫu (thay bằng lời nhắn của chủ tịch).",
   "Ambassadors by generation": "Đại sứ theo thế hệ",
   "Top events": "Sự kiện nổi bật",
@@ -118,5 +118,5 @@ DICT.vi = {
   "Email": "Email",
   "Message": "Tin nhắn",
   "Send": "Gửi",
-  "Back to top": "Lên đầu trang"
+  "Back to top": "Lên đầu trang", "Show more": "Xem thêm", "Our work": "Hoạt động", "Back": "Quay lại"
 };

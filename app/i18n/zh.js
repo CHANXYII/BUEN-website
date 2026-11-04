@@ -19,7 +19,7 @@ DICT.zh = {
   'What is BUEN Ambassador ?': 'BUEN 学生大使是什么？',
   'BUEN Ambassador is the School of Engineering student ambassador team: the faces and voices of the faculty at open houses, school visits and online.': 'BUEN 学生大使是工程学院的学生大使团队，是学院在开放日、中学访问和线上的形象与声音。',
   'Our presidents': '我们的主席',
-  'Current President': '现任主席', "President of BUEN Ambassador 1' (2025 - 2026)": "BUEN Ambassador 1' 主席（2025 - 2026）", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: 第一届", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (第一批)",
+  'Current President': '现任主席', "President of BUEN Ambassador 1' (2025 - 2026)": "BUEN Ambassador 1' 主席（2025 - 2026）", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: 第一届", "BUEN Ambassador: The 2nd Generation": "BUEN Ambassador: 第二届", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (第一批)", "Google Student Ambassador Thailand (Batch 2)": "Google Student Ambassador Thailand (第二批)",
   'Sample quote. TODO: replace with the president message.': '示例寄语（待替换为主席的真实寄语）',
   'Ambassadors by generation': '各届学生大使',
   'Top events': '精彩活动',
@@ -112,5 +112,5 @@ DICT.zh = {
   'Open house for prospective students': '面向意向学生的开放日', 'Student team wins national robotics contest': '学生团队荣获全国机器人竞赛奖项', 'New industry partnership announced': '宣布新的产业合作',
   '1 Oct 2026': '2026年10月1日', '15 Sep 2026': '2026年9月15日', '20 Aug 2026': '2026年8月20日',
   'School of Engineering, Bangkok University': '曼谷大学工程学院', 'Thailand': '泰国',
-  'Name': '姓名', 'Email': '电子邮箱', 'Message': '留言', 'Send': '发送', 'Back to top': '返回顶部'
+  'Name': '姓名', 'Email': '电子邮箱', 'Message': '留言', 'Send': '发送', 'Back to top': '返回顶部', 'Show more': '查看更多', 'Our work': '我们的作品', 'Back': '返回'
 };

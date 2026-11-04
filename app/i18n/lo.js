@@ -19,7 +19,7 @@ DICT.lo = {
   "What is BUEN Ambassador ?": "BUEN Ambassador ແມ່ນຫຍັງ?",
   "BUEN Ambassador is the School of Engineering student ambassador team: the faces and voices of the faculty at open houses, school visits and online.": "BUEN Ambassador ແມ່ນທີມນັກສຶກສາທູດຂອງຄະນະວິສະວະກຳສາດ: ໃບໜ້າ ແລະ ສຽງຂອງຄະນະໃນງານເປີດບ້ານ ການຢ້ຽມຢາມໂຮງຮຽນ ແລະ ອອນລາຍ.",
   "Our presidents": "ປະທານຂອງພວກເຮົາ",
-  "Current President": "ປະທານປະຈຸບັນ", "President of BUEN Ambassador 1' (2025 - 2026)": "ປະທານ BUEN Ambassador 1' (2025 - 2026)", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: ລຸ້ນທີ 1", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (ລຸ້ນທີ 1)",
+  "Current President": "ປະທານປະຈຸບັນ", "President of BUEN Ambassador 1' (2025 - 2026)": "ປະທານ BUEN Ambassador 1' (2025 - 2026)", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: ລຸ້ນທີ 1", "BUEN Ambassador: The 2nd Generation": "BUEN Ambassador: ລຸ້ນທີ 2", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (ລຸ້ນທີ 1)", "Google Student Ambassador Thailand (Batch 2)": "Google Student Ambassador Thailand (ລຸ້ນທີ 2)",
   "Sample quote. TODO: replace with the president message.": "ຄຳເວົ້າຕົວຢ່າງ (ປ່ຽນເປັນຂໍ້ຄວາມຂອງປະທານ).",
   "Ambassadors by generation": "ທູດຕາມລຸ້ນ",
   "Top events": "ກິດຈະກຳເດັ່ນ",
@@ -125,5 +125,5 @@ DICT.lo = {
   "Email": "ອີເມວ",
   "Message": "ຂໍ້ຄວາມ",
   "Send": "ສົ່ງ",
-  "Back to top": "ກັບຂຶ້ນເທິງ"
+  "Back to top": "ກັບຂຶ້ນເທິງ", "Show more": "ເບິ່ງເພີ່ມເຕີມ", "Our work": "ຜົນງານ", "Back": "ກັບຄືນ"
 };

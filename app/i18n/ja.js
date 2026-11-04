@@ -19,7 +19,7 @@ DICT.ja = {
   "What is BUEN Ambassador ?": "BUEN Ambassadorとは ?",
   "BUEN Ambassador is the School of Engineering student ambassador team: the faces and voices of the faculty at open houses, school visits and online.": "BUEN Ambassadorは工学部の学生アンバサダーチームです。オープンキャンパスや学校訪問、オンラインで学部の顔と声となります。",
   "Our presidents": "歴代の会長",
-  "Current President": "現会長", "President of BUEN Ambassador 1' (2025 - 2026)": "BUEN Ambassador 1' 会長（2025 - 2026）", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: 第1期", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (第1期)",
+  "Current President": "現会長", "President of BUEN Ambassador 1' (2025 - 2026)": "BUEN Ambassador 1' 会長（2025 - 2026）", "BUEN Ambassador: The 1st Generation": "BUEN Ambassador: 第1期", "BUEN Ambassador: The 2nd Generation": "BUEN Ambassador: 第2期", "Google Student Ambassador Thailand (Batch 1)": "Google Student Ambassador Thailand (第1期)", "Google Student Ambassador Thailand (Batch 2)": "Google Student Ambassador Thailand (第2期)",
   "Sample quote. TODO: replace with the president message.": "メッセージ例（会長の実際のメッセージに差し替えてください）",
   "Ambassadors by generation": "期ごとのアンバサダー",
   "Top events": "注目イベント",
@@ -125,5 +125,5 @@ DICT.ja = {
   "Email": "メールアドレス",
   "Message": "メッセージ",
   "Send": "送信",
-  "Back to top": "トップへ戻る"
+  "Back to top": "トップへ戻る", "Show more": "もっと見る", "Our work": "活動実績", "Back": "戻る"
 };
