@@ -27,6 +27,7 @@ const featuredStories = [
 
 {
 	const carousel = $('[data-feature-carousel]');
+	const viewport = $('.feature-viewport', carousel);
 	const track = $('[data-feature-track]', carousel);
 	const dots = $('[data-feature-dots]', carousel);
 	const previous = $('.feature-prev', carousel);
@@ -34,8 +35,14 @@ const featuredStories = [
 	const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 	let activeIndex = 0;
 	let timer;
-	let hovered = false;
 	let focused = false;
+	let wheelDelta = 0;
+	let wheelResetTimer;
+	let wheelActive = false;
+	let wheelGestureLocked = false;
+	let pointerState;
+	let suppressedClickPointerId = null;
+	let suppressedClickTimer;
 
 	const element = (tag, className, text) => {
 		const node = document.createElement(tag);
@@ -54,12 +61,15 @@ const featuredStories = [
 		link.href = story.url;
 		link.target = '_blank';
 		link.rel = 'noopener noreferrer';
+		link.draggable = false;
+		link.addEventListener('dragstart', event => event.preventDefault());
 		link.setAttribute('aria-label', `${story.title} (opens in a new tab)`);
 
 		const imageFrame = element('div', 'feature-img');
 		const image = element('img');
 		image.src = story.image;
 		image.alt = story.title;
+		image.draggable = false;
 		image.loading = index === 0 ? 'eager' : 'lazy';
 		image.decoding = 'async';
 		image.addEventListener('error', () => imageFrame.classList.add('is-missing'), { once: true });
@@ -95,8 +105,8 @@ const featuredStories = [
 
 	const schedule = () => {
 		stop();
-		if (featuredStories.length > 1 && !hovered && !focused && !document.hidden && !reducedMotion.matches) {
-			timer = setInterval(() => show(activeIndex + 1, false), 5000);
+		if (featuredStories.length > 1 && !focused && !document.hidden && !reducedMotion.matches) {
+			timer = setInterval(() => show(activeIndex + 1, false), 3000);
 		}
 	};
 
@@ -108,10 +118,112 @@ const featuredStories = [
 		if (restartTimer) schedule();
 	}
 
+	// Trackpad pan: switch slides once per horizontal gesture and resume autoplay after momentum settles.
+	viewport.addEventListener('wheel', event => {
+		const horizontalDelta = Math.abs(event.deltaX);
+		if (slides.length < 2 || horizontalDelta <= Math.abs(event.deltaY)) return;
+
+		event.preventDefault();
+		const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? viewport.clientWidth : 1;
+		if (!wheelActive) {
+			wheelActive = true;
+			wheelGestureLocked = false;
+			wheelDelta = 0;
+			stop();
+		}
+		wheelDelta += event.deltaX * unit;
+		if (!wheelGestureLocked && Math.abs(wheelDelta) > 30) {
+			show(activeIndex + (wheelDelta > 0 ? 1 : -1), false);
+			wheelGestureLocked = true;
+		}
+
+		clearTimeout(wheelResetTimer);
+		wheelResetTimer = setTimeout(() => {
+			wheelDelta = 0;
+			wheelActive = false;
+			wheelGestureLocked = false;
+			schedule();
+		}, 100);
+	}, { passive: false });
+
+	// Pointer drag: disable transitions on press so the track follows the pointer 1:1.
+	viewport.addEventListener('pointerdown', event => {
+		if (event.button !== 0 || event.isPrimary === false || event.target.closest('button, input, select, textarea')) return;
+		pointerState = {
+			id: event.pointerId,
+			startX: event.clientX,
+			startY: event.clientY,
+			dragging: false
+		};
+		track.style.transition = 'none';
+		carousel.classList.add('is-dragging');
+		stop();
+	});
+
+	viewport.addEventListener('pointermove', event => {
+		if (!pointerState || event.pointerId !== pointerState.id) return;
+
+		const deltaX = event.clientX - pointerState.startX;
+		const deltaY = event.clientY - pointerState.startY;
+		if (!pointerState.dragging) {
+			if (Math.abs(deltaX) < 8 && Math.abs(deltaY) < 8) return;
+			if (Math.abs(deltaX) <= Math.abs(deltaY)) {
+				pointerState = null;
+				track.style.transition = '';
+				carousel.classList.remove('is-dragging');
+				schedule();
+				return;
+			}
+
+			pointerState.dragging = true;
+			viewport.setPointerCapture(event.pointerId);
+		}
+
+		event.preventDefault();
+		const atEdge = (activeIndex === 0 && deltaX > 0) || (activeIndex === slides.length - 1 && deltaX < 0);
+		const visualDelta = atEdge ? deltaX * 0.35 : deltaX;
+		track.style.transform = `translateX(calc(-${activeIndex * 100}% + ${visualDelta}px))`;
+	});
+
+	const finishPointer = (event, cancelled = false) => {
+		if (!pointerState || event.pointerId !== pointerState.id) return;
+
+		const { startX, dragging } = pointerState;
+		const deltaX = event.clientX - startX;
+		pointerState = null;
+		track.style.transition = '';
+		carousel.classList.remove('is-dragging');
+
+		if (!dragging || cancelled) {
+			show(activeIndex);
+			return;
+		}
+
+		suppressedClickPointerId = event.pointerId;
+		clearTimeout(suppressedClickTimer);
+		suppressedClickTimer = setTimeout(() => { suppressedClickPointerId = null; }, 500);
+		const direction = deltaX < -50 ? 1 : deltaX > 50 ? -1 : 0;
+		show(activeIndex + direction);
+	};
+
+	viewport.addEventListener('pointerup', event => finishPointer(event));
+	viewport.addEventListener('pointerleave', event => {
+		if (pointerState && event.pointerId === pointerState.id && !viewport.hasPointerCapture(event.pointerId)) finishPointer(event);
+	});
+	viewport.addEventListener('pointercancel', event => finishPointer(event, true));
+	viewport.addEventListener('lostpointercapture', event => finishPointer(event, true));
+	viewport.addEventListener('click', event => {
+		if (suppressedClickPointerId === null) return;
+		if (typeof event.pointerId === 'number' && event.pointerId !== suppressedClickPointerId) return;
+		if (event.detail === 0) return;
+		event.preventDefault();
+		event.stopPropagation();
+		suppressedClickPointerId = null;
+		clearTimeout(suppressedClickTimer);
+	}, true);
+
 	previous.addEventListener('click', () => show(activeIndex - 1));
 	next.addEventListener('click', () => show(activeIndex + 1));
-	carousel.addEventListener('mouseenter', () => { hovered = true; stop(); });
-	carousel.addEventListener('mouseleave', () => { hovered = false; schedule(); });
 	carousel.addEventListener('focusin', () => { focused = true; stop(); });
 	carousel.addEventListener('focusout', event => {
 		if (!event.relatedTarget || !carousel.contains(event.relatedTarget)) {

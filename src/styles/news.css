@@ -77,11 +77,21 @@
 .feature-viewport{
     width:100%;
     overflow:hidden;
+    touch-action:pan-y;
 }
 
 .feature-track{
     display:flex;
     transition:transform .65s cubic-bezier(.65,0,.35,1);
+}
+
+.feature-carousel.is-dragging .feature-viewport{
+    cursor:grabbing;
+    user-select:none;
+}
+
+.feature-carousel.is-dragging .feature-track{
+    transition:none;
 }
 
 .feature{
