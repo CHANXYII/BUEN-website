@@ -42,7 +42,7 @@ if (!matchMedia('(prefers-reduced-motion:reduce)').matches) {
   requestAnimationFrame(tick);
 }
 
-fetch('data.json').then(r => r.json()).then(d => {
+fetch('/api/leaderboard').then(r => r.json()).then(d => {
   $('#lb-kicker').textContent = d.kicker;
   $('#lb-title').textContent = d.title;
   $('#lb-date').textContent = d.updated || '';

@@ -4,6 +4,6 @@
   "type": "module",
   "scripts": {
     "build": "node app/build.mjs",
-    "preview": "node app/build.mjs && npx --yes serve deploy/site"
+    "preview": "node app/build.mjs && node app/server.mjs"
   }
 }
