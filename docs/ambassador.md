@@ -1,16 +1,21 @@
 # BUEN Ambassador (main section)
 
-- Markup: `src/sections/ambassador.html`
-- Style: `src/styles/ambassador.css` (card styles are shared with the Committee section)
-- Script: `app/sections/ambassador.js`
+- Content: `content/ambassador.js`
+- Component: `components/Ambassador.jsx` (+ `VideoPlaylist.jsx`, `PresidentSlider.jsx`, `RolesLoop.jsx`)
+- Style: `styles/ambassador.css` (card, banner and gallery styles are shared with the Committee section)
 
-Placed first after the hero. Five blocks, each reveals on scroll:
+Placed first after the hero. Every block fades in on scroll:
 
-1. **What is BUEN Ambassador ?** intro text and three perks.
-2. **Our presidents**: looping slideshow (autoplay 5 s, pauses on hover, arrows, dots, swipe). One `<article class="slide">` per president. Now: Generation 1 (current) and a "Coming soon, opening in 2027" slide for Generation 2. When Generation 2 opens, replace that slide (remove `upcoming`, add the real president) and make Generation 1 a former president.
-3. **Ambassadors by generation**: one tab button (`data-gen`) and one `.gen-panel` (same `data-gen`) per generation. Generation 1 is shown by default. Generation 2 shows a "coming soon" note until it opens in 2027 (replace the `.soon-panel` with a `.people` grid of members). Clicking a card opens its profile page: see [ambassador-profile.md](ambassador-profile.md).
-4. **Our work by generation**: photo gallery per generation tab. Put photos in `src/assets/gallery/` and replace a placeholder `<figure class="shot">` (see the comment in the HTML). The first photo shows large.
-5. **About Us video**: list the YouTube video IDs, space-separated, in `data-yt` on `.vids`. Plays as a looping playlist: arrows or a video ending jump to the next one and play it. Autoplays muted 2s after scrolling into view (not with reduced motion). The player loads on click. Empty means "Video coming soon".
-6. **About text**: under the video in `#amb-video` (`.about` paragraphs). Each string needs its translation in every `app/i18n/*.js`.
+1. **About Us video**: `videos` is a list of YouTube IDs, played as a looping playlist. Arrows or a video ending jump to the next one. Autoplays muted 2 s after scrolling into view (not with reduced motion); clicking plays with sound. Empty list = "Video coming soon". The text under it is `intro`.
+2. **Student Activities** divider.
+3. **What is BUEN Ambassador ?** `what`: heading, quote and the endless row of `roles` (add a role: add a string).
+4. **Advisor** banner: `advisor`. Photo: cut-out PNG (transparent background, 3:4).
+5. **Presidents** slideshow: one entry per president in `presidents` (autoplay 5 s, pauses on hover, arrows, dots, swipe). With one president the arrows and dots hide.
+6. **Ambassadors by generation**: `generations`, newest first (the first shows by default). Each generation has `members` and a `gallery`.
+   - **Add an ambassador:** add `{ photo, name, major, year }` to their generation. `positions` show on the card and profile; `profileOnly` only on the profile. Use the majors from `content/majors.js`.
+   - **Add a generation:** add a new entry at the top with the next `gen` number.
+   - Clicking a card opens the profile page: see [ambassador-profile.md](ambassador-profile.md).
+7. **Our work** gallery: follows the generation tabs. `{ src: '/assets/gallery/gen2-1.jpg', alt: '...', caption: 'Event name' }`; the first photo shows large; `{}` (or `placeholders(n)`) is a "Photo coming soon" tile.
+8. Social buttons: `links` (`icon`: instagram, youtube, email, facebook, tiktok).
 
-All names, generations, years, quotes and events are **placeholders** ("Student Name"). Replace the avatar `<svg>` with `<img src="assets/ambassadors/name.jpg" alt="">` once photos exist.
+New English text needs its translation in every `i18n/*.js`.

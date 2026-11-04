@@ -1,7 +1,7 @@
 # Footer
 
-- Markup: `src/sections/footer.html`
-- Style: `src/styles/footer.css`
-- Script: `app/sections/footer.js`
+- Content: `content/site.js` (`site.name`)
+- Component: `components/Footer.jsx`
+- Style: `styles/footer.css`
 
-Copyright line (year filled in by script) and back-to-top link.
+Copyright line (current year, filled in by the browser) and back-to-top link.

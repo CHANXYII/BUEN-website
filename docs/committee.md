@@ -1,17 +1,12 @@
-# Engineering Student Committee
+# Engineering Student Committee (STAFFBUEN)
 
-- Markup: `src/sections/committee.html`
-- Style: `src/styles/committee.css` (what-is block, role loop, banner and member cards are shared from `ambassador.css`)
-- Script: `app/sections/committee.js`
+- Content: `content/committee.js`
+- Component: `components/Committee.jsx`
+- Style: `styles/committee.css` (what-is block, role loop, banner and member cards are shared from `ambassador.css`)
 
-Placed right after BUEN Ambassador and built like it, but with only a president and committee members (no advisor or generations). Four blocks, each reveals on scroll:
+Placed right after BUEN Ambassador and built like it. Every block fades in on scroll:
 
-1. **What is the Student Committee ?** heading, quote and an endless row of roles. Add a role: copy one `<li class="role">`.
-2. **President**: the animated banner, one `<article class="slide">`. Use a cut-out PNG (transparent background, 3:4) in place of the avatar `<svg>`.
-3. **Members**: Committee and Cheerleader & Katakorn tabs (`data-gen` on the button and its `.gen-panel`). Copy one `<article class="person">` per member and set `.position`. Swap the avatar `<svg>` for an `<img>` once photos exist.
-
-4. **Gallery**: activity photos, shown on the Committee tab only (no gallery for Cheerleader & Katakorn). Put photos in `src/assets/gallery/` and replace a placeholder `<figure class="shot">` (see the comment in the HTML).
-
-**Academic years:** the president banner and members sit in one `.year-panel` per year, newest first. To add a year: add its button first in `.year-tabs`, copy the whole panel above the old one, and change its `id` and `data-gen` (`year-2027`, `2027`). The year buttons appear by themselves once there are two.
-
-Each string needs its translation in every `app/i18n/*.js`.
+1. **What is STAFFBUEN ?** `what`: heading, quote and the endless row of `roles`.
+2. **Academic years**: `years`, newest first. The year tabs appear by themselves once there are two. **Add a year:** copy the whole year entry to the top and change `year`.
+3. **President** banner: `president` of that year. Add `photo` (cut-out PNG, transparent background, 3:4) to replace the silhouette.
+4. **Groups**: the tabs above the members (Committee, Cheerleader & Katakorn). Each group has `members` (`{ photo, name, positions, major, year }`; no `photo` = silhouette), an optional `gallery` (first photo large, `{}` = "Photo coming soon") and its own social `links`. The open group tab is kept when switching year.

@@ -1,12 +1,12 @@
-# Render Blueprint for the POC/demo (Docker). See deploy/poc-docker.md.
+# Render Blueprint (Docker). See deploy/docker.md.
 services:
   - type: web
     name: buen-poc
     runtime: docker
     plan: free
-    region: singapore
+    region: thailand
     branch: main
-    dockerfilePath: ./deploy/docker/Dockerfile
+    dockerfilePath: ./Dockerfile
     dockerContext: .
     healthCheckPath: /
     autoDeploy: true

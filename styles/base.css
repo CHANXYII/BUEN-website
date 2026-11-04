@@ -1,0 +1,48 @@
+/* Thai letters only (unicode-range): Latin text and other languages keep Google Sans. size-adjust matches its small glyphs to Google Sans. */
+@font-face{font-family:'DB Adman X';src:url(fonts/DB-Adman-X.ttf) format('truetype');font-weight:400;font-display:swap;unicode-range:U+0E00-0E7F;size-adjust:125%;ascent-override:80%;descent-override:30%;line-gap-override:0%}
+@font-face{font-family:'DB Adman X';src:url(fonts/DB-Adman-X-Bd.ttf) format('truetype');font-weight:700;font-display:swap;unicode-range:U+0E00-0E7F;size-adjust:125%;ascent-override:80%;descent-override:30%;line-gap-override:0%}
+:root{--crimson:#b3122e;--gold:#d4af37;--ink:#fff;--muted:rgb(255 255 255/.62);--bg:#000;--line:rgb(255 255 255/.14);--stroke:rgb(255 255 255/.28);--glass:rgb(255 255 255/.04);--glass-2:rgb(255 255 255/.08);--crimson-a:rgb(179 18 46/.3);--gold-a:rgb(212 175 55/.14);--gold-a2:rgb(212 175 55/.3);--r:4px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;font:16px/1.65 'DB Adman X','Google Sans','Noto Sans Thai','Noto Sans Myanmar','Noto Sans Lao','Noto Sans SC','Microsoft YaHei','PingFang SC','Yu Gothic','Meiryo','Malgun Gothic',system-ui,sans-serif;font-optical-sizing:auto;color:var(--ink);background:var(--bg)}
+::selection{background:var(--gold-a2);color:#fff}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(24px,6vw,96px)}
+h1,h2,h3,h4{margin:0;line-height:1.1}
+h2{margin-bottom:.4em;font-size:clamp(1.7rem,3vw,2.4rem);letter-spacing:-.02em}
+:lang(th) *,:lang(my) *,:lang(lo) *{letter-spacing:0!important}
+.sub{color:var(--muted)}
+
+/* sections are numbered by CSS: 01, 02, ... (the hero is not counted) */
+main{counter-reset:sec;overflow-x:clip} /* full-width banners use 100vw; clip keeps the page from scrolling sideways */
+main>section:not(.hero){counter-increment:sec;padding:88px 0;border-top:1px solid var(--line)}
+main>section h2::before{content:"0" counter(sec);display:block;margin-bottom:14px;color:var(--gold);font-size:.8rem;font-weight:700;letter-spacing:.2em}
+.two{display:grid;gap:64px}
+@media (min-width:760px){.two{grid-template-columns:1fr 1fr}}
+
+/* buttons: flat, hairline, arrow */
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:10px 26px;border:1px solid var(--stroke);border-radius:var(--r);background:transparent;color:#fff;text-decoration:none;font:inherit;font-weight:700;cursor:pointer;transition:background .25s,border-color .25s}
+.btn::after{content:'\2192';transition:transform .25s}
+.btn:hover{background:var(--glass-2);border-color:#fff}
+.btn:hover::after{transform:translateX(4px)}
+.btn.primary{background:rgb(179 18 46/.5);border-color:rgb(179 18 46/.9)}
+.btn.primary:hover{background:rgb(179 18 46/.75)}
+.btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8}
+.btn.ig::after{content:'\2197'} /* social link: opens in a new tab */
+.btn.ig+.btn{margin-left:12px}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* scroll reveal: fade up, list items one after another */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+.reveal .item{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s;transition-delay:calc(var(--i,0) * 70ms)}
+.reveal.in .item{opacity:1;transform:none}
+
+.to-top{position:fixed;right:20px;bottom:20px;z-index:20;display:grid;place-items:center;width:48px;height:48px;border:1px solid var(--stroke);background:rgb(0 0 0/.55);backdrop-filter:blur(8px);color:#fff;text-decoration:none;font-size:1.2rem;opacity:0;transform:translateY(12px);pointer-events:none;transition:.3s}
+.to-top.show{opacity:1;transform:none;pointer-events:auto}
+.to-top:hover{border-color:var(--gold);color:var(--gold)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .reveal,.reveal .item{opacity:1;transform:none}
+}

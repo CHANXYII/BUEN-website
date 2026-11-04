@@ -1,6 +1,6 @@
 # Design notes
 
-Modern, editorial look: black base, white type, hairline dividers, crimson and gold used sparingly. No solid colour fills: tints are translucent (`--crimson-a`, `--gold-a`, `--glass`), all defined in `src/styles/base.css`.
+Modern, editorial look: black base, white type, hairline dividers, crimson and gold used sparingly. No solid colour fills: tints are translucent (`--crimson-a`, `--gold-a`, `--glass`), all defined in `styles/base.css`.
 
 - **Type-led:** big headlines, small gold uppercase labels, sections numbered automatically (01, 02, ...) by CSS counters.
 - **Lines, not boxes:** sections, lists and tabs are separated by 1px hairlines.

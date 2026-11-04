@@ -1,7 +1,8 @@
 state
 
-deploy/site/
-node_modules/
-
-.github
+.next/
+.github/workflows
 .impeccable
+out/
+node_modules/
+next-env.d.ts

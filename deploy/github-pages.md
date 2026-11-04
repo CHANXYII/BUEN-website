@@ -21,4 +21,6 @@ Progress and errors: the repo's **Actions** tab.
 
 Moving to an org later (e.g. `buen-ambassador.github.io`): transfer the repo to the org and rename it to `<org>.github.io`.
 
-Local check: `npm run preview` (builds, then serves `deploy/site`).
+The workflow reads the Pages address and sets `BASE_PATH`, so the site works both at `https://chanxyii.github.io/BUEN-website/` (before the rename) and at `https://chanxyii.github.io` (after).
+
+Local check: `npm run preview` (builds, then serves `out/`).

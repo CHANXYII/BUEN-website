@@ -2,25 +2,26 @@
 
 How the site is built and how to edit each section.
 
-Structure: every section has the same three files:
+Each section has a content file (what it says), a component (how it works) and a CSS file (how it looks).
+Text and people changes only need the content file.
 
-| Section | Markup | Style | Behaviour | Guide |
+| Section | Content | Component | Style | Guide |
 |---|---|---|---|---|
-| Header | `src/sections/header.html` | `src/styles/header.css` | `app/sections/header.js` | [header.md](header.md) |
-| Hero | `src/sections/hero.html` | `src/styles/hero.css` | `app/sections/hero.js` | [hero.md](hero.md) |
-| Ambassador | `src/sections/ambassador.html` | `src/styles/ambassador.css` | `app/sections/ambassador.js` | [ambassador.md](ambassador.md) |
-| Ambassador profile | `src/sections/ambassador-profile.html` | `src/styles/ambassador-profile.css` | `app/sections/ambassador-profile.js` | [ambassador-profile.md](ambassador-profile.md) |
-| Committee | `src/sections/committee.html` | `src/styles/committee.css` | `app/sections/committee.js` | [committee.md](committee.md) |
-| News | `src/sections/news.html` | `src/styles/news.css` | `app/sections/news.js` | [news.md](news.md) |
-| Contact | `src/sections/contact.html` | `src/styles/contact.css` | `app/sections/contact.js` | [contact.md](contact.md) |
-| Footer | `src/sections/footer.html` | `src/styles/footer.css` | `app/sections/footer.js` | [footer.md](footer.md) |
+| Header | `content/site.js` | `components/Header.jsx` | `styles/header.css` | [header.md](header.md) |
+| Hero | `content/hero.js` | `components/Hero.jsx` | `styles/hero.css` | [hero.md](hero.md) |
+| Ambassador | `content/ambassador.js` | `components/Ambassador.jsx` | `styles/ambassador.css` | [ambassador.md](ambassador.md) |
+| Ambassador profile | `content/ambassador.js` | `components/ProfileDialog.jsx` | `styles/ambassador-profile.css` | [ambassador-profile.md](ambassador-profile.md) |
+| Committee | `content/committee.js` | `components/Committee.jsx` | `styles/committee.css` | [committee.md](committee.md) |
+| News | `content/news.js` | `components/News.jsx` | `styles/news.css` | [news.md](news.md) |
+| Contact | `content/site.js` | `components/Contact.jsx` | `styles/contact.css` | [contact.md](contact.md) |
+| Footer | `content/site.js` | `components/Footer.jsx` | `styles/footer.css` | [footer.md](footer.md) |
 
-- `src/` – content, styles, `index.html` shell, `assets/` (images)
-- `app/` – `build.mjs` (joins everything into `deploy/site/`), `lib.js` (helpers), per-section scripts
-- `deploy/` – hosting docs and build output
-- Needs Node 18+. No dependencies. `npm run build` / `npm run preview`.
-- Languages: see [i18n.md](i18n.md)
+- Shared pieces (cards, banners, tabs, galleries, social buttons, icons): `components/ui.jsx`.
+- Scroll fade-in: wrap a block in `<Reveal>` (`components/Reveal.jsx`).
+- Page order: `components/Home.jsx`. Page shell (fonts, CSS imports): `app/layout.js`.
+- Major names shared by all member lists: `content/majors.js`.
+- Languages: see [i18n.md](i18n.md). Design notes: [design.md](design.md).
 
-**Add a section:** create the three files, add the name to the list in `app/build.mjs`, add a nav link in `header.html`.
+**Add a section:** create `components/<Name>.jsx` (wrap it in `<Reveal as="section" id="...">` to fade in), a `styles/<name>.css` imported in `app/layout.js`, add it to `components/Home.jsx`, and add a nav link in `content/site.js`.
 
-**Content status:** ambassadors, committee, news, email and address are **placeholders** (marked `TODO`). Replace with official info before launch.
+**Add a photo:** put it in `public/assets/...` and use the path from `/assets/...` in the content file. Paths are case-sensitive on the server (`.JPG` ≠ `.jpg`).

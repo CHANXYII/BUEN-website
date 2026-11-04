@@ -2,8 +2,15 @@
   "name": "buen-website",
   "private": true,
   "type": "module",
+  "engines": { "node": ">=20.9" },
   "scripts": {
-    "build": "node app/build.mjs",
-    "preview": "node app/build.mjs && npx --yes serve deploy/site"
+    "dev": "next dev -p 3500",
+    "build": "next build",
+    "preview": "next build && npx --yes serve out -l 3500"
+  },
+  "dependencies": {
+    "next": "16.4.5",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
   }
 }
