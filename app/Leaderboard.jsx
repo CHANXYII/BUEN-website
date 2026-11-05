@@ -102,6 +102,7 @@ export default function Leaderboard({ kicker, title, updated, countdown, worksho
       <div className="lb-head">
         <p className="eyebrow">{t(kicker)}</p>
         <h1>{t(title)}</h1>
+        <p className="lb-subtitle">Track live scores and rankings in real-time</p>
         {updated && <p className="lead"><span>{t('Updated')}</span> <span>{updated}</span></p>}
         {countdown?.to && <Countdown to={countdown.to} label={t(countdown.label || '')} t={t} />}
       </div>
