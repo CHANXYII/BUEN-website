@@ -1,6 +1,5 @@
-// Static export to out/ for GitHub Pages. Project page lives under /BUEN-website: build with BASE_PATH=/BUEN-website (empty for a custom domain).
+// Runs as a Node server (`npm run build && npm start`): judge login and score saving need one, so no static export.
 export default {
-  output: 'export',
   basePath: process.env.BASE_PATH || '',
   env: { BASE_PATH: process.env.BASE_PATH || '' },
 };

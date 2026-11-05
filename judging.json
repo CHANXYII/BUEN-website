@@ -1,0 +1,9 @@
+{
+  "title": "Judge scoring",
+  "criteria": [
+    { "id": "idea", "name": "Idea", "max": 10 },
+    { "id": "design", "name": "Engineering design", "max": 10 },
+    { "id": "build", "name": "Prototype", "max": 10 },
+    { "id": "pitch", "name": "Presentation", "max": 10 }
+  ]
+}

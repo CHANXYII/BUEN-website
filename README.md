@@ -1,37 +1,42 @@
-# BUEN Leaderboard
+# BUEN Judge Scoring
 
-Competition leaderboard of the **School of Engineering, Bangkok University**. One page built with [Next.js](https://nextjs.org) (App Router) and exported as static HTML. Results are read from JSON at build time.
+Judge scoring app for the **School of Engineering, Bangkok University** competition. [Next.js](https://nextjs.org) (App Router) running as a Node server.
 
-- **Theme:** black background with crimson, white and gold. Font: Google Sans (Noto Sans Thai for Thai).
-- **Languages:** 12, from hardcoded dictionaries in `app/i18n/*.js` (English text is the key; add a line to each file to translate a new word).
-- **Hosting:** GitHub Pages, own domain/site separate from the main website.
+- **Login:** judges sign in with a name + password. Sessions are a signed, HTTP-only cookie (12 h).
+- **Participants:** `/` lists everyone with your score, how many judges scored them, and the average.
+- **Score board:** click a participant (`/p/BUEN01`) to enter your score per criterion and see every judge's scores + the average.
 
-## Update the results
+## Setup
 
-Edit the participant files in `docs/participants/` (`BUEN01.json` ... `BUEN25.json`) and push to `main`. Format and rules: [docs/participants.md](docs/participants.md).
-
-## Run on localhost
-
-Needs [Node.js](https://nodejs.org) 20+. Run `npm install` once.
+Needs [Node.js](https://nodejs.org) 20+. Run `npm install` once, then create `.env.local`:
 
 ```bash
-npm run dev       # live reload on http://localhost:3000
-npm run build     # static export to out/
-npm run preview   # build, then serve out/
+JUDGES=alice:secret1,bob:secret2      # name:password, comma-separated. Remove a name to revoke that judge.
+SESSION_SECRET=<long random string>   # e.g. node -e "console.log(crypto.randomBytes(32).toString('hex'))"
 ```
+
+```bash
+npm run dev               # http://localhost:3000
+npm run build && npm start  # production (cookie is HTTPS-only in production: serve behind HTTPS)
+```
+
+## Data
+
+- `judging.json`: page title + scoring criteria (`{ "id", "name", "max" }`). Never rename an `id` after scoring starts.
+- `docs/participants/BUENxx.json`: one file per participant (`id`, `name`, `major`). Optional photo: `public/photos/BUENxx.jpg`. See [docs/participants.md](docs/participants.md).
+- `data/scores.json`: saved scores, written by the app (git-ignored). **Back it up**; it is the only copy.
 
 ## Structure
 
 ```
-app/           layout.jsx, page.jsx (reads + ranks data at build), Leaderboard.jsx (UI), leaderboard.css, i18n/
-leaderboard/data.json   title + workshop list
-src/styles/base.css   shared colours and typography
-public/        static files (photos/, CNAME) copied into out/
-deploy/        hosting notes (github-pages.md, custom-domain.md)
-docs/          participant data guide + participants/BUENxx.json
-.github/workflows/pages.yml   auto-deploy on push to main
+app/lib.js        config, participants, judge auth, score storage
+app/actions.js    login / logout / save (server actions)
+app/page.jsx      participant list
+app/p/[id]/       score board for one participant
+app/login/        login page
+app/judge.css     styles (on top of src/styles/base.css)
 ```
 
 ## Deploy
 
-Pushing to `main` publishes to GitHub Pages. One-time setup: repo **Settings → Pages → Source: GitHub Actions**. Custom domain: [deploy/custom-domain.md](deploy/custom-domain.md).
+Needs a Node host (a VM, Render, Railway, ...), not GitHub Pages: login and saving scores run on the server. The disk must be persistent so `data/scores.json` survives restarts.

@@ -4,3 +4,5 @@ state
 .next/
 out/
 node_modules/
+data/
+.env*.local

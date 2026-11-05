@@ -1,27 +1,38 @@
-// Runs at build time: merges leaderboard/data.json with docs/participants/BUENxx.json, ranks, picks fast-tracks.
-import { readFileSync, readdirSync, existsSync } from 'node:fs';
-import Leaderboard from './Leaderboard';
+// Participant list for the logged-in judge. Click a name to open their score board.
+import Link from 'next/link';
+import { requireJudge, config, participants, scores, total } from './lib';
+import Bar, { Pic } from './Bar';
 
-const read = p => JSON.parse(readFileSync(p, 'utf8'));
-const pts = (p, w) => +p.points?.[w.id] || 0;
-
-export default function Page() {
-  const d = read('leaderboard/data.json');
-  const ws = d.workshops || [];
-  const participants = readdirSync('docs/participants').filter(f => f.endsWith('.json')).sort().map(f => {
-    const p = read(`docs/participants/${f}`);
-    if (p.id !== f.slice(0, -5)) throw new Error(`${f}: id "${p.id}" must match the file name`);
-    const ext = ['jpg', 'jpeg', 'png', 'webp'].find(e => existsSync(`public/photos/${p.id}.${e}`));
-    if (ext) p.photo = `${process.env.BASE_PATH}/photos/${p.id}.${ext}`; // optional photo: public/photos/BUENxx.(jpg|png|webp)
-    return p;
-  });
-  // Total = sum of workshop points; ranks are unique. Tiebreak: latest workshop first, then ID.
-  const rows = participants.map(p => ({ ...p, total: ws.reduce((n, w) => n + pts(p, w), 0) }))
-    .sort((a, b) => b.total - a.total || [...ws].reverse().reduce((r, w) => r || pts(b, w) - pts(a, w), 0) || a.id.localeCompare(b.id));
-  // Fast-track = exactly one per workshop: highest points; a tie goes to the better overall rank (rows are sorted). 0 points never wins.
-  const win = Object.fromEntries(ws.map(w => {
-    const top = rows.reduce((a, p) => (pts(p, w) > (a ? pts(a, w) : 0) ? p : a), null);
-    return [w.id, top?.id ?? null];
-  }));
-  return <Leaderboard kicker={d.kicker} title={d.title} updated={d.updated} countdown={d.countdown} workshops={ws} rows={rows} win={win} />;
+export default async function Home() {
+  const me = await requireJudge();
+  const { title, criteria } = config();
+  const s = scores(), max = total(Object.fromEntries(criteria.map(c => [c.id, c.max])), criteria);
+  return (<>
+    <Bar me={me} />
+    <main className="wrap">
+      <div className="lb-head">
+        <p className="eyebrow">Participants</p>
+        <h1>{title}</h1>
+        <p className="lead">Pick a participant to score. Max {max} points.</p>
+      </div>
+      <div className="lb-scroll"><table className="lb">
+        <thead><tr><th></th><th>Participant</th><th className="num">Your score</th><th className="num">Judges</th><th className="num">Average</th></tr></thead>
+        <tbody>{participants().map(p => {
+          const by = Object.values(s[p.id] || {}), mine = s[p.id]?.[me];
+          return (
+            <tr key={p.id}>
+              <td className="pic"><Pic p={p} /></td>
+              <td><Link className="who" href={`/p/${p.id}`}>
+                <span className="id">{p.id}</span><strong translate="no">{p.name}</strong>
+                {p.major && <small>{p.major}</small>}
+              </Link></td>
+              <td className="num">{mine ? total(mine, criteria) : '–'}</td>
+              <td className="num">{by.length}</td>
+              <td className="num">{by.length ? (by.reduce((n, v) => n + total(v, criteria), 0) / by.length).toFixed(1) : '–'}</td>
+            </tr>
+          );
+        })}</tbody>
+      </table></div>
+    </main>
+  </>);
 }
