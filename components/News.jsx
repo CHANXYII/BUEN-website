@@ -1,31 +1,26 @@
-// News & Events. Items: content/news.js.
-import { feature, items } from '@/content/news';
-import { asset } from '@/lib/asset';
+import { getFeaturedStories } from '@/lib/featured-news';
+import FeaturedNewsSlider from './FeaturedNewsSlider';
 import { T } from './Lang';
 import Reveal from './Reveal';
 
-export default function News() {
+export default async function News() {
+  const stories = await getFeaturedStories();
   return (
     <Reveal as="section" className="news" id="news">
       <div className="wrap">
         <h2><T>News &amp; Events</T></h2>
-        <p className="sub"><T>Sample items. TODO: replace with real announcements.</T></p>
-
-        <article className="feature">
-          <div className="feature-img" style={feature.image ? { '--img': `url(${asset(feature.image)})` } : undefined}></div>
-          <div className="feature-text">
-            <p className="tag"><T>{feature.tag}</T></p>
-            <time dateTime={feature.date}><T>{feature.dateLabel}</T></time>
-            <h3><T>{feature.title}</T></h3>
-            <p><T>{feature.text}</T></p>
-            <a className="btn primary" href={feature.link} target="_blank" rel="noopener"><T>Read on BU website</T></a>
+        <p className="sub"><T>Latest stories from Bangkok University</T></p>
+        {stories.length > 0 ? (
+          <FeaturedNewsSlider stories={stories} />
+        ) : (
+          <div className="feature">
+            <div className="feature-img"></div>
+            <div className="feature-text">
+              <p className="tag"><T>Featured story</T></p>
+              <h3><T>Latest stories are unavailable</T></h3>
+            </div>
           </div>
-        </article>
-
-        <h3 className="group more"><T>More news</T></h3>
-        <ul className="list">
-          {items.map(n => <li key={n.title}><time dateTime={n.date}><T>{n.dateLabel}</T></time><h3><T>{n.title}</T></h3></li>)}
-        </ul>
+        )}
       </div>
     </Reveal>
   );
