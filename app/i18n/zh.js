@@ -1,4 +1,4 @@
-DICT.zh = {
+export default {
   "Leaderboard": "排行榜",
   "Competition": "比赛",
   "Main site": "主站",
@@ -13,5 +13,12 @@ DICT.zh = {
   "No results yet.": "暂无结果。",
   "Could not load results.": "无法加载结果。",
   "Eliminated": "已淘汰",
+  "Final round": "决赛",
+  "Days": "天",
+  "Hours": "小时",
+  "Minutes": "分钟",
+  "Seconds": "秒",
+  "Time's up": "时间到",
+  "Top 3": "前三名",
   "title": "排行榜 | 曼谷大学工程学院"
 };

@@ -7,6 +7,6 @@ One-time setup:
 After that, every push to `main` builds and publishes automatically
 (see `.github/workflows/pages.yml`). Site URL: `https://<user-or-org>.github.io/BUEN-website/`.
 
-All asset links are relative, so the `/BUEN-website/` sub-path works without config.
+The site lives under `/BUEN-website/`, so CI must build with `BASE_PATH=/BUEN-website npm run build` and publish `out/`.
 
-Local check: `npm run preview` (builds, then serves `deploy/site`).
+Local check: `npm run preview` (builds, then serves `out/`).

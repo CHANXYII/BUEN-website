@@ -1,4 +1,4 @@
-DICT.es = {
+export default {
   "Leaderboard": "Clasificación",
   "Competition": "Competencia",
   "Main site": "Sitio principal",
@@ -13,5 +13,12 @@ DICT.es = {
   "No results yet.": "Aún no hay resultados.",
   "Could not load results.": "No se pudieron cargar los resultados.",
   "Eliminated": "Eliminados",
+  "Final round": "Ronda final",
+  "Days": "Días",
+  "Hours": "Horas",
+  "Minutes": "Minutos",
+  "Seconds": "Segundos",
+  "Time's up": "Se acabó el tiempo",
+  "Top 3": "Top 3",
   "title": "Clasificación | Escuela de Ingeniería, Universidad de Bangkok"
 };

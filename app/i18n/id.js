@@ -1,4 +1,4 @@
-DICT.id = {
+export default {
   "Leaderboard": "Papan Peringkat",
   "Competition": "Kompetisi",
   "Main site": "Situs utama",
@@ -13,5 +13,12 @@ DICT.id = {
   "No results yet.": "Belum ada hasil.",
   "Could not load results.": "Gagal memuat hasil.",
   "Eliminated": "Tereliminasi",
+  "Final round": "Babak final",
+  "Days": "Hari",
+  "Hours": "Jam",
+  "Minutes": "Menit",
+  "Seconds": "Detik",
+  "Time's up": "Waktu habis",
+  "Top 3": "3 Teratas",
   "title": "Papan Peringkat | Fakultas Teknik, Universitas Bangkok"
 };

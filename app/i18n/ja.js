@@ -1,4 +1,4 @@
-DICT.ja = {
+export default {
   "Leaderboard": "リーダーボード",
   "Competition": "コンペティション",
   "Main site": "メインサイト",
@@ -13,5 +13,12 @@ DICT.ja = {
   "No results yet.": "まだ結果がありません。",
   "Could not load results.": "結果を読み込めませんでした。",
   "Eliminated": "敗退",
+  "Final round": "決勝",
+  "Days": "日",
+  "Hours": "時間",
+  "Minutes": "分",
+  "Seconds": "秒",
+  "Time's up": "終了",
+  "Top 3": "トップ3",
   "title": "リーダーボード | バンコク大学 工学部"
 };

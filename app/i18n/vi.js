@@ -1,4 +1,4 @@
-DICT.vi = {
+export default {
   "Leaderboard": "Bảng xếp hạng",
   "Competition": "Cuộc thi",
   "Main site": "Trang chính",
@@ -13,5 +13,12 @@ DICT.vi = {
   "No results yet.": "Chưa có kết quả.",
   "Could not load results.": "Không thể tải kết quả.",
   "Eliminated": "Bị loại",
+  "Final round": "Vòng chung kết",
+  "Days": "Ngày",
+  "Hours": "Giờ",
+  "Minutes": "Phút",
+  "Seconds": "Giây",
+  "Time's up": "Hết giờ",
+  "Top 3": "Top 3",
   "title": "Bảng xếp hạng | Trường Kỹ thuật, Đại học Bangkok"
 };

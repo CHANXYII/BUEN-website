@@ -1,4 +1,4 @@
-DICT.ko = {
+export default {
   "Leaderboard": "리더보드",
   "Competition": "대회",
   "Main site": "메인 사이트",
@@ -13,5 +13,12 @@ DICT.ko = {
   "No results yet.": "아직 결과가 없습니다.",
   "Could not load results.": "결과를 불러올 수 없습니다.",
   "Eliminated": "탈락",
+  "Final round": "결승",
+  "Days": "일",
+  "Hours": "시간",
+  "Minutes": "분",
+  "Seconds": "초",
+  "Time's up": "종료",
+  "Top 3": "상위 3명",
   "title": "리더보드 | 방콕대학교 공과대학"
 };

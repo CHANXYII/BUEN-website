@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "concepts/member-panel.html"
+        ],
+        "createdAt": "2026-11-04T06:05:43.204Z",
+        "reason": "Concept E is a named direction whose whole proposition is the scrolling letterform marquee, continuing the site's existing .banner-marquee; this file is a concept-comparison prototype, not a shipped surface."
+      }
+    ]
+  }
+}

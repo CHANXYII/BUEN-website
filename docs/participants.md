@@ -16,6 +16,7 @@ Ranking = **sum of each participant's workshop points**. After each workshop, ad
   "kicker": "Competition",
   "title": "Leaderboard",
   "updated": "28 Oct 2026",
+  "countdown": { "label": "Final round", "to": "2026-11-30T17:00:00+07:00" },
   "workshops": [
     { "id": "w1", "name": "Workshop 1" },
     { "id": "w2", "name": "Workshop 2" }
@@ -34,6 +35,8 @@ Ranking = **sum of each participant's workshop points**. After each workshop, ad
 | `kicker` | yes | Small gold label above the title |
 | `title` | yes | Page headline |
 | `updated` | no | Free text shown as "Updated ...". `""` hides it |
+| `countdown.to` | no | Countdown target, ISO date **with timezone** (`+07:00` = Bangkok). Remove `countdown` to hide the clock. Shows "Time's up" once passed |
+| `countdown.label` | no | Small label above the clock |
 | `workshops[].id` | yes | Short unique key (`w1`, `w2`, ...). Used in `points`. Never rename after points are entered |
 | `workshops[].name` | yes | Column heading |
 | `id` | yes | `BUEN01`-`BUEN25`. **Must equal the file name** (the build fails otherwise) |
@@ -43,12 +46,16 @@ Ranking = **sum of each participant's workshop points**. After each workshop, ad
 
 ## Profile photo
 
-Optional. Put a square-ish photo at `docs/participants/photos/BUEN01.jpg` (`.jpg`, `.jpeg`, `.png` or `.webp`, the file name = the ID, ~300x300 px, under 200 KB). No photo shows a round placeholder with the number. Photos are public: get the participant's consent.
+Optional. Put a square-ish photo at `public/photos/BUEN01.jpg` (`.jpg`, `.jpeg`, `.png` or `.webp`, the file name = the ID, ~300x300 px, under 200 KB). No photo shows a round placeholder with the number. Photos are public: get the participant's consent.
 
 ## Add a workshop
 
 1. Add `{ "id": "w5", "name": "..." }` to `workshops` in `leaderboard/data.json` (a new column appears).
 2. Add `"w5": <points>` to each participant file.
+
+## Podium
+
+The top 3 are shown on a podium (2nd, 1st, 3rd) above the table, with their total and workshop points. The table starts at rank 4.
 
 ## Fast-track
 
@@ -56,7 +63,7 @@ Automatic: **exactly one per workshop**, the participant with the highest points
 
 ## Elimination
 
-The top 16 are finalists. Rank 17 and below is eliminated: those rows are greyed out and sit under a dashed red **Eliminated** line. Ranks are unique, so exactly 16 people stay in. The cut is `CUT = 16` in `leaderboard/leaderboard.js`.
+The top 16 are finalists. Rank 17 and below is eliminated: those rows are greyed out and sit under a dashed red **Eliminated** line. Ranks are unique, so exactly 16 people stay in. The cut is `CUT = 16` in `app/Leaderboard.jsx`.
 
 ## Rules
 
@@ -73,5 +80,5 @@ The file is public. Use the display name the participant agreed to (first name +
 ## Before you push
 
 1. Valid JSON: run `npm run build`. It stops with the file name if a JSON file is broken or an ID does not match.
-2. Preview: `npm run preview` and check the table.
+2. Preview: `npm run dev` (live reload) and check the table.
 3. Replace the sample names and points with real data.

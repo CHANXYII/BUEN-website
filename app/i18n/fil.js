@@ -1,4 +1,4 @@
-DICT.fil = {
+export default {
   "Leaderboard": "Leaderboard",
   "Competition": "Kompetisyon",
   "Main site": "Pangunahing site",
@@ -13,5 +13,12 @@ DICT.fil = {
   "No results yet.": "Wala pang resulta.",
   "Could not load results.": "Hindi ma-load ang mga resulta.",
   "Eliminated": "Na-eliminate",
+  "Final round": "Huling round",
+  "Days": "Araw",
+  "Hours": "Oras",
+  "Minutes": "Minuto",
+  "Seconds": "Segundo",
+  "Time's up": "Tapos na ang oras",
+  "Top 3": "Top 3",
   "title": "Leaderboard | School of Engineering, Bangkok University"
 };

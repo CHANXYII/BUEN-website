@@ -1,4 +1,4 @@
-DICT.th = {
+export default {
   "Leaderboard": "ตารางอันดับ",
   "Competition": "การแข่งขัน",
   "Main site": "เว็บไซต์หลัก",
@@ -13,5 +13,12 @@ DICT.th = {
   "No results yet.": "ยังไม่มีผลคะแนน",
   "Could not load results.": "โหลดผลคะแนนไม่สำเร็จ",
   "Eliminated": "ตกรอบ",
+  "Final round": "รอบชิงชนะเลิศ",
+  "Days": "วัน",
+  "Hours": "ชั่วโมง",
+  "Minutes": "นาที",
+  "Seconds": "วินาที",
+  "Time's up": "หมดเวลา",
+  "Top 3": "3 อันดับแรก",
   "title": "ตารางอันดับ | คณะวิศวกรรมศาสตร์ มหาวิทยาลัยกรุงเทพ"
 };

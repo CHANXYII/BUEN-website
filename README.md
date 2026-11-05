@@ -1,9 +1,9 @@
 # BUEN Leaderboard
 
-Competition leaderboard of the **School of Engineering, Bangkok University**. One static page: plain HTML, CSS and JavaScript, no framework, no dependencies. Node.js is only used to assemble the files.
+Competition leaderboard of the **School of Engineering, Bangkok University**. One page built with [Next.js](https://nextjs.org) (App Router) and exported as static HTML. Results are read from JSON at build time.
 
 - **Theme:** black background with crimson, white and gold. Font: Google Sans (Noto Sans Thai for Thai).
-- **Languages:** 12, from hardcoded dictionaries in `app/i18n/` (English text is the key; add a line to each file to translate a new word).
+- **Languages:** 12, from hardcoded dictionaries in `app/i18n/*.js` (English text is the key; add a line to each file to translate a new word).
 - **Hosting:** GitHub Pages, own domain/site separate from the main website.
 
 ## Update the results
@@ -12,21 +12,21 @@ Edit the participant files in `docs/participants/` (`BUEN01.json` ... `BUEN25.js
 
 ## Run on localhost
 
-Needs [Node.js](https://nodejs.org) 18+.
+Needs [Node.js](https://nodejs.org) 20+. Run `npm install` once.
 
 ```bash
-npm run preview   # build, then serve deploy/site
-npm run build     # build only
+npm run dev       # live reload on http://localhost:3000
+npm run build     # static export to out/
+npm run preview   # build, then serve out/
 ```
-
-No live reload: rebuild after editing.
 
 ## Structure
 
 ```
-leaderboard/   index.html, leaderboard.css, leaderboard.js, data.json
+app/           layout.jsx, page.jsx (reads + ranks data at build), Leaderboard.jsx (UI), leaderboard.css, i18n/
+leaderboard/data.json   title + workshop list
 src/styles/base.css   shared colours and typography
-app/build.mjs  builds into deploy/site/
+public/        static files (photos/, CNAME) copied into out/
 deploy/        hosting notes (github-pages.md, custom-domain.md)
 docs/          participant data guide + participants/BUENxx.json
 .github/workflows/pages.yml   auto-deploy on push to main

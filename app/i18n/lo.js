@@ -1,4 +1,4 @@
-DICT.lo = {
+export default {
   "Leaderboard": "ຕາຕະລາງອັນດັບ",
   "Competition": "ການແຂ່ງຂັນ",
   "Main site": "ເວັບໄຊຫຼັກ",
@@ -13,5 +13,12 @@ DICT.lo = {
   "No results yet.": "ຍັງບໍ່ມີຜົນ.",
   "Could not load results.": "ບໍ່ສາມາດໂຫຼດຜົນໄດ້.",
   "Eliminated": "ຕົກຮອບ",
+  "Final round": "ຮອບຊິງຊະນະເລີດ",
+  "Days": "ມື້",
+  "Hours": "ຊົ່ວໂມງ",
+  "Minutes": "ນາທີ",
+  "Seconds": "ວິນາທີ",
+  "Time's up": "ໝົດເວລາ",
+  "Top 3": "3 ອັນດັບທຳອິດ",
   "title": "ຕາຕະລາງອັນດັບ | ຄະນະວິສະວະກຳສາດ, ມະຫາວິທະຍາໄລບາງກອກ"
 };

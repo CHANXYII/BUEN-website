@@ -2,6 +2,10 @@
   "kicker": "Competition",
   "title": "Leaderboard",
   "updated": "",
+  "countdown": {
+    "label": "Final round",
+    "to": "2026-11-30T17:00:00+07:00"
+  },
   "workshops": [
     {
       "id": "w1",

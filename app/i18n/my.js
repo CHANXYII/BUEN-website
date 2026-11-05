@@ -1,4 +1,4 @@
-DICT.my = {
+export default {
   "Leaderboard": "အဆင့်သတ်မှတ်ဇယား",
   "Competition": "ပြိုင်ပွဲ",
   "Main site": "ပင်မဝဘ်ဆိုက်",
@@ -13,5 +13,12 @@ DICT.my = {
   "No results yet.": "ရလဒ်မရှိသေးပါ။",
   "Could not load results.": "ရလဒ်များကို မဖွင့်နိုင်ပါ။",
   "Eliminated": "ထွက်ရသူများ",
+  "Final round": "နောက်ဆုံးအဆင့်",
+  "Days": "ရက်",
+  "Hours": "နာရီ",
+  "Minutes": "မိနစ်",
+  "Seconds": "စက္ကန့်",
+  "Time's up": "အချိန်ပြည့်ပြီ",
+  "Top 3": "ထိပ်ဆုံး ၃ ဦး",
   "title": "အဆင့်သတ်မှတ်ဇယား | အင်ဂျင်နီယာကျောင်း၊ ဘန်ကောက်တက္ကသိုလ်"
 };

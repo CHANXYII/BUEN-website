@@ -1,4 +1,4 @@
-DICT.fr = {
+export default {
   "Leaderboard": "Classement",
   "Competition": "Compétition",
   "Main site": "Site principal",
@@ -13,5 +13,12 @@ DICT.fr = {
   "No results yet.": "Aucun résultat pour l’instant.",
   "Could not load results.": "Impossible de charger les résultats.",
   "Eliminated": "Éliminés",
+  "Final round": "Finale",
+  "Days": "Jours",
+  "Hours": "Heures",
+  "Minutes": "Minutes",
+  "Seconds": "Secondes",
+  "Time's up": "Temps écoulé",
+  "Top 3": "Top 3",
   "title": "Classement | École d’ingénierie, Université de Bangkok"
 };
