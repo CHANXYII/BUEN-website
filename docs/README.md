@@ -2,8 +2,8 @@
 
 How the site is built and how to edit each section.
 
-Each section has a content file (what it says), a component (how it works) and a CSS file (how it looks).
-Text and people changes only need the content file.
+Most sections have a content file (what they say), a component (how they work) and a CSS file (how they look). News is scraped from the BU website during the static build.
+Text and people changes usually need only the content file.
 
 | Section | Content | Component | Style | Guide |
 |---|---|---|---|---|
@@ -12,7 +12,7 @@ Text and people changes only need the content file.
 | Ambassador | `content/ambassador.js` | `components/Ambassador.jsx` | `styles/ambassador.css` | [ambassador.md](ambassador.md) |
 | Ambassador profile | `content/ambassador.js` | `components/ProfileDialog.jsx` | `styles/ambassador-profile.css` | [ambassador-profile.md](ambassador-profile.md) |
 | Committee | `content/committee.js` | `components/Committee.jsx` | `styles/committee.css` | [committee.md](committee.md) |
-| News | `content/news.js` | `components/News.jsx` | `styles/news.css` | [news.md](news.md) |
+| News | BU featured stories (build-time scrape) | `components/News.jsx` | `styles/news.css` | [news.md](news.md) |
 | Contact | `content/site.js` | `components/Contact.jsx` | `styles/contact.css` | [contact.md](contact.md) |
 | Footer | `content/site.js` | `components/Footer.jsx` | `styles/footer.css` | [footer.md](footer.md) |
 
