@@ -123,7 +123,6 @@ export default {
   'Apply now': 'สมัครเรียน',
   'Computer Engineering': 'วิศวกรรมคอมพิวเตอร์',
   'Industrial Engineering': 'วิศวกรรมอุตสาหการ',
-  'News & Events': 'ข่าวและกิจกรรม',
   'Latest stories from Bangkok University': 'ข่าวล่าสุดจากมหาวิทยาลัยกรุงเทพ',
   'Featured story': 'ข่าวเด่น',
   'Read full story': 'อ่านข่าวฉบับเต็ม',

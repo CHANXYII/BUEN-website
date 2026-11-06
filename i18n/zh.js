@@ -104,7 +104,6 @@ export default {
   'Apply now': '立即申请',
   'Computer Engineering': '计算机工程',
   'Industrial Engineering': '工业工程',
-  'News & Events': '新闻与活动',
   'Latest stories from Bangkok University': '曼谷大学最新新闻',
   'Featured story': '精选新闻',
   'Read full story': '阅读全文',
