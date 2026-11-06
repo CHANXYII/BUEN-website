@@ -25,9 +25,9 @@ export const years = [
         id: 'committee',
         label: 'Committee',
         members: [
-          { name: 'Nawat Tanunchai', positions: ['Vice President'], major: EE, year: 'Year 2' },
-          { name: 'Jiraphat Phanphuet', positions: ['Public Relations Administrator'], major: CE, year: 'Year 2' },
-          { name: 'Monchanok Thepmanothaisakul', positions: ['Student Welfare'], major: CE, year: 'Year 2' },
+          { photo: '/assets/staffbuen/2026/committee/02_staff.png', name: 'Nawat Tanunchai', positions: ['Vice President'], major: EE, year: 'Year 2' },
+          { photo: '/assets/staffbuen/2026/committee/03_staff.png', name: 'Jiraphat Phanphuet', positions: ['Public Relations Administrator'], major: CE, year: 'Year 2' },
+          { photo: '/assets/staffbuen/2026/committee/04_staff.png', name: 'Monchanok Thepmanothaisakul', positions: ['Student Welfare'], major: CE, year: 'Year 2' },
         ],
         gallery: placeholders(6),
         links: [
