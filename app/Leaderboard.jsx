@@ -12,12 +12,78 @@ const HTML_LANG = { zh: 'zh-Hans' };
 const TITLE = 'Leaderboard | School of Engineering, Bangkok University';
 const CUT = 16; // top 16 are finalists; rank 17 and below is eliminated
 const MAIN = 'https://www.bu.ac.th/th/engineering';
+const PARTICIPANT_KEY = 'buen-participant-id';
+const ENTERED_KEY = 'buen-leaderboard-entered';
 
 export default function Leaderboard({ kicker, title, updated, countdown, workshops: ws, rows, win }) {
   const [lang, setLang] = useState('en');
   const [open, setOpen] = useState(false);
+  const [participantId, setParticipantId] = useState('');
+  const [participant, setParticipant] = useState(null);
+  const [hasEntered, setHasEntered] = useState(false);
+  const [authReady, setAuthReady] = useState(false);
+  const [loginError, setLoginError] = useState('');
   const box = useRef(), btn = useRef(), cv = useRef();
   const t = s => (lang === 'en' ? s : DICT[lang][s] ?? s);
+
+  useEffect(() => {
+    try {
+      const savedId = localStorage.getItem(PARTICIPANT_KEY);
+      const index = rows.findIndex(p => p.id.toUpperCase() === savedId?.toUpperCase());
+      if (index !== -1) {
+        setParticipant({ person: rows[index], rank: index + 1 });
+        setParticipantId(rows[index].id);
+        setHasEntered(localStorage.getItem(ENTERED_KEY) === 'true');
+      }
+    } catch {
+      setLoginError('ไม่สามารถอ่านสถานะการเข้าสู่ระบบจากอุปกรณ์นี้ได้');
+    } finally {
+      setAuthReady(true);
+    }
+  }, [rows]);
+
+  const submitParticipantId = e => {
+    e.preventDefault();
+    const normalizedId = participantId.trim().toUpperCase();
+    const index = rows.findIndex(p => p.id.toUpperCase() === normalizedId);
+    if (index === -1) {
+      setLoginError('ไม่พบรหัสผู้เข้าแข่งขันในระบบ');
+      return;
+    }
+    const currentParticipant = { person: rows[index], rank: index + 1 };
+    setParticipant(currentParticipant);
+    setParticipantId(rows[index].id);
+    setLoginError('');
+    setHasEntered(false);
+    try {
+      localStorage.setItem(PARTICIPANT_KEY, rows[index].id);
+      localStorage.removeItem(ENTERED_KEY);
+    } catch {
+      setLoginError('เข้าสู่ระบบแล้ว แต่ไม่สามารถบันทึกสถานะบนอุปกรณ์นี้ได้');
+    }
+  };
+
+  const enterLeaderboard = () => {
+    try {
+      localStorage.setItem(ENTERED_KEY, 'true');
+    } catch {
+      setLoginError('ไม่สามารถบันทึกสถานะบนอุปกรณ์นี้ได้');
+    }
+    setHasEntered(true);
+    setLoginError('');
+  };
+
+  const logoutParticipant = () => {
+    try {
+      localStorage.removeItem(PARTICIPANT_KEY);
+      localStorage.removeItem(ENTERED_KEY);
+    } catch {
+      setLoginError('ไม่สามารถลบสถานะการเข้าสู่ระบบจากอุปกรณ์นี้ได้');
+    }
+    setParticipant(null);
+    setParticipantId('');
+    setHasEntered(false);
+  };
 
   // Saved language, else the browser language if supported.
   useEffect(() => {
@@ -33,7 +99,7 @@ export default function Leaderboard({ kicker, title, updated, countdown, worksho
 
   // Close the menu on outside click or Escape.
   useEffect(() => {
-    const click = e => { if (!box.current.contains(e.target)) setOpen(false); };
+    const click = e => { if (!box.current || !box.current.contains(e.target)) setOpen(false); };
     const key = e => { if (e.key === 'Escape') setOpen(false); };
     document.addEventListener('click', click); document.addEventListener('keydown', key);
     return () => { document.removeEventListener('click', click); document.removeEventListener('keydown', key); };
@@ -76,6 +142,65 @@ export default function Leaderboard({ kicker, title, updated, countdown, worksho
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6z" /></svg>{k + 1}
     </span>
   ));
+  if (!authReady) {
+    return (
+      <>
+        <div className="glow" aria-hidden="true" />
+        <canvas id="fx" ref={cv} aria-hidden="true" />
+        <div className="participant-loading" role="status">กำลังโหลดข้อมูลผู้เข้าแข่งขัน…</div>
+      </>
+    );
+  }
+  if (!hasEntered) {
+    return (
+      <>
+        <div className="glow" aria-hidden="true" />
+        <canvas id="fx" ref={cv} aria-hidden="true" />
+        {participant ? (
+          <section className={`participant-card ${participant.rank <= CUT ? 'is-finalist' : 'is-eliminated'}`} role="dialog" aria-modal="true" aria-labelledby="participant-result-title">
+            {participant.rank <= CUT && <p className="participant-confetti" aria-hidden="true">🎉</p>}
+            <p className="participant-eyebrow">{participant.rank <= CUT ? 'FINALIST · TOP 16' : 'PARTICIPANT RESULT'}</p>
+            <h1 id="participant-result-title">
+              {participant.rank <= CUT
+                ? 'ขอแสดงความยินดีด้วย! คุณผ่านเข้ารอบ 16 คนสุดท้าย'
+                : 'ขอแสดงความเสียใจด้วย คุณไม่ผ่านเข้ารอบ ขอบคุณที่ให้ความสนใจและร่วมเป็นส่วนหนึ่งของกิจกรรม'}
+            </h1>
+            <div className="participant-details">
+              <p><span>รหัสผู้เข้าแข่งขัน</span><strong>{participant.person.id}</strong></p>
+              <p><span>ชื่อผู้เข้าแข่งขัน</span><strong translate="no">{participant.person.name}</strong></p>
+              <p className="participant-rank"><span>อันดับปัจจุบันของคุณ</span><strong>อันดับที่ {participant.rank}</strong></p>
+              <p><span>คะแนนรวม</span><strong>{participant.person.total}</strong></p>
+            </div>
+            {loginError && <p className="participant-error" role="alert">{loginError}</p>}
+            <button className="participant-action" type="button" onClick={enterLeaderboard}>เข้าสู่หน้า LEADERBOARD</button>
+          </section>
+        ) : (
+          <section className="participant-login" aria-labelledby="participant-login-title">
+            <p className="participant-eyebrow">BUEN AMBASSADOR · GENERATION 3</p>
+            <h1 id="participant-login-title">Participant ID Login</h1>
+            <p className="participant-intro">กรอกรหัสผู้เข้าแข่งขันเพื่อดูผลการเข้ารอบส่วนบุคคล</p>
+            <form onSubmit={submitParticipantId}>
+              <label htmlFor="participant-id">Participant ID</label>
+              <input
+                id="participant-id"
+                name="participantId"
+                type="text"
+                autoComplete="off"
+                autoCapitalize="characters"
+                spellCheck="false"
+                placeholder="เช่น BUEN01"
+                value={participantId}
+                onChange={e => { setParticipantId(e.target.value.toUpperCase()); setLoginError(''); }}
+                required
+              />
+              {loginError && <p className="participant-error" role="alert">{loginError}</p>}
+              <button className="participant-action" type="submit">ยืนยันรหัสผู้เข้าแข่งขัน</button>
+            </form>
+          </section>
+        )}
+      </>
+    );
+  }
   return (<>
     <div className="glow" aria-hidden="true" />
     <canvas id="fx" ref={cv} aria-hidden="true" />
@@ -97,6 +222,7 @@ export default function Leaderboard({ kicker, title, updated, countdown, worksho
           ))}
         </ul>
       </div>
+      <button className="participant-logout" type="button" onClick={logoutParticipant}>สลับบัญชี</button>
     </header>
     <main className="wrap">
       <div className="lb-head">
