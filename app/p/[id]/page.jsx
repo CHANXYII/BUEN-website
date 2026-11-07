@@ -18,12 +18,7 @@ export default async function Score({ params, searchParams }) {
     <Bar me={me} />
     <main className="wrap">
       <p className="back"><Link href={`/?workshop=${workshop.id}`}>&larr; All participants</Link></p>
-      <div className="lb-head who-head">
-        <span className="pic"><Pic p={p} /></span>
-        <div><p className="eyebrow">{p.id}</p><h1 translate="no">{p.name}</h1>{p.major && <p className="lead">{p.major}</p>}</div>
-      </div>
-
-      <form action={save} className="sheet">
+      <div className="score-layout"><form action={save} className="sheet">
         <h2>{workshop.name} · Your score</h2>
         <p className="score-context"><strong>Status:</strong> {Object.keys(mine).length ? 'Submitted' : 'Not scored'} · <strong>Other judges submitted:</strong> {Math.max(0, by.length - (Object.keys(mine).length ? 1 : 0))} · <strong>Current average:</strong> {avg(v => total(v, criteria))} / {total(Object.fromEntries(criteria.map(c => [c.id, c.max])), criteria)}</p>
         <input type="hidden" name="id" value={id} />
@@ -34,7 +29,7 @@ export default async function Score({ params, searchParams }) {
           </label>
         ))}
         <div className="row"><button className="btn primary">Save score</button>{saved && <span className="ok" role="status">Saved</span>}</div>
-      </form>
+      </form><aside className="participant-banner"><img src="/participant-placeholder.png" alt="Participant banner" /><div><strong>{p.name}</strong><small>{p.id}</small>{p.major && <span>{p.major}</span>}</div></aside></div>
 
       <h2>Score board</h2>
       <div className="lb-scroll"><table className="lb">
