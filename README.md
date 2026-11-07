@@ -34,7 +34,7 @@ Most changes are text, people or photos, and need **only `content/`**:
 | Hero slides | `content/hero.js` |
 | Ambassadors, advisor, presidents, videos, galleries | `content/ambassador.js` |
 | Committee members, years, galleries, social links | `content/committee.js` |
-| News | Scraped from the BU website during the static build (`lib/featured-news.js`) |
+| News | Automatically fetched from `bu.ac.th` during the static build (`lib/featured-news.js`); no local news list to edit |
 | Nav links, contact email/address, Apply link | `content/site.js` |
 | Translations | `i18n/<code>.js` (keyed by the English text) |
 | Photos | `public/assets/` (paths in `content/` start with `/assets/...`) |

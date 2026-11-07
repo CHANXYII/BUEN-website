@@ -1,10 +1,9 @@
 'use client';
 import { useRef } from 'react';
-import { Autoplay, Mousewheel, Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Mousewheel, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 import { T } from './Lang';
 
 export default function FeaturedNewsSlider({ stories }) {
@@ -18,7 +17,7 @@ export default function FeaturedNewsSlider({ stories }) {
       }}
     >
       <Swiper
-        modules={[Autoplay, Mousewheel, Navigation, Pagination]}
+        modules={[Autoplay, Mousewheel, Pagination]}
         slidesPerView={1}
         loop={stories.length > 1}
         speed={800}
