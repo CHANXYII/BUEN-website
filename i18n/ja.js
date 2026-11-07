@@ -126,5 +126,10 @@ export default {
   "Email": "メールアドレス",
   "Message": "メッセージ",
   "Send": "送信",
-  "Back to top": "トップへ戻る", "Show more": "もっと見る", "Our work": "活動実績", "Back": "戻る"
+  "Back to top": "トップへ戻る", "Show more": "もっと見る", "Our work": "活動実績", "Back": "戻る",
+  "Latest stories from Bangkok University": "バンコク大学の最新ニュース",
+  "Featured story": "注目記事",
+  "Read full story": "記事全文を読む",
+  "Latest stories are unavailable": "最新記事を取得できません",
+  "Try again": "再試行",
 };

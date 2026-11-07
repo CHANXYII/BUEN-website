@@ -126,5 +126,10 @@ export default {
   "Email": "အီးမေးလ်",
   "Message": "မက်ဆေ့ချ်",
   "Send": "ပို့ရန်",
-  "Back to top": "အပေါ်သို့ပြန်သွားရန်", "Show more": "ပိုမိုကြည့်ရန်", "Our work": "ကျွန်ုပ်တို့၏လုပ်ဆောင်ချက်များ", "Back": "နောက်သို့"
+  "Back to top": "အပေါ်သို့ပြန်သွားရန်", "Show more": "ပိုမိုကြည့်ရန်", "Our work": "ကျွန်ုပ်တို့၏လုပ်ဆောင်ချက်များ", "Back": "နောက်သို့",
+  "Latest stories from Bangkok University": "ဘန်ကောက်တက္ကသိုလ်မှ နောက်ဆုံးရသတင်းများ",
+  "Featured story": "ထူးခြားသတင်း",
+  "Read full story": "သတင်းအပြည့်အစုံဖတ်ရန်",
+  "Latest stories are unavailable": "နောက်ဆုံးသတင်းများကို မရရှိနိုင်ပါ",
+  "Try again": "ထပ်မံကြိုးစားရန်",
 };

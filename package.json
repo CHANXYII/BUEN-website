@@ -2,15 +2,19 @@
   "name": "buen-website",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=20.9" },
+  "engines": {
+    "node": ">=20.9"
+  },
   "scripts": {
     "dev": "next dev -p 3500",
     "build": "next build",
     "preview": "next build && npx --yes serve out -l 3500"
   },
   "dependencies": {
+    "cheerio": "^1.0.0",
     "next": "16.4.5",
     "react": "19.3.1",
-    "react-dom": "19.3.1"
+    "react-dom": "19.3.1",
+    "swiper": "^14.4.0"
   }
 }

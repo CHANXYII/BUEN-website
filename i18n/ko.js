@@ -126,5 +126,10 @@ export default {
   "Email": "이메일",
   "Message": "메시지",
   "Send": "보내기",
-  "Back to top": "맨 위로", "Show more": "더 보기", "Our work": "활동", "Back": "뒤로"
+  "Back to top": "맨 위로", "Show more": "더 보기", "Our work": "활동", "Back": "뒤로",
+  "Latest stories from Bangkok University": "방콕대학교 최신 소식",
+  "Featured story": "주요 기사",
+  "Read full story": "기사 전체 읽기",
+  "Latest stories are unavailable": "최신 기사를 불러올 수 없습니다",
+  "Try again": "다시 시도",
 };

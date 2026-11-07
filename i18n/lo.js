@@ -126,5 +126,10 @@ export default {
   "Email": "ອີເມວ",
   "Message": "ຂໍ້ຄວາມ",
   "Send": "ສົ່ງ",
-  "Back to top": "ກັບຂຶ້ນເທິງ", "Show more": "ເບິ່ງເພີ່ມເຕີມ", "Our work": "ຜົນງານ", "Back": "ກັບຄືນ"
+  "Back to top": "ກັບຂຶ້ນເທິງ", "Show more": "ເບິ່ງເພີ່ມເຕີມ", "Our work": "ຜົນງານ", "Back": "ກັບຄືນ",
+  "Latest stories from Bangkok University": "ຂ່າວລ່າສຸດຈາກມະຫາວິທະຍາໄລກຸງເທບ",
+  "Featured story": "ຂ່າວເດັ່ນ",
+  "Read full story": "ອ່ານຂ່າວເຕັມ",
+  "Latest stories are unavailable": "ບໍ່ສາມາດໂຫຼດຂ່າວລ່າສຸດໄດ້",
+  "Try again": "ລອງອີກຄັ້ງ",
 };

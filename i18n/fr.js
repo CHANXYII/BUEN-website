@@ -119,5 +119,10 @@ export default {
   "Email": "E-mail",
   "Message": "Message",
   "Send": "Envoyer",
-  "Back to top": "Retour en haut", "Show more": "Voir plus", "Our work": "Nos réalisations", "Back": "Retour"
+  "Back to top": "Retour en haut", "Show more": "Voir plus", "Our work": "Nos réalisations", "Back": "Retour",
+  "Latest stories from Bangkok University": "Dernières actualités de l’Université de Bangkok",
+  "Featured story": "À la une",
+  "Read full story": "Lire l’article complet",
+  "Latest stories are unavailable": "Les dernières actualités sont indisponibles",
+  "Try again": "Réessayer",
 };

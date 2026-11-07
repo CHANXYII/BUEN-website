@@ -34,7 +34,7 @@ Most changes are text, people or photos, and need **only `content/`**:
 | Hero slides | `content/hero.js` |
 | Ambassadors, advisor, presidents, videos, galleries | `content/ambassador.js` |
 | Committee members, years, galleries, social links | `content/committee.js` |
-| News | `content/news.js` |
+| News | Automatically fetched from `bu.ac.th` during the static build (`lib/featured-news.js`); no local news list to edit |
 | Nav links, contact email/address, Apply link | `content/site.js` |
 | Translations | `i18n/<code>.js` (keyed by the English text) |
 | Photos | `public/assets/` (paths in `content/` start with `/assets/...`) |
@@ -65,4 +65,4 @@ See [docs/README.md](docs/README.md) for each section.
 
 ## Content status
 
-Hero news, news items, the contact email/address and gallery photos are **placeholders** marked `TODO`. Replace them with official information before launch.
+Hero news, the contact email/address and gallery photos are **placeholders** marked `TODO`. Replace them with official information before launch.
