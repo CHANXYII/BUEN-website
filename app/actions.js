@@ -18,8 +18,10 @@ export async function logout() {
 export async function save(fd) {
   const me = await requireJudge();
   const id = String(fd.get('id'));
+  const workshop = String(fd.get('workshop') || '');
   if (!participants().some(p => p.id === id)) throw new Error('Unknown participant');
+  if (!config().workshops.some(w => w.id === workshop)) throw new Error('Unknown workshop');
   const vals = Object.fromEntries(config().criteria.map(c => [c.id, Math.min(c.max, Math.max(0, +fd.get(c.id) || 0))]));
-  setScore(me, id, vals);
-  redirect(`/p/${id}?saved=1`);
+  setScore(me, id, workshop, vals);
+  redirect(`/p/${id}?workshop=${encodeURIComponent(workshop)}&saved=1`);
 }

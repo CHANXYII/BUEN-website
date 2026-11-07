@@ -7,24 +7,27 @@ import Bar, { Pic } from '../../Bar';
 
 export default async function Score({ params, searchParams }) {
   const me = await requireJudge();
-  const { id } = await params, { saved } = await searchParams;
+  const { id } = await params, { saved, workshop: workshopId } = await searchParams;
   const p = participants().find(x => x.id === id);
   if (!p) notFound();
-  const { criteria } = config();
-  const by = Object.entries(scores()[id] || {}), mine = Object.fromEntries(by)[me] || {};
+  const { criteria, workshops } = config();
+  const workshop = workshops.find(w => w.id === workshopId) || workshops[0];
+  const by = Object.entries(scores()[id]?.[workshop.id] || {}), mine = Object.fromEntries(by)[me] || {};
   const avg = f => by.length ? (by.reduce((n, [, v]) => n + f(v), 0) / by.length).toFixed(1) : '–';
   return (<>
     <Bar me={me} />
     <main className="wrap">
-      <p className="back"><Link href="/">&larr; All participants</Link></p>
+      <p className="back"><Link href={`/?workshop=${workshop.id}`}>&larr; All participants</Link></p>
       <div className="lb-head who-head">
         <span className="pic"><Pic p={p} /></span>
         <div><p className="eyebrow">{p.id}</p><h1 translate="no">{p.name}</h1>{p.major && <p className="lead">{p.major}</p>}</div>
       </div>
 
       <form action={save} className="sheet">
-        <h2>Your score</h2>
+        <h2>{workshop.name} · Your score</h2>
+        <p className="score-context"><strong>Status:</strong> {Object.keys(mine).length ? 'Submitted' : 'Not scored'} · <strong>Other judges submitted:</strong> {Math.max(0, by.length - (Object.keys(mine).length ? 1 : 0))} · <strong>Current average:</strong> {avg(v => total(v, criteria))} / {total(Object.fromEntries(criteria.map(c => [c.id, c.max])), criteria)}</p>
         <input type="hidden" name="id" value={id} />
+        <input type="hidden" name="workshop" value={workshop.id} />
         {criteria.map(c => (
           <label key={c.id}><span>{c.name} <small>/ {c.max}</small></span>
             <input type="number" name={c.id} min="0" max={c.max} step="any" required defaultValue={mine[c.id]} />

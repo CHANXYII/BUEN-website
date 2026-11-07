@@ -38,9 +38,9 @@ export const requireJudge = async () => (await judge()) || redirect('/login');
 // ponytail: single JSON file, one server process; move to a DB if you run several instances.
 const FILE = 'data/scores.json';
 export const scores = () => (existsSync(FILE) ? read(FILE) : {});
-export function setScore(judgeName, id, vals) {
+export function setScore(judgeName, id, workshop, vals) {
   const s = scores();
-  (s[id] ||= {})[judgeName] = vals;
+  (((s[id] ||= {})[workshop] ||= {})[judgeName]) = vals;
   mkdirSync('data', { recursive: true });
   writeFileSync(FILE + '.tmp', JSON.stringify(s, null, 2));
   renameSync(FILE + '.tmp', FILE); // atomic swap: a crash mid-write never corrupts the file

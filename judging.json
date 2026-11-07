@@ -1,9 +1,16 @@
 {
   "title": "Judge scoring",
+  "workshops": [
+    { "id": "w1", "name": "Workshop 1" },
+    { "id": "w2", "name": "Workshop 2" },
+    { "id": "w3", "name": "Workshop 3" },
+    { "id": "w4", "name": "Workshop 4" }
+  ],
   "criteria": [
-    { "id": "idea", "name": "Idea", "max": 10 },
-    { "id": "design", "name": "Engineering design", "max": 10 },
-    { "id": "build", "name": "Prototype", "max": 10 },
-    { "id": "pitch", "name": "Presentation", "max": 10 }
+    { "id": "topic_1", "name": "Topic 1", "max": 5 },
+    { "id": "topic_2", "name": "Topic 2", "max": 5 },
+    { "id": "topic_3", "name": "Topic 3", "max": 5 },
+    { "id": "topic_4", "name": "Topic 4", "max": 5 },
+    { "id": "topic_5", "name": "Topic 5", "max": 5 }
   ]
 }
