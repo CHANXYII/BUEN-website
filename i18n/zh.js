@@ -105,11 +105,11 @@ export default {
   'Computer Engineering': '计算机工程',
   'Industrial Engineering': '工业工程',
   'News & Events': '新闻与活动',
-  'Latest stories from Bangkok University': '曼谷大学最新新闻',
-  'Featured story': '精选新闻',
-  'Read full story': '阅读全文',
-  'Latest stories are unavailable': '暂无最新新闻',
-  'Try again': '重试',
   'School of Engineering, Bangkok University': '曼谷大学工程学院', 'Thailand': '泰国',
-  'Name': '姓名', 'Email': '电子邮箱', 'Message': '留言', 'Send': '提交', 'Back to top': '返回页面顶部', 'Show more': '显示更多', 'Our work': '工作成果', 'Back': '返回'
+  'Name': '姓名', 'Email': '电子邮箱', 'Message': '留言', 'Send': '提交', 'Back to top': '返回页面顶部', 'Show more': '显示更多', 'Our work': '工作成果', 'Back': '返回',
+  "Latest stories from Bangkok University": "曼谷大学最新新闻",
+  "Featured story": "精选新闻",
+  "Read full story": "阅读全文",
+  "Latest stories are unavailable": "暂无最新新闻",
+  "Try again": "重试",
 };

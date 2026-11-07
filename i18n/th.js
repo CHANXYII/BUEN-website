@@ -124,11 +124,11 @@ export default {
   'Computer Engineering': 'วิศวกรรมคอมพิวเตอร์',
   'Industrial Engineering': 'วิศวกรรมอุตสาหการ',
   'News & Events': 'ข่าวสารและกิจกรรม',
-  'Latest stories from Bangkok University': 'ข่าวล่าสุดจากมหาวิทยาลัยกรุงเทพ',
-  'Featured story': 'ข่าวเด่น',
-  'Read full story': 'อ่านข่าวฉบับเต็ม',
-  'Latest stories are unavailable': 'ไม่สามารถโหลดข่าวล่าสุดได้',
-  'Try again': 'ลองอีกครั้ง',
   'School of Engineering, Bangkok University': 'คณะวิศวกรรมศาสตร์ มหาวิทยาลัยกรุงเทพ', 'Thailand': 'ประเทศไทย',
-  'Name': 'ชื่อ', 'Email': 'อีเมล', 'Message': 'ข้อความ', 'Send': 'ส่งข้อความ', 'Back to top': 'กลับสู่ด้านบน', 'Show more': 'แสดงเพิ่มเติม', 'Our work': 'ผลงานของเรา', 'Back': 'ย้อนกลับ'
+  'Name': 'ชื่อ', 'Email': 'อีเมล', 'Message': 'ข้อความ', 'Send': 'ส่งข้อความ', 'Back to top': 'กลับสู่ด้านบน', 'Show more': 'แสดงเพิ่มเติม', 'Our work': 'ผลงานของเรา', 'Back': 'ย้อนกลับ',
+  "Latest stories from Bangkok University": "ข่าวล่าสุดจากมหาวิทยาลัยกรุงเทพ",
+  "Featured story": "ข่าวเด่น",
+  "Read full story": "อ่านข่าวฉบับเต็ม",
+  "Latest stories are unavailable": "ไม่สามารถโหลดข่าวล่าสุดได้",
+  "Try again": "ลองอีกครั้ง",
 };

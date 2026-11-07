@@ -1,8 +1,10 @@
 state
 
+.env.local
 .next/
 .github/workflows
 .impeccable
+
 out/
 node_modules/
 next-env.d.ts
