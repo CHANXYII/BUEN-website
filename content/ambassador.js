@@ -36,6 +36,7 @@ export const presidents = [
 
 // One entry per generation, newest first (the first one shows by default).
 // Members: positions show on the card and the profile page; profileOnly shows on the profile page only.
+// cardHideIn: language codes where the card hides its positions (the profile page still shows them).
 // Each member gets a profile link from their first name, e.g. /joannes (keep first names unique).
 // Gallery ("Our work"): { src: '/assets/gallery/gen2-1.jpg', alt: 'What is in the photo', caption: 'Event name' }.
 // The first photo shows large; {} is a "Photo coming soon" tile.
@@ -48,7 +49,7 @@ export const generations = [
       { photo: '/assets/ambassador/gen2/03_ang.jpg', name: 'Oangkhana Juti', major: AIE, year: 'Year 3',
         profileOnly: ['Google Student Ambassador Thailand (Batch 2)'] },
       { photo: '/assets/ambassador/gen2/04_tarpriew.jpg', name: 'Naruechaya Yimsatan', major: CE, year: 'Year 3',
-        positions: ['Engineering Student Committee (2025)'], profileOnly: ['Google Student Ambassador Thailand (Batch 2)'] },
+        positions: ['Engineering Student Committee (2025)'], cardHideIn: ['th', 'zh', 'ja'], profileOnly: ['Google Student Ambassador Thailand (Batch 2)'] },
       { photo: '/assets/ambassador/gen2/05_fluer.jpg', name: 'Surayut Khongchuai', major: ISI, year: 'Year 2',
         profileOnly: ['Google Student Ambassador Thailand (Batch 2)'] },
     ],

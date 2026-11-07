@@ -2,7 +2,7 @@
 import { Fragment } from 'react';
 import { asset } from '@/lib/asset';
 import { key } from '@/i18n';
-import { T } from './Lang';
+import { T, useLang } from './Lang';
 import Reveal from './Reveal';
 import RolesLoop from './RolesLoop';
 
@@ -26,15 +26,19 @@ export const Avatar = ({ photo, name, children }) => (
 );
 
 // Member card. Extra props (onClick, ...) go on the <article>.
-export const Person = ({ person: p, more, ...rest }) => (
-  <article className="person" tabIndex={0} {...rest}>
-    <Avatar photo={p.photo} name={p.name}>{more && <span className="more"><T>Show more</T></span>}</Avatar>
-    <h4><T>{p.name}</T></h4>
-    {p.positions?.map(x => <p className="position" key={x}><T>{x}</T></p>)}
-    <p><T>{p.major}</T></p>
-    <small><T>{p.year}</T></small>
-  </article>
-);
+// p.cardHideIn: language codes where the card hides positions.
+export const Person = ({ person: p, more, ...rest }) => {
+  const { lang } = useLang();
+  return (
+    <article className="person" tabIndex={0} {...rest}>
+      <Avatar photo={p.photo} name={p.name}>{more && <span className="more"><T>Show more</T></span>}</Avatar>
+      <h4><T>{p.name}</T></h4>
+      {!p.cardHideIn?.includes(lang.code) && p.positions?.map(x => <p className="position" key={x}><T>{x}</T></p>)}
+      <p><T>{p.major}</T></p>
+      <small><T>{p.year}</T></small>
+    </article>
+  );
+};
 
 // Banner text scrolling behind the photo.
 export const Marquee = ({ word, n = 3 }) => {

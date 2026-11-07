@@ -15,6 +15,7 @@ export const years = [
   {
     year: 2026,
     president: {
+      photo: '/assets/staffbuen/2026/committee/01_staff.png',
       badge: 'President of Engineering Student Committee (2026)',
       name: 'Siriwan Ruamthong',
       meta: 'Computer and Robotics Engineering, Year 2',
@@ -45,7 +46,7 @@ export const years = [
           { photo: '/assets/staffbuen/2026/cheerleader/03_aom.jpg', name: 'Voranun Savirod', major: EE, year: 'Year 1' },
           { photo: '/assets/staffbuen/2026/cheerleader/04_praewa.jpg', name: 'Praewa Manmuenpom', major: EE, year: 'Year 1' },
           { photo: '/assets/staffbuen/2026/cheerleader/05_ice.jpg', name: 'Nattaporn Buathongkham', major: EE, year: 'Year 1' },
-          { photo: '/assets/staffbuen/2026/cheerleader/06_noey.jpg', name: 'Penpisur Vashiraareerat', major: AIE, year: 'Year 4' },
+          { photo: '/assets/staffbuen/2026/cheerleader/06_noey.jpg', name: 'Penpisut Vashiraareerat', major: AIE, year: 'Year 4' },
           { photo: '/assets/staffbuen/2026/cheerleader/07_pim.jpg', name: 'Suchanya Yothayan', major: CE, year: 'Year 4' },
           { photo: '/assets/staffbuen/2026/cheerleader/08_four.jpg', name: 'Papichaya Kingkohyaw', major: AIE, year: 'Year 1' },
           { photo: '/assets/staffbuen/2026/cheerleader/09_inging.jpg', name: 'Wenying Pua', major: AIE, year: 'Year 2' },
