@@ -2,13 +2,12 @@
 // BUEN Ambassador section. All text, people and photos: content/ambassador.js.
 import { useState } from 'react';
 import { advisor, generations, intro, links, presidents, videos, what } from '@/content/ambassador';
-import { openProfile } from './ProfileDialog';
-import { slugOf } from '@/lib/profiles';
-import { T } from './Lang';
+import { T } from './Languages';
 import PresidentSlider from './PresidentSlider';
 import Reveal from './Reveal';
 import VideoPlaylist from './VideoPlaylist';
-import { Links, Marquee, Person, Shots, Slide, Tabs, WhatIs } from './ui';
+import { Links, Marquee, Shots, Slide, Tabs, WhatIs } from './ui';
+import MemberBanners from './MemberBanners';
 
 export default function Ambassador() {
   // The generation tabs above the profiles also switch the work gallery below, which has no tabs of its own.
@@ -40,15 +39,12 @@ export default function Ambassador() {
           <PresidentSlider presidents={presidents} />
         </Reveal>
 
-        {/* clicking a card (or Enter) opens that ambassador's profile page */}
+        {/* clicking a banner (or Enter) opens that ambassador's profile page */}
         <Reveal className="block" id="amb-generations">
           <Tabs items={generations.map(g => ({ id: g.gen, label: `Generation ${g.gen}` }))} value={gen} onChange={setGen} />
           {generations.map(g => (
-            <div key={g.gen} className="gen-panel people" role="tabpanel" data-gen={g.gen} hidden={g.gen !== gen}>
-              {g.members.map(m => {
-                const open = () => openProfile(slugOf(m.name));
-                return <Person key={m.name} person={m} more onClick={open} onKeyDown={e => e.key === 'Enter' && open()} />;
-              })}
+            <div key={g.gen} className="gen-panel" role="tabpanel" data-gen={g.gen} hidden={g.gen !== gen}>
+              <MemberBanners members={g.members} active={g.gen === gen} />
             </div>
           ))}
         </Reveal>

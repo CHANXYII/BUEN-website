@@ -2,7 +2,7 @@
 // Copyright line (current year) and back-to-top link.
 import { useEffect, useState } from 'react';
 import { site } from '@/content/site';
-import { T } from './Lang';
+import { T } from './Languages';
 
 export default function Footer() {
   const [year, setYear] = useState(2026);

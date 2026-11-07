@@ -3,22 +3,25 @@
 .person .more{position:absolute;inset:auto 0 0;padding:40px 12px 14px;background:linear-gradient(transparent,rgb(0 0 0/.75));color:#fff;font-size:.875rem;letter-spacing:.08em;text-align:center;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s;pointer-events:none}
 .person:is(:hover,:focus-within) .more{opacity:1;transform:none}
 
-/* profile page: full-screen president-style banner with "AMBASSADOR" scrolling behind the photo. The banner
-   animations replay on every open because a closed dialog is display:none. */
+/* profile page: full-screen dialog holding the same banner as "President of BUEN Ambassador" (photo size, fonts,
+   glow, edge gradient and layout all come from .banner in ambassador.css); only the scrolling word differs
+   ("Ambassador"). The banner animations replay on every open because a closed dialog is display:none. */
 .profile{width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;padding:0;border:0;background:var(--bg);color:#fff}
 .profile .back{position:absolute;top:24px;left:clamp(24px,6vw,96px);z-index:1;min-height:48px;padding:0 20px;border:1px solid var(--line);border-radius:999px;background:rgb(0 0 0/.4);color:#fff;font:inherit;cursor:pointer}
 .profile .back:hover{border-color:var(--gold);color:var(--gold)}
-.profile .banner{--photo:min(420px,42%,(100dvh - 120px)*.75);display:grid;align-items:end;min-height:100%;margin:0;padding:96px max(clamp(24px,6vw,96px),calc(50% - 504px)) 0;box-sizing:border-box}
-.profile .slide{padding-bottom:64px}
-/* photo framed like the profile cards on the main page (not the banner's floating cut-out) */
-.profile .slide>.avatar{align-self:center;overflow:hidden;background:linear-gradient(160deg,var(--crimson-a),rgb(255 255 255/.03));border:1px solid var(--line)}
-.profile .avatar::before{content:none}
+/* the president banner sits inside .wrap; here the padding gives the same content width (1200px wrap, 96px sides) */
+.profile .banner{display:grid;align-items:end;min-height:100%;margin:0;padding-inline:max(clamp(24px,6vw,96px),calc(50% - 504px));box-sizing:border-box}
+.profile .slide{padding-bottom:0}
+/* the photo's bottom fades out so it merges into the page instead of being cut by the screen edge */
+.profile .avatar img{--fade:linear-gradient(#000 calc(100% - 22%),transparent);-webkit-mask:var(--fade);mask:var(--fade)}
+.profile .avatar img{scale:var(--zoom,1);transform-origin:center bottom} /* --zoom: see ProfileDialog (photoLift) */
+.profile .banner::after{background:linear-gradient(var(--seam),transparent 220px,transparent calc(100% - 180px),var(--bg))}
 .profile-work{padding-block:72px 96px}
-/* banner fades into the page colour, so it merges with the work gallery below */
-.profile .banner::after{background:linear-gradient(transparent calc(100% - 240px),var(--bg))}
-.profile .avatar img{object-fit:cover;object-position:center 20%;filter:none;animation:none}
-.profile .quote{max-width:none}
-.profile .quote li:first-child{color:rgb(var(--b-acc));font-size:.9rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-/* full name on one line on wide screens, like the advisor banner */
-.profile .slide h4{font-size:clamp(2rem,3.4vw,3rem);white-space:nowrap}
-@media (max-width:1150px){.profile .slide h4{white-space:normal}}
+/* wide screens: long names stay on one line (same size as the president's name), and photo + text are centred as one
+   group, so a long name spreads into both side margins instead of pushing the layout to the right */
+@media (min-width:1151px){
+  .profile .slide{grid-template-columns:var(--photo) auto;justify-content:center}
+  .profile .slide h4{white-space:nowrap}
+}
+/* first role, the generation ("BUEN AMBASSADOR: THE 2ND GENERATION"): bold gold capitals */
+.profile .roles li:first-child{color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.04em}

@@ -5,11 +5,9 @@
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { site } from '@/content/site';
-import { key } from '@/i18n';
 import { generationRole, profiles } from '@/lib/profiles';
-import { asset } from '@/lib/asset';
-import { T, useLang } from './Lang';
-import { Marquee, Shots } from './ui';
+import { T, useLang } from './Languages';
+import { Marquee, Shots, Slide } from './ui';
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH;
 let pushed = false; // true when we added the history entry, so closing can just go back
@@ -53,16 +51,13 @@ export default function ProfileDialog() {
       {cur && <>
         <div className="banner in">
           <Marquee word="Ambassador" />
-          <article className="slide">
-            <div className="avatar"><img src={asset(cur.photo)} alt={cur.name} /></div>
-            <div>
-              <h4><T>{cur.name}</T></h4>
-              <p className="meta"><T>{key(cur.major)}</T></p>
-              <ul className="quote roles">
-                {[generationRole(cur.gen), ...(cur.positions || []), ...(cur.profileOnly || [])].map(r => <li key={r}><T>{r}</T></li>)}
-              </ul>
-            </div>
-          </article>
+          {/* same slide as the president banner: name, major as the meta line, then under the divider the generation
+              (highlighted, first line) and every position */}
+          <Slide person={{ photo: cur.photo, name: cur.name, meta: cur.major,
+            roles: [generationRole(cur.gen), ...(cur.positions || []), ...(cur.profileOnly || [])] }}
+            // photos shrunk inside their PNG (smaller head, so a photoLift on the banner) are zoomed back up here so the
+            // head fills the frame like everyone else's
+            style={cur.photoLift && { '--zoom': 1 / (1 - parseFloat(cur.photoLift) / 100) }} />
         </div>
         {/* below the banner: the work gallery of this ambassador's generation */}
         <div className="profile-work wrap"><h2><T>Our work</T></h2><div className="gallery"><Shots items={cur.gallery} /></div></div>

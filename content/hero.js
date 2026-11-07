@@ -6,7 +6,7 @@ export const slides = [
   {
     tab: 'Welcome',
     title: 'Welcome to School of Engineering, Bangkok University!',
-    lead: 'Watch the featured story from BU. TODO: replace with the real news.',
+    lead: 'Watch the featured story from BU',
     video: '',
     buttons: [{ label: 'Read more', href: 'https://www.bu.ac.th/th/engineering' }],
   }

@@ -2,7 +2,7 @@
 // "What we do ?" row: endless loop. A hidden copy of the cards follows the real ones, so the CSS animation (slide left
 // by one set) repeats without a jump. Speed: ~4 s per name. With reduced motion it is a plain swipeable row.
 import { useEffect, useState } from 'react';
-import { T } from './Lang';
+import { T } from './Languages';
 
 export default function RolesLoop({ roles }) {
   const [loop, setLoop] = useState(false);

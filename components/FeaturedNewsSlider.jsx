@@ -4,7 +4,7 @@ import { Autoplay, Mousewheel, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { T } from './Lang';
+import { T } from './Languages';
 
 export default function FeaturedNewsSlider({ stories }) {
   const swiperRef = useRef(null);

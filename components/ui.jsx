@@ -2,7 +2,7 @@
 import { Fragment } from 'react';
 import { asset } from '@/lib/asset';
 import { key } from '@/i18n';
-import { T, useLang } from './Lang';
+import { T, useLang } from './Languages';
 import Reveal from './Reveal';
 import RolesLoop from './RolesLoop';
 

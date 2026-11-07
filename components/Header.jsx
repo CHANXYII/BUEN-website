@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { nav, site } from '@/content/site';
 import { LANGS } from '@/i18n';
 import { asset } from '@/lib/asset';
-import { T, useLang } from './Lang';
+import { T, useLang } from './Languages';
 import { Icon } from './ui';
 
 export default function Header() {

@@ -8,7 +8,7 @@ import ko from './ko';
 import fr from './fr';
 import es from './es';
 import id from './id';
-import fil from './fil';
+import fil from './fi';
 import vi from './vi';
 import my from './my';
 import lo from './lo';
@@ -23,11 +23,11 @@ export const LANGS = [
   { code: 'fr', short: 'FR', label: 'Français', html: 'fr', dict: fr },
   { code: 'es', short: 'ES', label: 'Español', html: 'es', dict: es },
   { code: 'id', short: 'ID', label: 'Bahasa Indonesia', html: 'id', dict: id },
-  { code: 'fil', short: 'FIL', label: 'Filipino', html: 'fil', dict: fil },
+  { code: 'fi', short: 'FI', label: 'Filipino', html: 'fil', dict: fil },
   { code: 'vi', short: 'VI', label: 'Tiếng Việt', html: 'vi', dict: vi },
   { code: 'my', short: 'မြန်မာ', label: 'မြန်မာ', html: 'my', dict: my },
   { code: 'lo', short: 'ລາວ', label: 'ລາວ', html: 'lo', dict: lo },
 ];
 
 // Content may use non-breaking spaces to control line breaks; dictionary keys use plain spaces.
-export const key = s => s.replace(/ /g, ' ');
+export const key = s => s.replace(/ /g, ' ');

@@ -1,6 +1,6 @@
 import { getFeaturedStories } from '@/lib/featured-news';
 import FeaturedNewsSlider from './FeaturedNewsSlider';
-import { T } from './Lang';
+import { T } from './Languages';
 import Reveal from './Reveal';
 
 export default async function News() {

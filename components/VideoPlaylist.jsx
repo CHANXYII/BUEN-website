@@ -3,7 +3,7 @@
 // autoplay with sound), or with sound on click; arrows and a video ending jump to the next one and play it.
 // No IDs = placeholder.
 import { useEffect, useRef, useState } from 'react';
-import { T } from './Lang';
+import { T } from './Languages';
 
 const ORIGIN = 'https://www.youtube-nocookie.com';
 

@@ -2,7 +2,7 @@
 import { site } from '@/content/site';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import { LangProvider } from '@/components/Lang';
+import { LangProvider } from '@/components/Languages';
 import '@/styles/base.css';
 import '@/styles/header.css';
 import '@/styles/hero.css';

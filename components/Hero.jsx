@@ -4,7 +4,7 @@
 import { useRef, useState } from 'react';
 import { heroImage, slides } from '@/content/hero';
 import { asset } from '@/lib/asset';
-import { T } from './Lang';
+import { T } from './Languages';
 
 export default function Hero() {
   const [i, setI] = useState(0);

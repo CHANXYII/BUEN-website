@@ -3,9 +3,9 @@ import { AIE, CE, EE, placeholders } from './majors';
 
 export const what = {
   title: 'What is STAFFBUEN ?',
-  quote: 'The student voice of the School: organising activities, supporting classmates and connecting students with the faculty.',
+  quote: 'The student voice of the School: supporting classmates and connecting between students',
   caption: 'Engineering Student Committee',
-  roles: ['BU Diamond Day: Student Orientation', 'First Meet', 'BU OPEN HOUSE', 'Engineering Un-Tie & Gear', 'Engineering Legacy Run', 'BU Freshy Game', 'Cheer Day', 'BU Diamond Game', 'Engineering Farewell'],
+  roles: ['BU Diamond Day: Student Orientation', 'First Meet', 'BU OPEN HOUSE', 'Engineering Un-Tie & Gear', 'Engineering Legacy Run', 'BU Freshy Game', 'BU Cheer Day', 'BU Diamond Game', 'Engineering Farewell'],
 };
 
 // One entry per academic year, newest first. The year tabs appear by themselves once there are two.

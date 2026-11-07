@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { T } from '@/components/Lang';
+import { T } from '@/components/Languages';
 
 export default function NotFound() {
   return (

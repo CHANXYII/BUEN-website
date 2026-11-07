@@ -1,7 +1,7 @@
 // Contact: address, email and a mailto form (no backend). Details: content/site.js.
 import { Fragment } from 'react';
 import { contact } from '@/content/site';
-import { T } from './Lang';
+import { T } from './Languages';
 import Reveal from './Reveal';
 
 export default function Contact() {
