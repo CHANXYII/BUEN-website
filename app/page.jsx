@@ -11,8 +11,11 @@ export default function Page() {
   const participants = readdirSync('docs/participants').filter(f => f.endsWith('.json')).sort().map(f => {
     const p = read(`docs/participants/${f}`);
     if (p.id !== f.slice(0, -5)) throw new Error(`${f}: id "${p.id}" must match the file name`);
+    const image = typeof p.image === 'string' && p.image.startsWith('/') && !p.image.split('/').includes('..') && existsSync(`public${p.image}`)
+      ? `${process.env.BASE_PATH}${p.image}`
+      : null;
     const ext = ['jpg', 'jpeg', 'png', 'webp'].find(e => existsSync(`public/photos/${p.id}.${e}`));
-    if (ext) p.photo = `${process.env.BASE_PATH}/photos/${p.id}.${ext}`; // optional photo: public/photos/BUENxx.(jpg|png|webp)
+    p.photo = image || (ext ? `${process.env.BASE_PATH}/photos/${p.id}.${ext}` : null);
     return p;
   });
   // Total = sum of workshop points; ranks are unique. Tiebreak: latest workshop first, then ID.
