@@ -6,7 +6,7 @@
     "node": ">=20.9"
   },
   "scripts": {
-    "dev": "next dev -p 3500",
+    "dev": "next dev -p 3500 --webpack",
     "build": "next build",
     "preview": "next build && npx --yes serve out -l 3500"
   },
