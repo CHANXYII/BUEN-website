@@ -1,6 +1,41 @@
 .news-feed { margin-top: 42px; }
 .news-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; align-items: stretch; }
 
+.back-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 26px;
+	border-radius: 999px;
+	background: #171714;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 800;
+	font-size: 1rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+html.dark .back-button {
+	background: #ffffff;
+	color: #171714;
+	box-shadow: 0 6px 16px rgba(255, 255, 255, 0.1);
+}
+.back-button:hover {
+	background: #dc143c;
+	color: #fff;
+	transform: translateX(-6px) scale(1.05);
+	box-shadow: 0 12px 24px rgba(220, 20, 60, 0.4);
+}
+html.dark .back-button:hover {
+	background: #dc143c;
+	color: #fff;
+}
+.back-button:focus-visible { outline: 2px solid #dc143c; outline-offset: 4px; }
+.back-button span { display: inline-block; font-size: 1.3rem; transition: transform 0.3s; }
+.back-button:hover span { transform: translateX(-6px); }
+
 /* 1. BOUNCY ENTRANCE (Grabs attention immediately) */
 @keyframes bouncyFadeIn {
 	0% { opacity: 0; transform: translateY(60px) scale(0.9); }
@@ -107,7 +142,7 @@
 
 @media(max-width: 1024px) { .news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media(max-width: 620px) { .news-feed { margin-top: 30px; } .news-grid { grid-template-columns: 1fr; gap: 16px; } .news-card-image { aspect-ratio: 1.55; } .news-card-content { padding: 20px 21px 22px; } .news-card-content h3 { font-size: 1.28rem; } }
-@media(prefers-reduced-motion: reduce) { .news-card, .news-card-image img, .news-load-more, .news-card-action span { transition: none; animation: none; opacity: 1; transform: none !important; } .news-card-kicker { animation: none; } }
+@media(prefers-reduced-motion: reduce) { .news-card, .news-card-image img, .news-load-more, .news-card-action span, .back-button, .back-button span, .back-button:hover span, .back-button:focus-visible span { transition: none; animation: none; opacity: 1; transform: none !important; } .news-card-kicker { animation: none; } }
 
 .category-section { margin-top: 48px; }
 .category-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 4px; }
