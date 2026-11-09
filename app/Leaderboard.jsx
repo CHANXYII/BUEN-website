@@ -10,16 +10,6 @@ const LANGUAGE_KEY = 'buen_lang';
 const LANGUAGES = [
   ['en', 'English'],
   ['th', 'ไทย'],
-  ['zh', '中文 (简体)'],
-  ['ja', '日本語'],
-  ['ko', '한국어'],
-  ['fr', 'Français'],
-  ['es', 'Español'],
-  ['id', 'Bahasa Indonesia'],
-  ['fil', 'Filipino'],
-  ['vi', 'Tiếng Việt'],
-  ['my', 'မြန်မာ'],
-  ['lo', 'ລາວ'],
 ];
 
 function ParticipantAvatar({ participant, lazy }) {
