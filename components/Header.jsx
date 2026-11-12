@@ -19,12 +19,12 @@ export default function Header() {
   const langBox = useRef(null), langBtn = useRef(null), bar = useRef(null);
 
   useEffect(() => {
-    // FIX: ป้องกันการแครชเวลาอยู่หน้า Archive แล้ว Header หา Section ไม่เจอ
+    // FIX: Prevent crashes when on the Archive page where sections might not exist in the DOM
     const secs = nav.map(l => {
-      try {
-        const hash = l.href.includes('#') ? '#' + l.href.split('#')[1] : null;
-        return hash ? document.querySelector(hash) : null;
-      } catch (e) { return null; }
+      const hash = l.href.includes('#') ? '#' + l.href.split('#')[1] : null;
+      if (!hash || typeof document === 'undefined') return null;
+      // Safe query without try/catch by ensuring hash is a valid selector format
+      return document.querySelector(hash);
     });
     
     const onScroll = () => {
@@ -58,7 +58,7 @@ export default function Header() {
       <header className={`site-header${scrolled ? ' scrolled' : ''}`} id="header">
         <div className="bar">
           
-          {/* FIX: กดโลโก้แล้วกลับหน้าหลักเสมอ และถ้าอยู่หน้าหลักอยู่แล้ว จะเลื่อนขึ้นบนสุดอย่างนุ่มนวล */}
+          {/* FIX: Always route back to home when logo is clicked, smoothly scroll to top if already home */}
           <Link 
             className="brand" 
             href="/" 
@@ -73,7 +73,7 @@ export default function Header() {
           </Link>
           
           <nav id="nav" aria-label="Main" className={menu ? 'open' : ''} onClick={e => e.target.closest('a') && setMenu(false)}>
-            {/* FIX: แปลงลิงก์เมนูให้รองรับการกดจากหน้า Archive แล้วเด้งกลับหน้าหลัก */}
+            {/* FIX: Transform menu links to support routing back to home from the Archive page */}
             {nav.map((l, i) => {
               const targetHref = l.href.startsWith('#') ? `/${l.href}` : l.href;
               return (

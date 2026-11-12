@@ -1,6 +1,8 @@
 'use client';
 import { useRef } from 'react';
 import { T } from './Languages';
+import NewsCard from './NewsCard';
+import Reveal from './Reveal';
 
 export default function CategorySlider({ title, stories }) {
   const trackRef = useRef(null);
@@ -36,23 +38,9 @@ export default function CategorySlider({ title, stories }) {
 
       <div className="slider-track" ref={trackRef}>
         {stories.map((story, index) => (
-          <article className="news-card" key={story.link} style={{ animationDelay: `${index * 0.1}s` }}>
-            <a className="news-card-link" href={story.link} target="_blank" rel="noopener noreferrer">
-              <div className="news-card-image">
-                <img src={story.image} alt="" loading="lazy" />
-                <span className="news-card-kicker"><T>BU Stories</T></span>
-                <div className="news-card-popup">
-                  <T>Read Article</T> <span>↗</span>
-                </div>
-              </div>
-              <div className="news-card-content">
-                <time dateTime={story.dateTime}>{story.date}</time>
-                <h3>{story.title}</h3>
-                {story.excerpt && <p>{story.excerpt}</p>}
-                <span className="news-card-action"><T>Read full story</T><span aria-hidden="true">↗</span></span>
-              </div>
-            </a>
-          </article>
+          <Reveal key={story.link} style={{ transitionDelay: `${Math.min(index, 2) * 0.15}s` }}>
+            <NewsCard story={story} />
+          </Reveal>
         ))}
       </div>
     </div>
