@@ -85,19 +85,6 @@
     height: 100% !important;
     object-fit: cover !important;
 }
-.news-card-popup {
-    position: absolute;
-    inset: auto 16px 16px auto;
-    padding: 6px 10px;
-    background: #171714;
-    color: #fff;
-    font-size: .8rem;
-    opacity: 0;
-    transition: opacity .25s;
-}
-.news-card-link:is(:hover, :focus-visible) .news-card-popup {
-    opacity: 1;
-}
 .news-card-content {
     display: flex;
     flex: 1;
