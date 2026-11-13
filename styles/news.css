@@ -27,19 +27,6 @@
     background: rgb(179 18 46 / .24);
     color: var(--gold);
 }
-.news-archive-header {
-    margin-bottom: 56px;
-}
-.news-archive-title {
-    font-size: 3rem;
-    font-weight: 900;
-    margin-bottom: 8px;
-}
-.news-archive-subtitle {
-    font-size: 1.2rem;
-    color: var(--muted, #5f5d58);
-}
-
 .news-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -202,21 +189,8 @@
 main > section .category-header h2::before {
     content: none;
 }
-.slider-controls {
-    display: flex;
-    gap: 8px;
-}
-.slider-controls button {
-    width: 44px;
-    height: 44px;
-    border: 1px solid var(--stroke);
-    background: transparent;
-    color: inherit;
-    font: inherit;
-    cursor: pointer;
-}
-.slider-controls button:hover {
-    border-color: var(--gold);
+.news > .wrap > h2::before {
+    content: none;
 }
 .slider-track {
     display: grid;

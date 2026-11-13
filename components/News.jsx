@@ -13,7 +13,7 @@ export default async function News() {
     <Reveal as="section" className="news" id="news">
       <div className="wrap">
         <h2><T>News &amp; Events</T></h2>
-        <p className="sub"><T>Latest stories from Bangkok University</T></p>
+        <p className="sub"><T>Engineering the future. Explore the latest innovations, projects, and stories from our community.</T></p>
         <FeaturedNewsSlider stories={stories} />
       </div>
     </Reveal>

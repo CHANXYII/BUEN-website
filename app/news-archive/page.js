@@ -20,14 +20,9 @@ export default async function NewsArchivePage() {
           </Link>
         </div>
 
-        <header className="news-archive-header">
-          <h1 className="news-archive-title"><T>News Archive</T></h1>
-          <p className="news-archive-subtitle"><T>Latest stories from Bangkok University</T></p>
-        </header>
-
-        <CategorySlider title={<T>BU PRIDE</T>} stories={categorizedStories.pride} />
-        <CategorySlider title={<T>BU NEWS</T>} stories={categorizedStories.news} />
-        <CategorySlider title={<T>BU Insight</T>} stories={categorizedStories.insight} />
+        <CategorySlider title={<T>BU PRIDE</T>} subtitle={<T>Celebrating the achievements, awards, and milestones of our engineering community.</T>} stories={categorizedStories.pride} />
+        <CategorySlider title={<T>BU NEWS</T>} subtitle={<T>Stay connected with the latest updates, events, and activities on campus.</T>} stories={categorizedStories.news} />
+        <CategorySlider title={<T>BU Insight</T>} subtitle={<T>Deep dives into engineering innovations, research, and technology trends.</T>} stories={categorizedStories.insight} />
       </div>
     </section>
   );
