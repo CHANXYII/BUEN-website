@@ -2,6 +2,7 @@
 // Sticky header: mobile menu, language dropdown, and scroll effects (shrinking header, progress bar, active link,
 // back-to-top button). Links and texts: content/site.js. Languages: i18n/index.js.
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { nav, site } from '@/content/site';
 import { LANGS } from '@/i18n';
 import { asset } from '@/lib/asset';
@@ -18,16 +19,24 @@ export default function Header() {
   const langBox = useRef(null), langBtn = useRef(null), bar = useRef(null);
 
   useEffect(() => {
-    const secs = nav.map(l => document.querySelector(l.href));
+    // FIX: Prevent crashes when on the Archive page where sections might not exist in the DOM
+    const secs = nav.map(l => {
+      const hash = l.href.includes('#') ? '#' + l.href.split('#')[1] : null;
+      if (!hash || typeof document === 'undefined') return null;
+      // Safe query without try/catch by ensuring hash is a valid selector format
+      return document.querySelector(hash);
+    });
+    
     const onScroll = () => {
       const max = document.documentElement.scrollHeight - innerHeight;
-      bar.current.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+      if (bar.current) bar.current.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
       setScrolled(scrollY > 20);
       setShowTop(scrollY > 600);
       let cur = -1;
       secs.forEach((s, i) => { if (s && s.getBoundingClientRect().top <= 140) cur = i; });
       setActive(cur);
     };
+    
     addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => removeEventListener('scroll', onScroll);
@@ -35,26 +44,47 @@ export default function Header() {
 
   // The dropdown closes on a click outside it or on Esc.
   useEffect(() => {
-    const click = e => { if (!langBox.current.contains(e.target)) setLangOpen(false); };
+    const click = e => { if (langBox.current && !langBox.current.contains(e.target)) setLangOpen(false); };
     const esc = e => { if (e.key === 'Escape') setLangOpen(false); };
     document.addEventListener('click', click);
     document.addEventListener('keydown', esc);
     return () => { document.removeEventListener('click', click); document.removeEventListener('keydown', esc); };
   }, []);
 
-  const pick = code => { setLang(code); setLangOpen(false); langBtn.current.focus(); };
+  const pick = code => { setLang(code); setLangOpen(false); if (langBtn.current) langBtn.current.focus(); };
 
   return (
     <>
       <header className={`site-header${scrolled ? ' scrolled' : ''}`} id="header">
         <div className="bar">
-          <a className="brand" href="#top" aria-label={site.name}>
+          
+          {/* FIX: Always route back to home when logo is clicked, smoothly scroll to top if already home */}
+          <Link 
+            className="brand" 
+            href="/" 
+            aria-label={site.name}
+            onClick={() => {
+              if (typeof window !== 'undefined' && window.location.pathname === '/') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
+          >
             <span className="logo"><img src={asset('/assets/BUEN-Logo-header.png')} alt="" width="380" height="99" /></span>
-          </a>
+          </Link>
+          
           <nav id="nav" aria-label="Main" className={menu ? 'open' : ''} onClick={e => e.target.closest('a') && setMenu(false)}>
-            {nav.map((l, i) => <a key={l.href} href={l.href} className={i === active ? 'active' : ''}><T>{l.label}</T></a>)}
+            {/* FIX: Transform menu links to support routing back to home from the Archive page */}
+            {nav.map((l, i) => {
+              const targetHref = l.href.startsWith('#') ? `/${l.href}` : l.href;
+              return (
+                <Link key={l.href} href={targetHref} className={i === active ? 'active' : ''}>
+                  <T>{l.label}</T>
+                </Link>
+              );
+            })}
             <a className="nav-cta" href={site.applyUrl} target="_blank" rel="noopener"><T>Apply now</T></a>
           </nav>
+          
           <div className="lang" ref={langBox}>
             <button ref={langBtn} className="lang-btn" aria-haspopup="true" aria-expanded={langOpen} aria-controls="lang-list" aria-label="Language" onClick={() => setLangOpen(!langOpen)}>
               <Icon name="globe" />
