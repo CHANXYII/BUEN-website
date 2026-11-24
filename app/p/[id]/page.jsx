@@ -29,7 +29,7 @@ export default async function Score({ params, searchParams }) {
           </label>
         ))}
         <div className="row"><button className="btn primary">Save score</button>{saved && <span className="ok" role="status">Saved</span>}</div>
-      </form><aside className="participant-banner"><img src="/participant-placeholder.png" alt="Participant banner" /><div><strong>{p.name}</strong><small>{p.id}</small>{p.major && <span>{p.major}</span>}</div></aside></div>
+      </form><aside className="participant-banner"><img src={p.photo || `${process.env.BASE_PATH}/participant-placeholder.png`} alt="" /><div><strong>{p.name}</strong><small>{p.id}</small>{p.major && <span>{p.major}</span>}</div></aside></div>
 
       <h2>Score board</h2>
       <div className="lb-scroll"><table className="lb">
