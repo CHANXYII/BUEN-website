@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { logout } from './actions';
 
-export const Pic = ({ p }) => p.photo ? <img src={p.photo} alt="" /> : <span className="av" aria-hidden="true">{p.id.replace(/\D/g, '')}</span>;
+// Banner figure (score-page banner and participant cards): cut-out PNG if there is one, else the photo, else the placeholder.
+export const Fig = ({ p }) => <span className="fig"><img src={p.cutout || p.photo || `${process.env.BASE_PATH}/participant-placeholder.png`} alt="" /></span>;
 
 export default function Bar({ me }) {
   return (

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { requireJudge, config, participants, scores, total } from '../../lib';
 import { save } from '../../actions';
-import Bar, { Pic } from '../../Bar';
+import Bar, { Fig } from '../../Bar';
 
 export default async function Score({ params, searchParams }) {
   const me = await requireJudge();
@@ -18,6 +18,14 @@ export default async function Score({ params, searchParams }) {
     <Bar me={me} />
     <main className="wrap">
       <p className="back"><Link href={`/?workshop=${workshop.id}`}>&larr; All participants</Link></p>
+      <div className={`p-banner pb${p.cutout ? ' cut' : ''}`}>
+        <Fig p={p} />
+        <div className="txt">
+          <p className="eyebrow">{p.id} · {workshop.name}</p>
+          <h1 translate="no">{p.name}</h1>
+          {p.major && <p className="major">{p.major}</p>}
+        </div>
+      </div>
       <div className="score-layout"><form action={save} className="sheet">
         <h2>{workshop.name} · Your score</h2>
         <p className="score-context"><strong>Status:</strong> {Object.keys(mine).length ? 'Submitted' : 'Not scored'} · <strong>Other judges submitted:</strong> {Math.max(0, by.length - (Object.keys(mine).length ? 1 : 0))} · <strong>Current average:</strong> {avg(v => total(v, criteria))} / {total(Object.fromEntries(criteria.map(c => [c.id, c.max])), criteria)}</p>
@@ -29,7 +37,7 @@ export default async function Score({ params, searchParams }) {
           </label>
         ))}
         <div className="row"><button className="btn primary">Save score</button>{saved && <span className="ok" role="status">Saved</span>}</div>
-      </form><aside className="participant-banner"><img src={p.photo || `${process.env.BASE_PATH}/participant-placeholder.png`} alt="" /><div><strong>{p.name}</strong><small>{p.id}</small>{p.major && <span>{p.major}</span>}</div></aside></div>
+      </form></div>
 
       <h2>Score board</h2>
       <div className="lb-scroll"><table className="lb">

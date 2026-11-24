@@ -11,6 +11,9 @@ export const participants = () => readdirSync('docs/participants').filter(f => f
   const p = read(`docs/participants/${f}`);
   const ext = ['jpg', 'jpeg', 'png', 'webp'].find(e => existsSync(`public/photos/${p.id}.${e}`));
   if (ext) p.photo = `${process.env.BASE_PATH}/photos/${p.id}.${ext}`;
+  // Banner cut-out on the score page: transparent PNG/WebP, about 3:4, figure standing on the bottom edge.
+  const cut = ['png', 'webp'].find(e => existsSync(`public/banners/${p.id}.${e}`));
+  if (cut) p.cutout = `${process.env.BASE_PATH}/banners/${p.id}.${cut}`;
   return p;
 });
 

@@ -33,6 +33,10 @@ Each judge enters 0 to `max` per criterion (the server clamps out-of-range value
 
 Optional: `public/photos/BUEN01.jpg` (`.jpg`, `.jpeg`, `.png` or `.webp`, ~300x300 px). No photo shows a round placeholder with the number.
 
+## Banner cut-out
+
+Optional: `public/banners/BUEN01.png` (or `.webp`), shown in the banner at the top of the score page. Use a cut-out with a transparent background, about 3:4, with the figure touching the bottom edge; the head rises above the banner. Export at ~900x1200 px so the page stays light. Without one, the banner shows the profile photo (or the placeholder) in a frame instead.
+
 ## Privacy
 
 Participant files are in the repo. Use the display name the participant agreed to; don't commit student IDs, emails or phone numbers.
