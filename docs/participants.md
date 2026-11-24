@@ -21,13 +21,23 @@ In `judging.json`:
 ```json
 {
   "title": "Judge scoring",
+  "step": 0.5,
+  "workshops": [
+    { "id": "w1", "name": "Workshop 1" }
+  ],
   "criteria": [
-    { "id": "idea", "name": "Idea", "max": 10 }
+    { "id": "idea", "name": "Idea", "max": 5, "desc": "Is the idea new and useful?" }
   ]
 }
 ```
 
-Each judge enters 0 to `max` per criterion (the server clamps out-of-range values). Total = sum of criteria; the score board shows each judge's total and the average across judges.
+| Field | Meaning |
+|---|---|
+| `step` | Score buttons go up in this step: 0.5 gives 0, 0.5, 1 ... max. A criterion can set its own `step` |
+| `workshops` | Judges pick one on the participant list; each workshop is scored separately |
+| `criteria[].desc` | Optional one-line hint shown under the criterion name |
+
+Never change an `id` after scoring starts. Judges tap one value per criterion (the server rounds to the step and clamps to 0..max) and can add a comment. The total is the sum of the criteria. A judge sees the other judges' scores, comments and the average only after submitting their own.
 
 ## Profile photo
 

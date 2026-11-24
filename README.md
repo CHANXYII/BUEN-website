@@ -22,7 +22,7 @@ npm run build && npm start  # production (cookie is HTTPS-only in production: se
 
 ## Data
 
-- `judging.json`: page title + scoring criteria (`{ "id", "name", "max" }`). Never rename an `id` after scoring starts.
+- `judging.json`: title, score `step`, workshops and criteria (`{ "id", "name", "max", "desc" }`). Never rename an `id` after scoring starts.
 - `docs/participants/BUENxx.json`: one file per participant (`id`, `name`, `major`). Optional photo: `public/photos/BUENxx.jpg`. See [docs/participants.md](docs/participants.md).
 - `data/scores.json`: saved scores, written by the app (git-ignored). **Back it up**; it is the only copy.
 

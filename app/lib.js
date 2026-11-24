@@ -37,7 +37,7 @@ export async function judge() {
 }
 export const requireJudge = async () => (await judge()) || redirect('/login');
 
-// Scores: data/scores.json = { [participantId]: { [judge]: { [criterionId]: number } } }.
+// Scores: data/scores.json = { [participantId]: { [workshopId]: { [judge]: { [criterionId]: number, note?: string } } } }.
 // ponytail: single JSON file, one server process; move to a DB if you run several instances.
 const FILE = 'data/scores.json';
 export const scores = () => (existsSync(FILE) ? read(FILE) : {});
@@ -49,3 +49,7 @@ export function setScore(judgeName, id, workshop, vals) {
   renameSync(FILE + '.tmp', FILE); // atomic swap: a crash mid-write never corrupts the file
 }
 export const total = (vals, criteria) => criteria.reduce((n, c) => n + (+vals?.[c.id] || 0), 0);
+export const maxTotal = criteria => criteria.reduce((n, c) => n + c.max, 0);
+// Score steps: 0, 0.5, 1 ... max (judging.json "step", default 0.5). fmt drops float noise: 12.5, not 12.500000001.
+export const stepOf = c => c.step || config().step || 0.5;
+export const fmt = n => (Number.isFinite(n) ? +n.toFixed(2) : '–');

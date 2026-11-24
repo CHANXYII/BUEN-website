@@ -71,7 +71,6 @@ h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.03em;line-height:1.02;bac
 .score-status{display:inline-block;padding:5px 9px;border-radius:999px;font-size:.78rem;font-weight:700;white-space:nowrap}.score-status.submitted{color:#9fe0b2;background:rgb(80 160 100/.18)}.score-status.not-scored{color:var(--muted);background:rgb(255 255 255/.08)}.score-context{margin:-4px 0 8px;color:var(--muted);line-height:1.6}.score-context strong{color:#fff}@media(max-width:850px){.lb th,.lb td{padding-inline:10px}.lb th{letter-spacing:.1em;font-size:.72rem}}
 .workshop-filter{display:flex;align-items:center;gap:12px;margin:-12px 0 32px}.workshop-filter label{color:var(--muted);font-weight:700}.workshop-filter select{min-width:190px;padding:10px 12px;border:1px solid var(--stroke);border-radius:var(--r);background:#171717;color:#fff;font:inherit}.workshop-filter option{background:#fff;color:#171717}
 .score-status{display:inline-block;margin-top:8px;padding:4px 8px;border-radius:999px;font-size:.75rem;font-weight:700;white-space:nowrap}.score-status.submitted{color:#9fe0b2;background:rgb(80 160 100/.18)}.score-status.not-scored{color:var(--muted);background:rgb(255 255 255/.08)}
-.score-layout{max-width:560px;margin-inline:auto}
 
 /* .pb = banner card, same look as the ambassador cards: crimson-to-gold card, figure on the left. With a cut-out (.cut)
    the figure stands on the bottom edge and its head breaks out above the top border (--lift); without one, the photo
@@ -107,3 +106,36 @@ h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.03em;line-height:1.02;bac
 .participant-card:is(:hover,:focus-visible) strong{color:var(--gold)}
 @media(max-width:760px){.participant-grid{grid-template-columns:1fr;gap:52px}.workshop-filter{flex-wrap:wrap}}
 @media(max-width:420px){.participant-card{--lift:36px;grid-template-columns:40% 1fr;gap:14px;min-height:170px}.participant-card .fig{min-height:170px}.participant-card.cut .fig img{left:-12%;width:124%}.participant-card .txt{padding:16px 14px 18px 0}.participant-card strong{font-size:1.2rem}}
+
+/* score page: previous / next beside the back link; form and score board side by side on wide screens */
+.topline{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:32px}.topline .back{margin:0}
+.p-nav{display:flex;align-items:center;gap:8px}.p-nav a,.p-nav>span[aria-hidden]{display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--stroke);border-radius:var(--r);color:#fff;text-decoration:none;transition:border-color .2s,color .2s}.p-nav a:hover{border-color:var(--gold);color:var(--gold)}.p-nav>span[aria-hidden]{opacity:.3}.p-nav .count{min-width:4.5em;color:var(--muted);font-size:.85rem;text-align:center}
+.score-layout{display:grid;grid-template-columns:minmax(0,540px) minmax(0,1fr);gap:32px;align-items:start;margin-bottom:72px}
+.score-layout .sheet{max-width:none;margin:0}
+.board h2{margin:0 0 16px}
+.board .locked{margin:0;padding:24px;border:1px dashed var(--stroke);border-radius:var(--r);color:var(--muted);line-height:1.6}
+.board .lb tfoot small{color:var(--muted);font-weight:400}.board .lb td.num{white-space:nowrap}
+.notes{display:grid;gap:10px;margin:20px 0 0;padding:0;list-style:none}.notes li{padding:12px 16px;border-left:2px solid var(--gold);border-radius:0 var(--r) var(--r) 0;background:var(--glass)}.notes p{margin:4px 0 0;color:var(--muted);white-space:pre-line}
+@media(max-width:1000px){.score-layout{grid-template-columns:minmax(0,560px);justify-content:center}}
+
+/* score buttons: one tap per value (0, 0.5 ... max); halves are smaller; the chosen one turns crimson with a gold edge */
+.score-form .score-context{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:0}.score-form .score-context .score-status{margin:0}
+.crit{display:grid;gap:8px;min-width:0;margin:0;padding:0;border:0}
+.crit legend{display:flex;justify-content:space-between;width:100%;margin-bottom:8px;padding:0;color:var(--muted);font-size:.9rem}.crit legend small{color:var(--gold);font-weight:700}
+.crit .desc{margin:-4px 0 2px;color:var(--muted);font-size:.82rem;line-height:1.5}
+.steps{display:grid;grid-template-columns:repeat(var(--n,11),minmax(0,1fr));gap:5px}
+.steps label{position:relative;display:block}
+.sheet .steps input{position:absolute;inset:0;width:100%;height:100%;min-height:0;margin:0;padding:0;opacity:0;cursor:pointer}
+.sheet .steps label>span{display:grid;place-items:center;justify-content:center;text-align:center;min-height:44px;border:1px solid var(--stroke);border-radius:var(--r);background:var(--glass);color:#fff;font-size:1rem;font-weight:700;transition:background .15s,border-color .15s,box-shadow .15s}
+.steps label.half>span{color:var(--muted);font-size:.78rem}
+.steps label:hover>span{border-color:var(--gold)}
+.steps input:checked+span{border-color:var(--gold);background:var(--crimson);color:#fff;box-shadow:0 0 0 1px var(--gold-a2),0 0 18px var(--gold-a)}
+.steps input:focus-visible+span{outline:2px solid var(--gold);outline-offset:2px}
+.sheet .note textarea{min-height:84px;padding:10px 14px;border:1px solid var(--stroke);border-radius:var(--r);background:var(--glass);color:#fff;font:inherit;resize:vertical}.sheet .note textarea:focus{border-color:var(--gold);outline:0}.sheet .note small{color:var(--muted);font-weight:400}
+.live-total{display:flex;align-items:baseline;gap:12px;padding:14px 18px;border:1px solid rgb(212 175 55/.3);border-radius:var(--r);background:rgb(179 18 46/.14)}.live-total>span{color:var(--muted)}.live-total strong{color:var(--gold);font-size:1.9rem;line-height:1}.live-total strong small{color:var(--muted);font-size:1rem;font-weight:400}.live-total em{margin-left:auto;color:var(--muted);font-size:.85rem;font-style:normal}
+.save-row{display:flex;flex-wrap:wrap;gap:12px}.save-row .btn{flex:1;justify-content:center;min-height:48px}.save-row .btn[value=stay]::after{content:none}.save-row .btn:disabled{opacity:.6;cursor:wait}
+@media(max-width:560px){.score-form{padding:22px 18px}.steps{grid-template-columns:repeat(6,minmax(0,1fr))}}
+
+/* "saved" toast: drops in under the header, fades out after a few seconds (stays put if motion is reduced) */
+.toast{position:fixed;top:88px;left:50%;z-index:20;margin:0;padding:12px 22px;border:1px solid rgb(80 160 100/.5);border-radius:999px;background:#0e2616;color:#9fe0b2;font-weight:700;box-shadow:0 12px 40px rgb(0 0 0/.6);translate:-50% 0;animation:toast 4.5s both;pointer-events:none}
+@keyframes toast{0%{opacity:0;transform:translateY(-10px)}8%,80%{opacity:1;transform:none}100%{opacity:0;visibility:hidden}}
