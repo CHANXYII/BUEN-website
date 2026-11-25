@@ -1,4 +1,4 @@
-// Runs at build time: merges leaderboard/data.json with docs/participants/BUENxx.json, ranks, picks fast-tracks.
+// Runs at build time: merges leaderboard/data.json with participant records and ranks them.
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import Leaderboard from './Leaderboard';
 
@@ -21,10 +21,5 @@ export default function Page() {
   // Total = sum of workshop points; ranks are unique. Tiebreak: latest workshop first, then ID.
   const rows = participants.map(p => ({ ...p, total: ws.reduce((n, w) => n + pts(p, w), 0) }))
     .sort((a, b) => b.total - a.total || [...ws].reverse().reduce((r, w) => r || pts(b, w) - pts(a, w), 0) || a.id.localeCompare(b.id));
-  // Fast-track = exactly one per workshop: highest points; a tie goes to the better overall rank (rows are sorted). 0 points never wins.
-  const win = Object.fromEntries(ws.map(w => {
-    const top = rows.reduce((a, p) => (pts(p, w) > (a ? pts(a, w) : 0) ? p : a), null);
-    return [w.id, top?.id ?? null];
-  }));
-  return <Leaderboard kicker={d.kicker} title={d.title} updated={d.updated} countdown={d.countdown} workshops={ws} rows={rows} win={win} />;
+  return <Leaderboard kicker={d.kicker} title={d.title} updated={d.updated} countdown={d.countdown} workshops={ws} rows={rows} />;
 }
